@@ -1,0 +1,1 @@
+<p>Header admin pages</p>
