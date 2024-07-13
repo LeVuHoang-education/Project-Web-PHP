@@ -68,12 +68,17 @@
                 <input type="password" name="password" id="password" required width="100%" value="<?php echo $row['password']?>" >
                 <br>
                 <div class="genderI">
-                    <label for="male">Gender</label>
+                    <label for="male">Gender: </label>
                     <input type="radio" name="gender" id="male" value="nam">
                     <label for="male">male</label>
                     <input type="radio" name="gender" id="female" value="nữ">
                     <label for="female">female</label>
                 </div>
+                <label for="role">Set role</label>
+                <select name="  userrole" id="role" >
+                    <option value="user">User</option>
+                    <option value="admin" >Admin</option>
+                </select>
                 <br>
                 <button type="submit" name="btn-reg" value="Sign Up">Save</button>
             </form>

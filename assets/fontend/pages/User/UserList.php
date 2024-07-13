@@ -20,6 +20,7 @@
                 <th>Email</th>
                 <th>Password</th>
                 <th>Gender</th>
+                <th>Role</th>
                 <th></th>
             </tr>
             <?php
@@ -38,6 +39,7 @@
                     <td><?php echo $row['email'];  ?></td>
                     <td><?php echo $row['password'];  ?></td>
                     <td><?php echo $row['gender'];  ?></td>
+                    <td><?php echo $row['userrole'];  ?></td>
                     <td>
                         <a href="../../../../fontend/pages/EditUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Edit</button> </a>
                         <a onclick="return confirm('Ban co muon xoa account nay');" href="../../../../fontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>

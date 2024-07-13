@@ -1,0 +1,129 @@
+body{
+    padding: 0 ;
+    margin: 0;
+    align-items: center;
+    
+    display: flex;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #dde5f4;
+
+}
+
+.iconInput{
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+ 
+
+}
+
+.containner {
+    padding: 20px;
+    margin: 20px;
+    align-items: center;
+    background-color: #f0f6fe;
+    width: 50vh;
+    height: 60vh;
+    border-radius: 20px;
+        
+}
+
+.containner h1, h2 {
+    text-align: center;
+    color: #000000;
+    font-size: 30px;
+    margin: 0;
+    padding: 0%;
+}
+
+.icon {
+    text-align: center;
+    color: #000000;
+    margin: 0;
+    padding: 0%;
+    width: 50px;
+    height: auto;
+}
+
+form{
+    background-color: #f0f6fe;
+}
+
+input[type=password],input[type=email],select {
+    padding:10px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    background : #ffffff;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+label {
+    color: #000000;
+}
+
+.groupBox{
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: none;
+    padding: 10px;
+    margin: 0 0 15px 0;
+    box-sizing: border-box;
+
+}
+
+.ae{
+    display: flex;
+  align-items: center;
+}
+
+button{
+    background-color: #3e4684;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.button_t{
+    display: flex;
+    justify-content: center;
+}
+
+.a_link {
+    margin: 20px;
+    text-align: center;
+    font-size: 12   px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.a_link a{
+    color: #868686;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 2vw; /* Thu nhỏ kích thước chữ trên màn hình nhỏ hơn 600px */
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+    body {
+        font-size: 2vw; /* Tăng kích thước chữ trên màn hình từ 601px đến 1200px */
+    }
+}
