@@ -1,0 +1,90 @@
+body {
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    background-color: #fcc8c8;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fcc8c8;
+
+}
+
+.containner {
+    padding: 20px;
+    margin: 20px;
+    margin-top: 20px;
+    align-items: center;
+    background-color: #ffffff;
+    width: 80vh;
+    height: 85vh;
+    border-radius: 20px;
+}
+
+.containner h1,
+h2 {
+    text-align: center;
+    color: #000000;
+    font-size: 30px;
+    margin: 0;
+    padding: 0%;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 8px 0;
+    border-radius: 20px;
+}
+
+.genderI {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 8px 0;
+    border: none;
+    background-color: #ffffff;
+
+}
+
+button[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.icon {
+    width: 50px;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+}
