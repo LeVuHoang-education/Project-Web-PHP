@@ -9,14 +9,15 @@
         $phonenumber = $_POST['phonenumber'];
         $password = $_POST['password'];
         $gender = $_POST['gender'];
+        $userrole = $_POST['userrole'];
 
         // Câu lệnh chuẩn bị
-        $UpdateUser_sql = "UPDATE account SET username = ?, email = ?, phonenumber = ?, password = ?, gender = ? WHERE userid = ?";
+        $UpdateUser_sql = "UPDATE account SET username = ?, email = ?, phonenumber = ?, password = ?, gender = ?, userrole = ? WHERE userid = ?";
         $stmt = $conn->prepare($UpdateUser_sql);
 
         if ($stmt) {
             // Liên kết các tham số
-            $stmt->bind_param("sssssi", $username, $email, $phonenumber, $password, $gender, $userid);
+            $stmt->bind_param("ssssssi", $username, $email, $phonenumber, $password, $gender,$userrole, $userid);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
