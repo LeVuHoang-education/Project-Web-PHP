@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/AddProduct.css">
+    <title>Add new product - product manager</title>
+</head>
+
+<body>
+    <div class="containner">
+        <form action="../../../../fontend/pages/ThemSanPham.php" method="post" enctype="multipart/form-data">
+            <h1><img src="../../img/Icon/add-product.png" alt=""></h1>
+            <div class="combobox">
+                <label for="proname">Name: </label>
+                <input type="text" name="proname" id="proname" required placeholder="Enter product name">
+            </div>
+            <div class="combobox1">
+                <label for="proprice">Price: </label>
+                <input type="text" pattern="\d+(\.\d{2})" title="Vui lòng nhập số có dấu thập phân và tối đa hai chữ số sau dấu thập phân" required name="proprice" id="proprice">
+                <label for="category">Category: </label>
+                <select name="catid" id="catname">
+                    <?php
+                    require('../../../../db/connect.php');
+                    $sql = "SELECT * FROM category";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+
+                        <option value= "<?php echo $row['catid'];?>" > <?php echo $row['catname'] ?></option>
+
+                    <?php
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div class="combobox">
+                <label for="prostock">Stock: </label>
+                <input type="number" name="prostock" id="prostock" required placeholder="Enter value of product in stock">
+            </div>
+
+            <div class="combobox">
+                <label for="imagepath">Image path: </label>
+                <input type="file" name="image_path" id="imagepath">
+            </div>
+
+            <div class="combobox">
+                <label for="prodes">Description: </label>
+                <textarea name="prodescription" id="prodes" cols="30" rows="5" placeholder="Enter product description"></textarea>
+            </div>
+            <button type="submit" name="btn-reg" value="addProduct" >Add</button>
+        </form>
+      
+    </div>
+</body>
+
+</html>
