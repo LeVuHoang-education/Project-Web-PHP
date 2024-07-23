@@ -88,3 +88,17 @@ button {
     padding: 10px;
     margin: 20px;
 }
+
+.box_trai {
+    width: 50%;
+    float: left;
+}
+
+.box_phai {
+    display: flex;
+    width: 50%;
+    float: right;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
