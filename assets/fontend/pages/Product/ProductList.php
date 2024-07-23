@@ -43,7 +43,7 @@
                     <div class="col col-4"><?php echo $row['prostock'] ?></div>
                     <div class="col col-5"><?php echo $row['image_path'] ?></div>
                     <div class="col col-6">
-                        <a href="ProductEdit.php?id=<?php echo $row['proid'] ?>">Edit</a>
+                        <a href="../../../../fontend/pages/EditProduct.php?proid=<?php echo $row['proid'] ?>">Edit</a>
                         <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" href = "../../../../fontend/pages/DeleteProduct.php?proid= <?php echo $row['proid'] ?>">Delete</a>
                     </div>
                 </li>
