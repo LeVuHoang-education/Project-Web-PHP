@@ -1,23 +1,30 @@
 <?php
+include 'UploadFile.php';
 require('../../db/connect.php');
 if (
-    isset($_GET['proid']) && isset($_GET['proname']) && isset($_GET['proprice']) && isset($_GET['catid']) && isset($_GET['prostock'])
-    && isset($_GET['image_path']) && isset($_GET['prodescription'])
+    isset($_GET['proid']) && isset($_POST['proname']) && isset($_POST['proprice']) && isset($_POST['catid'])
 ) {
     $proid = $_GET['proid'];
-    $proname = $_GET['proname'];
-    $proprice = $_GET['proprice'];
-    $catid = $_GET['catid'];
-    $prostock = $_GET['prostock'];
-    $image_path = $_GET['image_path'];
-    $prodescription = $_GET['prodescription'];
+    $proname = $_POST['proname'];
+    $proprice = $_POST['proprice'];
+    $catid = $_POST['catid'];
+    $prostock = $_POST['prostock'];
+    $targetDir = "../../UploadImage/";
+    $image_path = Uploads($_FILES['image_path'], $targetDir);
+    $prodescription = $_POST['prodescription'];
 
+    echo "proid: $proid<br>";
+    echo "proname: $proname<br>";
+    echo "proprice: $proprice<br>";
+    echo "catid: $catid<br>";
+    echo "prostock: $prostock<br>";
+    echo "prodescription: $prodescription<br>";
 
     $UpdateProduct_sql = "UPDATE product SET proname = ?, proprice = ?, catid = ?, prostock = ?, image_path = ?, prodescription = ? WHERE proid = ?";
     $stmt = $conn->prepare($UpdateProduct_sql);
 
     if ($stmt) {
-        $stmt->bind_param("sdiiss ", $proname, $proprice, $catid, $prostock, $image_path, $prodescription);
+        $stmt->bind_param("sdiissi", $proname, $proprice, $catid, $prostock, $image_path, $prodescription, $proid);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
@@ -36,3 +43,5 @@ if (
 } else {
     echo "Dữ liệu không đầy đủ.";
 }
+
+?>

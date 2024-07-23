@@ -12,7 +12,7 @@
 
     <div class="container">
         <h2>
-            <div></div>
+            <a href="../../../../adminpanel/index.php"> <img src="../../img/Icon/house-solid.svg" alt=""></a>
             Product manager
             <a href="../../pages/Form/AddProduct.php"> <img src="../../img/Icon/plus.png" alt="" /></a>
         </h2>

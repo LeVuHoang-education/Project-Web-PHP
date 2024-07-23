@@ -90,16 +90,13 @@
         <a href="./Home.php">Home</a>
       </div>
       <!--Table category-->
-      <?php
-      require('../../../../db/connect.php');
-      $sql = "SELECT * FROM product WHERE catid = 04";
-      $listProducts = $conn->query($sql);
-
-      ?>
       <div id="category">TABLES</div>
       <div id="show-products">
 
         <?php
+        require('../../../../db/connect.php');
+        $sql = "SELECT * FROM product WHERE catid = 04";
+        $listProducts = $conn->query($sql);
         while ($row = $listProducts->fetch_assoc()) {
         ?>
           <div class="product">
@@ -133,7 +130,7 @@
     <?php
         }
     ?>
-    </div>
+    </div>  
   </div>
 
   <!--ads-->

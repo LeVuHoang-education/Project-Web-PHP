@@ -1,32 +1,32 @@
 <?php
-    require('../../db/connect.php');
+require('../../db/connect.php');
 
-    if (isset($_GET['proid'])) {
-        $proid = $_GET['proid'];
+if (isset($_GET['proid'])) {
+    $proid = $_GET['proid'];
 
-        $getProduct_sql = "SELECT * FROM product where proid = ?";
-        $stmt = $conn->prepare($getProduct_sql);
+    $getProduct_sql = "SELECT * FROM product where proid = ?";
+    $stmt = $conn->prepare($getProduct_sql);
 
-        if ($stmt) {
-            $stmt->bind_param("i", $proid);
-            $stmt->execute();
+    if ($stmt) {
+        $stmt->bind_param("i", $proid);
+        $stmt->execute();
 
-            $result = $stmt->get_result();
+        $result = $stmt->get_result();
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-            } else {
-                echo "Không tìm thấy sản phẩm.";
-            }
-
-            $stmt->close();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
         } else {
-            echo "Lỗi chuẩn bị câu lệnh.";
+            echo "Không tìm thấy sản phẩm.";
         }
-        $conn->close();
+
+        $stmt->close();
     } else {
-        echo "Không có proid.";
+        echo "Lỗi chuẩn bị câu lệnh.";
     }
+    $conn->close();
+} else {
+    echo "Không có proid.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
 
 <body>
     <div class="containner">
-        <form action="/fontend/pages/UpdateProduct.php?proid=<?php echo $row['proid']; ?>" method="post" enctype="multipart/form-data">
+        <form action="UpdateProduct.php?proid=<?php echo $row['proid']; ?>" method="post" enctype="multipart/form-data">
             <h1><img src="../../assets/fontend/img/Icon/add-product.png" alt=""></h1>
             <div class="combobox">
                 <label for="proname">Name: </label>
@@ -71,8 +71,18 @@
             </div>
 
             <div class="combobox">
-                <label for="imagepath">Image path: </label>
-                <input type="file" name="image_path" id="imagepath" value="<?php echo $row['image_path'] ?>">
+                <div class="box_trai">
+
+                    <label for="imagepath">Chọn ảnh mới (hoặc để trống để giữ ảnh hiện tại):</label>
+                    <input type="file" name="image_path" id="imagepath" value="<?php echo $row['image_path'] ?>">
+                </div>
+                <div class="box_phai">
+
+                    <?php if (!empty($row['image_path'])):?>
+                        <img src="../../UploadImage/<?php echo htmlspecialchars($row['image_path']); ?>" alt="Current Image" width="100">
+                        <p><?php echo htmlspecialchars($row['image_path']); ?></p>
+                        <?php endif; ?>
+                    </div>
             </div>
 
             <div class="combobox">

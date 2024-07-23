@@ -1,1 +1,0 @@
-<p>Footer admin pages</p>
