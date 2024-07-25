@@ -27,7 +27,8 @@
         </a>
       </div>
       <div class="account">
-        <a href="#">Đăng nhập/Đăng kí</a></div>
+        <a href="#">Đăng nhập/Đăng kí</a>
+      </div>
     </div>
   </div>
   <hr />
@@ -50,12 +51,31 @@
   </div>
   <div class="taskbar">
     <div class="navbar">
+      <?php
+      require('../../../../db/connect.php');
+      $sql = "SELECT * FROM category";
+      $listCategory = $conn->query($sql);
+
+      ?>
       <ul>
         <li>
           <a href="./Home.php">Home</a>
         </li>
         <li>
           <a href="#">List</a>
+          <ul class="sub-navbar">
+            <?php
+            while ($row = $listCategory->fetch_assoc()) {
+            ?>
+              <li>
+                <a href="#">
+                  <?php echo $row['catname']; ?>
+                </a>
+              </li>
+            <?php
+            };
+            ?>
+          </ul>
         </li>
         <li>
           <a href="#">Promotion</a>
@@ -66,7 +86,6 @@
         <li>
           <a href="#">Support</a>
         </li>
-        <li></li>
         <li>
           <a href="#">About Us</a>
         </li>
