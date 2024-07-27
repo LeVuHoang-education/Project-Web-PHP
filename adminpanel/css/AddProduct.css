@@ -1,27 +1,23 @@
-body{
-    font-family: 'Poppins', sans-serif;
-    background-color:azure;
 
-}
-.containner{
+.containner-ap{
     width: 100%;
     justify-content: center;
     align-items: center;
     height: auto;
     display: flex;
 }
-h1{
+.containner-ap h1{
     text-align: center;
     font-size: 30px;
     color: #333;
     margin-top: 20px;
 }
-h1 img{
+.containner-ap h1 img{
     width: 50px;
     height: auto;
 }
-form {
-    width: 50%;
+.containner-ap form {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +28,7 @@ form {
     border: 1px solid #333;
 }
 
-.combobox {
+.containner-ap .combobox {
     width: 80%;
     border-radius: 20px;
     padding: 10px;
@@ -40,7 +36,7 @@ form {
     background-color: rgb(255, 255, 255);
     border: 1px solid #333;
 }
-.combobox1{
+.containner-ap .combobox1{
     display: flex;
     width: 80%;
     border-radius: 20px;
@@ -52,7 +48,7 @@ form {
     border:1px  solid #333;
 }
 
-.combobox1 select{
+.containner-ap .combobox1 select{
     border: none;
     outline: none;
     font-size: 16px;
@@ -61,7 +57,7 @@ form {
     
 }
 
-input[type= text], input[type= number] {
+.containner-ap input[type= text], input[type= number] {
     width: 80%;
     padding: 10px;
     margin: 10px;
@@ -70,7 +66,7 @@ input[type= text], input[type= number] {
     outline: none;
 }
 
-textarea {
+.containner-ap textarea {
     width: 90%;
     padding: 10px;
     margin: 10px;
@@ -80,25 +76,11 @@ textarea {
 
 }
 
-button {
+.containner-ap button {
     width:70%;
     background-color: #fbd5ff; 
     border-radius: 20px;
     border: 1px solid #333;
     padding: 10px;
     margin: 20px;
-}
-
-.box_trai {
-    width: 50%;
-    float: left;
-}
-
-.box_phai {
-    display: flex;
-    width: 50%;
-    float: right;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 }

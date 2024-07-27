@@ -48,11 +48,11 @@
 
 <body style="align-items: center;">
     <div class="main">
-        <div class="containner">
+        <div class="containner-eu">
 
             <h1>User: <?php echo $row['username']?>   </h1>
             <hr>
-            <form action="../pages/UpdateUser.php?userid=<?php echo $row['userid'] ?>" method="post">
+            <form action="../../fontend/pages/UpdateUser.php?userid=<?php echo $row['userid'] ?>" method="post">
                 <label for="username">User name</label><br>
                 <input type="text" name="username" id="username" required width="100%" value="<?php echo $row['username']?>">
                 <br>
