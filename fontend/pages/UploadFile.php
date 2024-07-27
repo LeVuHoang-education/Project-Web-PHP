@@ -19,8 +19,8 @@ function Uploads($file, $targetDir)
         $uploadOk = 0;
     }
 
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-        echo "Chỉ chấp nhận file JPG, JPEG, PNG & GIF.";
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "webp") {
+        echo "Chỉ chấp nhận file JPG, JPEG,WEBP, PNG & GIF.";
         $uploadOk = 0;
     }
 

@@ -8,7 +8,7 @@
             $stmt->bind_param("i", $proid);
             $stmt->execute();
             if($stmt->affected_rows > 0){
-                header("Location: ../../assets/fontend/pages/Product/ProductList.php");
+                header("Location: ../../adminpanel/pages/index.php?act=SanPham");
             }else{
                 echo "Delete failed";
             }

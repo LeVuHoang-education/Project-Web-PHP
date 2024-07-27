@@ -22,7 +22,7 @@
 
             if ($stmt->affected_rows > 0) {
                 // Chuyển hướng sau khi cập nhật thành công
-                header("Location: ../../assets/fontend/pages/User/UserList.php");
+                header("Location:../../adminpanel/pages/index.php?act=TaiKhoan");
                 exit();
             } else {
                 echo "Cập nhật không thành công hoặc không có thay đổi.";

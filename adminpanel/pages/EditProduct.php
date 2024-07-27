@@ -41,7 +41,7 @@ if (isset($_GET['proid'])) {
 
 <body>
     <div class="containner">
-        <form action="UpdateProduct.php?proid=<?php echo $row['proid']; ?>" method="post" enctype="multipart/form-data">
+        <form action="../../fontend/pages/UpdateProduct.php?proid=<?php echo $row['proid']; ?>" method="post" enctype="multipart/form-data">
             <h1><img src="../../assets/fontend/img/Icon/add-product.png" alt=""></h1>
             <div class="combobox">
                 <label for="proname">Name: </label>

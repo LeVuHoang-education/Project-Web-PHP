@@ -4,18 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/UserList.css">
+    <link rel="stylesheet" href="../css/UserList.css">
     <title>User manager</title>
 </head>
 
 <body>
     <div class=".containner">
-        
-        <h1>
-        <a href="../../../../adminpanel/index.php"> <img src="../../img/Icon/house-solid.svg" alt=""></a>       
-        User manager
-        <div></div>    
-    </h1>
         <table id="userList">
             <tr>
                 <th>id</th>
@@ -28,7 +22,7 @@
                 <th></th>
             </tr>
             <?php
-            require('../../../../db/connect.php');
+            require('../../db/connect.php');
             $GetUser_sql = "SELECT * FROM account order by userid";
 
             $ListUser = $conn->query($GetUser_sql);
@@ -45,8 +39,8 @@
                     <td><?php echo $row['gender'];  ?></td>
                     <td><?php echo $row['userrole'];  ?></td>
                     <td>
-                        <a href="../../../../fontend/pages/EditUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Edit</button> </a>
-                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../../../fontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>
+                        <a href="index.php?act=EditUser&userid=<?php echo $row['userid']?>"> <button type="submit">Edit</button> </a>
+                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../fontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>
                     </td>
                 </tr>
             <?php

@@ -21,7 +21,7 @@ h1 img{
     height: auto;
 }
 form {
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,4 +87,18 @@ button {
     border: 1px solid #333;
     padding: 10px;
     margin: 20px;
+}
+
+.box_trai {
+    width: 50%;
+    float: left;
+}
+
+.box_phai {
+    display: flex;
+    width: 50%;
+    float: right;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
