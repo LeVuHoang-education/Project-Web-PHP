@@ -26,3 +26,15 @@
 .Order-content td {
     padding: 10px;
 }
+.Order-content a {
+    text-decoration: none;
+    color: black;
+}
+.Order-content a:hover {
+    color: #ff0000;
+}
+.Chucnang_od{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
