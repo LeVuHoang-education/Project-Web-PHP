@@ -35,7 +35,7 @@ if (isset($_GET['proid']) && isset($_POST['proname']) && isset($_POST['proprice'
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
-                header("Location: ../../adminpanel/pages/index.php?act=SanPham");
+                header("Location: ../../adminpanel/pages/index.php?act=SanPham&catid=0");
                 exit();
             } else {
                 echo "Cập nhật không thành công hoặc không có thay đổi.";

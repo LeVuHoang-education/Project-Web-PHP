@@ -52,10 +52,7 @@
             } else {
                 $page = 1;
             }
-
-
-           
-
+            
             $limit = 10;
             $from = ($page - 1) * $limit;
 

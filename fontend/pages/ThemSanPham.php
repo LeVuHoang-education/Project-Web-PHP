@@ -19,7 +19,7 @@
             $stmt->execute();
 
             if($stmt->affected_rows > 0){
-                header("Location: ../../adminpanel/pages/index.php?act=SanPham");
+                header("Location: ../../adminpanel/pages/index.php?act=SanPham&catid=0");
             }else{
                 echo "Add failed";
             }
