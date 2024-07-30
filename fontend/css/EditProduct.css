@@ -1,0 +1,104 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color:azure;
+
+}
+.containner{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    display: flex;
+}
+h1{
+    text-align: center;
+    font-size: 30px;
+    color: #333;
+    margin-top: 20px;
+}
+h1 img{
+    width: 50px;
+    height: auto;
+}
+form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+.combobox {
+    width: 80%;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #333;
+}
+.combobox1{
+    display: flex;
+    width: 80%;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    align-items: center;
+    border:1px  solid #333;
+}
+
+.combobox1 select{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 50%;
+    align-items: center;
+    
+}
+
+input[type= text], input[type= number] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+
+}
+
+button {
+    width:70%;
+    background-color: #fbd5ff; 
+    border-radius: 20px;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 20px;
+}
+
+.box_trai {
+    width: 50%;
+    float: left;
+}
+
+.box_phai {
+    display: flex;
+    width: 50%;
+    float: right;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,133 +1,19 @@
-
-
 body{
     background-color: #EEEEEE;
+    width:100%;
 }
 
-/*Banners*/
-.banner-brand{
-    padding:20px;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.individual{
-    display: flex;
-}
-.love-list,.backet,.account{
-    padding-top:5px;
-    margin:15px;
-}
-.love-list a,
-.backet a{
-    color:black;
-}
-svg{
-    width: 20px;
-    height: 20px;
-}
-.account{
-    width:auto;
-    height:auto;
-    margin-top:10px;
-    padding:10px;
-    border-radius:40px;
-    border:1px solid black;
-    background-color: #134B70;
-}
-.account a{
-    color:white;
-    text-decoration: none;
-}
-
-.header{
-    height: auto;
-    text-align: center;
-    display:flex;;
-    flex-direction:column;
-}
-
-.intro-brand{
-    display:flex;
-    justify-content: space-around;
-    flex-direction: row;
-}
-.thumbnail-brand{
-
-    height:90px;
-    margin-bottom:10px;
-    margin-top:10px;
-}
-
-.title-brand a{
-    text-decoration:none;
-    color:black;
-}
-
-.image-brands{
-}
-
-#image-brand{
-    width:45px;
-}
-
-.taskbar{
-    margin-top:10px;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color:#201E43;
-}
-
-.navbar{
-    width: max-content;
-    height: 70px;
-}
-
-.navbar ul{
-    display:flex;
-    flex-wrap: wrap;
-    padding:0;
-    margin:0;
-}
-.navbar ul li{
-    list-style-type: none;
-    display: inline-block;
-    background-color: #508C9B;
-    text-align: center;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.navbar ul li a{
-    color:white;
-}
-.navbar ul li a:link{
-    width:150px;
-    display: block;
-    padding-top: 26px;
-    padding-bottom: 26px;
-    text-decoration: none;
-    color:white;
-}
-
-.navbar ul li a:hover{
-    background-color:#134B70;
-    transform:scale(1.09);
-    -webkit-box-shadow: 0 2px 4px #363636;
-    -moz-box-shadow: 0 2px 4px #363636;
-    box-shadow:0 2px 4px #363636;
-}
+/*for body content*/
 
 .container{
     display:flex;
     flex-direction: row;
     margin: 20px auto;
+
 }
 
 .ads{
-
-    width:300px;
+    width:20%;
     margin:20px 10px 0 20px;
 }
 
@@ -138,7 +24,7 @@ img.ads-img{
 
 .main-container{
     height:auto;
-    width: auto;
+    width: 60%;
 }
 
 .path{
@@ -170,9 +56,9 @@ img.ads-img{
 }
 /*class product and their properties*/
 .product{
-    border-radius:20px;
+    border-radius:10px;
     width:280px;
-    height:300px;
+    height:400px;
     margin:20px;
     transition:width 0.5s,
     height 0.5s;
@@ -181,7 +67,8 @@ img.ads-img{
 }
 .product:hover{
     width:300px;
-    height:320px;
+    height:420px;
+    box-shadow:0 2px 4px #3E3E3E;
 }
 .product a{
     text-decoration:none;

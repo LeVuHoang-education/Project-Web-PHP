@@ -7,7 +7,13 @@
 h1{
     text-align: center;
     color: #000000;
+    display: flex;
+    justify-content: space-between;
+}
 
+h1 img{
+    width: 30px;
+    height: 30px;
 }
 
 #userList td,

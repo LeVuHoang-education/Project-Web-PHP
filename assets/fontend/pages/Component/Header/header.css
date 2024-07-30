@@ -1,0 +1,134 @@
+body{
+    background-color: #EEEEEE;
+    width:100%;
+}
+
+/*Banners*/
+.banner-brand{
+    padding:0;
+    margin::0;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.individual{
+    display: flex;
+}
+.love-list,.backet,.account{
+    padding-top:10px;
+    margin:10px;
+}
+.love-list a,
+.backet a{
+    color:black;
+}
+svg{
+    width: 20px;
+    height: 20px;
+}
+.account{
+    width:auto;
+    height:auto;
+    margin-top:10px;
+    padding:10px 15px;
+    border-radius:40px;
+    background-color: #134B70;
+}
+.account a{
+    color:white;
+    text-decoration: none;
+}
+
+.header{
+    height: auto;
+    text-align: center;
+    display:flex;;
+    flex-direction:column;
+}
+
+.intro-brand{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.thumbnail-brand{
+
+    height:90px;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+.title-brand a{
+    text-decoration:none;
+    color:black;
+}
+
+.image-brands{
+}
+
+#image-brand{
+    width:45px;
+}
+
+.taskbar{
+    margin-top:10px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color:#201E43;
+}
+
+.navbar{
+    width: max-content;
+    height: 70px;
+}
+
+.navbar ul{
+    display:flex;
+    flex-wrap: wrap;
+    padding:0;
+    margin:0;
+}
+.navbar ul li{
+    list-style-type: none;
+    display: inline-block;
+    background-color: #508C9B;
+    text-align: center;
+    position:relative;
+}
+.navbar ul li a{
+    display:block;
+    color:white;
+}
+.navbar ul li a:link{
+    width:150px;
+    display: block;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    text-decoration: none;
+    color:white;
+}
+
+.navbar ul li a:hover{
+    background-color:#134B70;
+    transform:scale(1);
+    -webkit-box-shadow: 0 2px 4px #363636;
+    -moz-box-shadow: 0 2px 4px #363636;
+    box-shadow:0 2px 4px #363636;
+}
+
+ul.sub-navbar{
+    position: absolute;
+    display:none;
+}
+ul.sub-navbar li{
+    width: 300px;
+}
+ul.sub-navbar li a:link{
+    width:100%;
+}
+
+.navbar ul li:hover .sub-navbar{
+    display:block;
+}
