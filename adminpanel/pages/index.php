@@ -42,8 +42,11 @@
                 case 'EditProduct':
                     include "EditProduct.php";
                     break;
-                case 'OrderDetail':
+                case 'ODetail':
                     include "OrderDetail.php";
+                    break;
+                case 'UpdateOD':
+                    include "UpdateStatus.php";
                     break;
                 default:
                     include "dashboard.php";

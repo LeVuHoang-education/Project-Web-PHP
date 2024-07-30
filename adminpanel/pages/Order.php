@@ -16,6 +16,7 @@
             <th>Thời gian</th>
             <th>Thành tiền</th>
             <th>Trạng thái</th>
+            <th></th>
         </tr>
         <?php
         require('../../db/connect.php');
@@ -32,8 +33,10 @@
                 <td><?php echo $row['orderdate'] ?></td>
                 <td><?php echo $row['totalmount'] ?> $</td>
                 <td><?php echo $row['status'] ?></td>
+                <td class="Chucnang_od"><a href="index.php?act=ODetail&ID=<?php echo $row['orderid']?>">Chi tiết</a>
+                                        <a href="index.php?act=UpdateOD&ID=<?php echo $row['orderid']?>">Cập nhật trạng thái</a>
+                </td>
             </tr>
-
         <?php
         } ?>
     </table>
