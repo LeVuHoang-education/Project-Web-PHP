@@ -1,0 +1,28 @@
+.order-Table {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    justify-content: space-between;
+
+}
+.order-Head-Table{
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    background-color: antiquewhite;
+}
+.order-Head-Table th {
+    padding: 10px;
+}
+.Order-content {
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    background-color: #f1f1f1;
+}
+.Order-content td {
+    padding: 10px;
+}
