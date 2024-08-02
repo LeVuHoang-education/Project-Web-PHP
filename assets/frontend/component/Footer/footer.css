@@ -1,0 +1,48 @@
+.footer{
+    position:relative;
+    bottom:0;
+    text-align: center;
+    font-family:"Helvetica Neue", Helvetica, Arial;
+    background-color: #508C9B;
+    color:white;
+    margin-top:40px;
+    padding:3rem 0;
+}
+
+.main-footer-content{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-bottom:2rem;
+}
+
+h2{
+   text-transform:uppercase;
+}
+
+.about-us, .support,.guide{
+    width:400px;
+}
+
+ul.list-about-us,
+ul.list-support,
+ul.list-guide{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+ul li{
+    line-height:1.5rem;
+}
+
+ul li a{
+    text-decoration:none;
+    color:white;
+}
+@media all and (max-width:960px){
+    .main-footer-content{
+        flex-wrap:wrap;
+    }
+}
