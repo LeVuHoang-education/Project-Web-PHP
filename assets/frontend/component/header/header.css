@@ -1,9 +1,4 @@
 
-
-body{
-    background-color: #EEEEEE;
-}
-
 /*Banners*/
 .banner-brand{
     padding:0;
@@ -12,11 +7,18 @@ body{
     justify-content: space-around;
     align-items: center;
 }
+
+.title{
+    font-weight: bold;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    text-shadow:0 2px 4px #0158AF;
+}
+
 .individual{
     display: flex;
 }
-.love-list,.backet,.account{
-    padding-top:10px;
+.love-list,.backet{
+    padding:10px 0;
     margin:10px;
 }
 .love-list a,
@@ -27,17 +29,19 @@ svg{
     width: 20px;
     height: 20px;
 }
-.account{
+#account{
     width:auto;
-    height:auto;
-    margin-top:10px;
+    height:max-content;
+    margin:10px 0;
     padding:10px 15px;
     border-radius:40px;
     background-color: #134B70;
 }
-.account a{
+#account .signIn,.signUp{
     color:white;
     text-decoration: none;
+    font-weight:bold;
+    font-family:Arial,sans-serif;
 }
 
 .header{
@@ -71,18 +75,17 @@ svg{
     width:45px;
 }
 
+/*taskbar*/
 .taskbar{
-    margin-top:10px;
     height: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    background-color:#201E43;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .navbar{
     width: max-content;
-    height: 70px;
 }
 
 .navbar ul{
@@ -124,7 +127,7 @@ ul.sub-navbar{
     display:none;
 }
 ul.sub-navbar li{
-    width: 300px;
+    width: 200px;
 }
 ul.sub-navbar li a:link{
     width:100%;
@@ -132,100 +135,21 @@ ul.sub-navbar li a:link{
 
 .navbar ul li:hover .sub-navbar{
     display:block;
+    z-index:1;
 }
 
-/*for body content*/
-
-.container{
-    display:flex;
-    flex-direction: row;
-    margin: 20px auto;
-}
-
-.ads{
-
-    width:300px;
-    margin:20px 10px 0 20px;
-}
-
-img.ads-img{
-    width:100%;
-    height:auto;
-}
-
-.main-container{
-    height:auto;
-    width: auto;
-}
-
-.path{
-    margin:10px 0 0 50px;
-    padding:10px;
-    width:max-content;
-}
-.path a{
-    color:#A79277;
-    text-decoration: none;
-    font-size: 18px;
-    transition: font-size .2s;
-}
-.path a:hover{
-    color:#FF0000;
-    font-size:22px;
-}
-
-#category{
-    text-align:center;
-    margin:10px 0 ;
-}
-
-#show-products{
-    display:flex;
-    flex-direction:row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-/*class product and their properties*/
-.product{
-    border-radius:20px;
-    width:280px;
-    height:300px;
-    margin:20px;
-    transition:width 0.5s,
-    height 0.5s;
-    transition-timing-function:ease-in-out;
-    box-shadow:0 2px 4px #8B8B8B;
-}
-.product:hover{
-    width:300px;
-    height:320px;
-}
-.product a{
-    text-decoration:none;
-    text-align:center;
-}
-
-.info ul {
-    list-style-type: none;
-    margin:0;
-    padding:0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color:#A79277;
-}
-
-.thumbnail-product{
-    width:100%;
-    align-items:center;
-border-radius:20px 20px 0 0;
-}
-
-#show-more{
-    text-align:center;
-    margin:0 0 10px 0;
-}
-#show-more a{
-    text-decoration:none;
-    font-size:20px;
+@media (max-width: 960px){
+    .taskbar{
+        height:max-content;
+    }
+    .navbar{
+        height: auto;
+    }
+    .signIn{
+        display: block;
+        text-align: center;
+    }
+    .signUp{
+        display:none;
+    }
 }
