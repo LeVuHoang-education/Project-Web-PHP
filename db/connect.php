@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli('localhost', 'haocao', '', 'quanlisanpham');
+    $conn = new mysqli('localhost', 'haocao', '', 'quanlibanhangnoithat');
 
     if(!$conn){
         die('Không thể kết nối: '.$conn-> connect_error());
