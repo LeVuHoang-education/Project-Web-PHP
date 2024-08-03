@@ -1,0 +1,117 @@
+
+.container{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    display:flex;
+    justify-content: center;
+    font-family:Arial,sans-serif;
+}
+
+.product-info{
+    width:80%;
+    height:max-content;
+    border-radius:10px;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+}
+
+/*for iamge*/
+.product-image{
+    margin-right:10px;
+    width:50%;
+    height:max-content;
+    box-shadow:0 0px 4px #8F8F8F;
+    border-radius:10px;
+}
+.image{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+}
+
+/*for variables*/
+.product-intro{
+    width:30%;
+    margin-left:10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.show-info{
+    width:100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius:10px;
+    box-shadow:0 0px 4px #8F8F8F;
+    margin-bottom:10px;
+}
+
+.product-name{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+.product-origin{
+    text-decoration:underline;
+    margin-bottom:10px;
+}
+.product-price{
+    color:#02CF2B;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+.product-description{
+    text-align:left;
+    padding-left:20px;
+    font-size:14px;
+}
+/*for buttons*/
+.act{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius:10px;
+    box-shadow:0 0px 4px #8F8F8F;
+    margin-top:10px;    
+    padding:10px;
+}
+.btn{
+    width: 70%;
+    height: auto;
+
+}
+.order-btn,.pre-order-btn,.review-btn{
+    height:50px;
+    padding:0;
+    background-color: #508C9B;
+    color:white;    
+    border:none;
+    cursor:pointer;
+}
+.order-btn:hover,.pre-order-btn:hover,.review-btn:hover{
+    background-color:#134B70;
+}
+.order-btn,.pre-order-btn{
+    width:48.5%;
+    margin-bottom:10px;
+}
+.review-btn{
+    width:100%;
+    margin-bottom:10px;
+}
+
+.hotline{
+    line-height:1.5rem;
+    font-weight:bold;
+    text-shadow:0 2px 4px #0158AF;
+
+}

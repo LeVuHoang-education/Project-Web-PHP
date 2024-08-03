@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../component/header/header.css" />
   <link rel="stylesheet" href="../../component/Footer/Footer.css" />
-  <link rel="stylesheet" href="../../component/ShowProduct/ShowProduct.css" />
-  <link rel="stylesheet" href="./product.css" />
-  <title>Product</title>
+  <link rel="stylesheet" href="../../component/productCard/productCard.css" />
+  <link rel="stylesheet" href="./productList.css" />
+  <title>Sản phẩm
+  </title>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
   <div class="container">
 
     <?php
-    include "../../component/ShowProduct/showProduct.php";
+    include "../../component/productCard/productCard.php";
     ?>
   </div>
   <?php include "../../component/Footer/Footer.php" ?>

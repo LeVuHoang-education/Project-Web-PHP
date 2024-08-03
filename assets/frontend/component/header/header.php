@@ -44,7 +44,6 @@
 <div class="taskbar">
     <div class="navbar">
         <?php
-        $cat_choose = 0;
 
         require('../../../../db/connect.php');
         $sql = "SELECT * FROM category";
@@ -62,7 +61,7 @@
                     while ($row = $listCategory->fetch_assoc()) {
                     ?>
                         <li>
-                            <a href="../../pages/Product/product.php?category=<?php echo $row['catid'] ?>">
+                            <a href="../../pages/ProductList/productList.php?category=<?php echo $row['catid'] ?>">
                                 <?php echo $row['catname'] ?>
                             </a>
                         </li>
