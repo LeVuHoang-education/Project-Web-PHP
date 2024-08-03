@@ -3,14 +3,10 @@
     <div id="category">BÀN TRÀ - BÀN ĂN - BÀN LÀM VIỆC</div>
     <div id="show-products">
         <?php
-        $category_number = 0;
-        if (isset($_POST['$cat_number'])) {
-            $category_number = $_POST['cat_number'];
-        }
-
+        $category_number = isset($_GET['category']) ? (int)$_GET['category'] : 0;
         require('../../../../db/connect.php');
         if ($category_number != 0) {
-            $sql = "SELECT * FROM product where cat_id = $category_number";
+            $sql = "SELECT * FROM product where catid = $category_number";
         } else {
             $sql = "SELECT * FROM product";
         }
@@ -18,28 +14,24 @@
         while ($row = $listProducts->fetch_assoc()) {
         ?>
             <div class="product">
-                <a href="./product.html">
+                <a href="">
                     <div class="show-thumbnail">
                         <img class="thumbnail-product" src="../../../UploadImage/<?php echo htmlspecialchars($row['image_path']) ?>" alt="type" />
                     </div>
                     <div class="info">
                         <ul>
-                            <li><?php echo $row['proname']; ?></li>
-                            <li>Type:
-                                <?php if ($row['catid'] == 4) {
-                                    echo "Table";
-                                } else if ($row['catid'] == 3) {
-                                    echo "Chair";
-                                }; ?>
+                            <li class="pro-name"><?php echo $row['proname']; ?></li>
+                            <li class="pro-origin">Xuất xứ:
+                                <?php echo $row['productOrigin']; ?>
                             </li>
-                            <li>
+                            <li id="pro_price">
                                 <?php echo $row['proprice']; ?>
                             </li>
-                            <li>Status:
+                            <li class="pro-stock">Tình trạng:
                                 <?php if ($row['prostock'] > 0) {
-                                    echo "Okay";
+                                    echo "Còn hàng";
                                 } else {
-                                    echo "Sold out";
+                                    echo "Tạm hết hàng";
                                 }; ?>
                             </li>
                         </ul>

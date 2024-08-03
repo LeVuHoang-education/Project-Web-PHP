@@ -62,11 +62,8 @@
                     while ($row = $listCategory->fetch_assoc()) {
                     ?>
                         <li>
-                            <?php
-                            $cat_choose=(int)$row["catid"];
-                            ?>
-                            <a id=<?php echo $row['catid']?> href="./assets/fontend/pages/Product/product.php">
-                                <?php echo $row['catname']?>
+                            <a href="../../pages/Product/product.php?category=<?php echo $row['catid'] ?>">
+                                <?php echo $row['catname'] ?>
                             </a>
                         </li>
                     <?php
