@@ -14,9 +14,9 @@
         while ($row = $listProducts->fetch_assoc()) {
         ?>
             <div class="product">
-                <a href="">
+                <a href="../../pages/producInfo/productInfo.php?prodID=<?php echo $row['proid'] ?>">
                     <div class="show-thumbnail">
-                        <img class="thumbnail-product" src="../../../UploadImage/<?php echo htmlspecialchars($row['image_path']) ?>" alt="type" />
+                        <img class="thumbnail-product" src="../../../UploadImage/<?php echo htmlspecialchars($row['image_path']); ?>" alt="type" />
                     </div>
                     <div class="info">
                         <ul>
