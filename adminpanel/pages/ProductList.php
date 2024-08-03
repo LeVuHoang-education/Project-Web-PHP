@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/ProductList.css">
+    <script>
+             var nf = new Intl.NumberFormat();
+    </script>
     <title>Product manager</title>
 </head>
 
@@ -52,7 +55,7 @@
             } else {
                 $page = 1;
             }
-            
+
             $limit = 10;
             $from = ($page - 1) * $limit;
 
@@ -64,7 +67,7 @@
 
                     $sqlCount = "SELECT COUNT(*) as total FROM product";
                     $resultCount = mysqli_query($conn, $sqlCount);
-        
+
                     if ($resultCount) {
                         $rowCount = mysqli_fetch_assoc($resultCount);
                         $count = $rowCount['total'];
@@ -82,7 +85,7 @@
 
                     $sqlCount = "SELECT COUNT(*) as total FROM product WHERE catid = $catid";
                     $resultCount = mysqli_query($conn, $sqlCount);
-        
+
                     if ($resultCount) {
                         $rowCount = mysqli_fetch_assoc($resultCount);
                         $count = $rowCount['total'];
@@ -96,7 +99,12 @@
             ?>
                 <li class="table-row">
                     <div class=" col-1" "> <?php echo $row['proname'] ?></div>
-                    <div class=" col-2"> <?php echo $row['proprice'] ?></div>
+                    <div class=" col-2">
+                        <script>
+                            var price = <?php echo $row['proprice'] ?>;
+                            document.write(nf.format(price));
+                        </script>
+                    </div>
                     <div class=" col-3"><?php
                                         $sql1 = "SELECT * from category where catid = " . $row['catid'];
                                         $result1 = mysqli_query($conn, $sql1);
@@ -124,7 +132,7 @@
             $selectedPage = 1;
             while ($selectedPage <= $totalPages) {
             ?>
-                <a href="../../adminpanel/pages/index.php?act=<?php echo $act ?>&catid=<?php echo $catid?>&page=<?php echo $selectedPage; ?>">
+                <a href="../../adminpanel/pages/index.php?act=<?php echo $act ?>&catid=<?php echo $catid ?>&page=<?php echo $selectedPage; ?>">
                     <?php echo $selectedPage; ?>
                 </a>
             <?php
