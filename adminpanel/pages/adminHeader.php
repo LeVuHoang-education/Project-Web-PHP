@@ -5,6 +5,6 @@
 
 <nav class="nav-bar">
     <div class="logo">
-        <img src="../../assets/fontend/img/logo/logo2.jpg" alt="">
+        <img src="../../assets/frontend/img/logo/logo2.jpg" alt="">
     </div>
 </nav>
