@@ -4,17 +4,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 .formOD{
-    width: 60%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
     border-radius: 20px;
     background-color: gainsboro;
 }
