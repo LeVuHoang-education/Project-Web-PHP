@@ -19,7 +19,7 @@
   <div class="container">
 
     <?php
-    include "../../component/productCard/productCard.php";
+    include "../../component/productCard/productCard.php";    
     ?>
   </div>
   <?php include "../../component/Footer/Footer.php" ?>
