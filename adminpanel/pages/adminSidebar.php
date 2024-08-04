@@ -1,6 +1,6 @@
 <div class="sidebar" id="adminSidebar">
     <div class="side-header">
-        <img src="../../assets/fontend/img/logo/logo.png" width="120" height="120" alt="">
+        <img src="../../assets/frontend/img/logo/logo.png" width="120" height="120" alt="">
         <h5>Hello, Admin</h5>
     </div>
     <hr>
