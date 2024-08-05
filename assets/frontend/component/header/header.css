@@ -1,3 +1,9 @@
+@font-face{
+    font-family:"MuseonModeno";
+    src: url("../../src/font/MuseoModerno-Bold.ttf");
+}
+
+
 
 /*Banners*/
 .banner-brand{
@@ -62,7 +68,11 @@ svg{
     margin-bottom:10px;
     margin-top:10px;
 }
-
+.title-brand{
+    font-size:30px;
+    font-weight:bold;
+    font-family:MuseonModeno;
+}
 .title-brand a{
     text-decoration:none;
     color:black;
@@ -115,7 +125,6 @@ svg{
     text-decoration: none;
     color:white;
 }
-
 .navbar ul li a:hover{
     background-color:#134B70;
     transform:scale(1);
@@ -127,9 +136,10 @@ svg{
 ul.sub-navbar{
     position: absolute;
     display:none;
-}
+} 
 ul.sub-navbar li{
     width: 200px;
+    padding:5px;
 }
 ul.sub-navbar li a:link{
     width:100%;
@@ -138,8 +148,13 @@ ul.sub-navbar li a:link{
 .navbar ul li:hover .sub-navbar{
     display:block;
     z-index:1;
+    box-shadow:0 2px 4px #363636;
 }
-
+@media (max-width:1060px){
+    .navbar ul{
+        justify-content: center;
+    }
+}
 @media (max-width: 960px){
     .taskbar{
         height:max-content;

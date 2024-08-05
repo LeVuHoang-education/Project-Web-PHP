@@ -28,20 +28,6 @@ img.ads-img{
     width: 60%;;
 }
 
-.path{
-    margin:10px 0 0 50px;
-    padding:10px;
-    width:max-content;
-}
-.path a{
-    color:#A79277;
-    text-decoration: none;
-    font-size: 18px;
-}
-.path a:hover{
-    color:#FF0000;
-}
-
 #category{
     text-align:center;
     margin:10px 0 ;

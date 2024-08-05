@@ -30,7 +30,7 @@
                 <div class="product-intro">
                     <div class="show-info">
                         <div class="product-name">
-                            <h2><?php echo $row['proname']; ?></h2>
+                            <?php echo $row['proname']; ?>
                         </div>
                         <div class="product-origin">
                             <h4>Xuất xứ:<?php echo $row['productOrigin'] ?></h4>
