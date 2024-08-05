@@ -3,12 +3,10 @@
     src: url("../../src/font/MuseoModerno-Bold.ttf");
 }
 
-
-
 /*Banners*/
 .banner-brand{
     padding:0;
-    margin::0;
+    margin:0;
     display:flex;
     justify-content: space-around;
     align-items: center;
@@ -96,6 +94,17 @@ svg{
     font-family: "arial";
 }
 
+.taskbar-container{
+    position: relative;
+    background-color: #EEEEEE;
+}
+
+.sticky{
+    position: fixed;
+    width:100%;
+    z-index:999;
+    top:0;
+}
 .navbar{
     width: max-content;
 }
