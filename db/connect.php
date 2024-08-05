@@ -2,7 +2,7 @@
     $conn = new mysqli('localhost', 'haocao', '', 'quanlisanpham');
 
     if(!$conn){
-        die('Không thể kết nối: '.$conn-> connect_error());
+        die('Không thể kết nối: '.$conn->connect_error());
     }
 
     // if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {

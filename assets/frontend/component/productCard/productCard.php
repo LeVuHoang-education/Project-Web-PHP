@@ -1,30 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./productCard.css" />
-</head>
-
-<body>
     <div class="container-product">
         <script>
             var nf = new Intl.NumberFormat();
         </script>
         <?php
-        $category_number = isset($_GET['category']) ? (int)$_GET['category'] : 0;
+        $category_number = isset($_GET['category']) ? (int)$_GET['category'] : categoryID();
+        $minPrice = function_exists('getMinPrice')?getMinPrice():0;
+        $maxPrice = function_exists('getMaxPrice')?getMaxPrice():0;
         require('../../../../db/connect.php');
         if ($category_number != 0) {
-            $sql = "SELECT * FROM product where catid = $category_number";
+            if ($maxPrice != 0) {
+                $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice ORDER BY catid = $category_number";
+            }
+            else $sql = "SELECT * FROM product WHERE catid = $category_number";
         } else {
-            $sql = "SELECT * FROM product";
+            if ( $maxPrice != 0) {
+                $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice";
+            }
+            else $sql = "SELECT * FROM product";
         }
         $listProducts = $conn->query($sql);
         ?>
         <div id="category">
             <h3><?php
+            if($category_number!=0)
                 $category = "SELECT * FROM category where catid = $category_number";
+            else $category = "SELECT * FROM category";
                 $listCategory = $conn->query($category);
                 $row = $listCategory->fetch_assoc();
                 echo $row['catname'];
@@ -51,7 +51,7 @@
                                         document.write(nf.format(price));
                                     </script>đ
                                 </li>
-                                <li class="pro-stock" style="color: <?php echo($row['prostock']>0) ? "green": "red";?>;">Tình trạng:
+                                <li class="pro-stock" style="color: <?php echo ($row['prostock'] > 0) ? "green" : "red"; ?>;">Tình trạng:
                                     <?php if ($row['prostock'] > 0) {
                                         echo "Còn hàng";
                                     } else {
@@ -79,6 +79,3 @@
             }
         </script>
     </div>
-</body>
-
-</html>
