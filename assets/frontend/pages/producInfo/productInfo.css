@@ -18,6 +18,7 @@
     flex-direction: row;
     align-items: flex-start;
     text-align: center;
+    align-items: center;
 }
 
 /*for iamge*/
@@ -36,7 +37,7 @@
 
 /*for variables*/
 .product-intro{
-    width:30%;
+    width:50%;
     margin-left:10px;
     display: flex;
     justify-content: space-between;
@@ -55,9 +56,10 @@
 }
 
 .product-name{
-    font-size:22px;
+    font-size:30px;
     font-weight:bold;
     margin-bottom:10px;
+    padding:20px 10px 10px 10px;
 }
 .product-origin{
     text-decoration:underline;
@@ -78,7 +80,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-direction:column;
     border-radius:10px;
     box-shadow:0 0px 4px #8F8F8F;
     margin-top:10px;    
@@ -87,11 +89,17 @@
 .btn{
     width: 70%;
     height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 
 }
 .order-btn,.pre-order-btn,.review-btn{
     height:50px;
     padding:0;
+    margin:0;
     background-color: #508C9B;
     color:white;    
     border:none;
@@ -100,8 +108,14 @@
 .order-btn:hover,.pre-order-btn:hover,.review-btn:hover{
     background-color:#134B70;
 }
+/* .order-btn{
+    margin-right:10px;
+}
+.pre-order{
+    margin-left:10px;
+} */
 .order-btn,.pre-order-btn{
-    width:48.5%;
+    width:49%;
     margin-bottom:10px;
 }
 .review-btn{
@@ -113,5 +127,10 @@
     line-height:1.5rem;
     font-weight:bold;
     text-shadow:0 2px 4px #0158AF;
+}
 
+@media(max-width:960px){
+    .product-name{
+        font-size:18px;
+    }
 }

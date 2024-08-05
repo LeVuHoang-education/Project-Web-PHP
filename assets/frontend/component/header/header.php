@@ -16,7 +16,7 @@
             </a>
         </div>
         <div id="account">
-            <a class="signIn" href="#">Đăng nhập</a>
+            <a class="signIn" href="../../pages/Form/SignIn.php">Đăng nhập</a>
             <a class="signUp" href="#">/Đăng ký</a>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <img class="thumbnail-brand" src="../../src/Home/LogoFA.png" alt="Logo" />
         </div>
         <div class="title-brand">
-            <h2><a href="#">NỘI THẤT NHẬT HOÀNG</a></h2>
+            <a href="../../pages/home/home.php"><img src="../../src/header/banner.png"/></a>
         </div>
         <div class="image-brands">
             <img id="image-brand" src="../../src/Home/LogoFA.png" alt="Image" />
@@ -72,6 +72,11 @@
             </li>
             <li>
                 <a href="#">Giá sốc</a>
+                <ul class="sub-navbar">
+                    <li><a href="#">Ưu đãi thành viên</a></li>
+                    <li><a href="#">Ngày lễ siêu rẻ</a></li>
+                    <li><a href="#">Ngày hội mua sắm</a></li>
+                </ul>
             </li>
             <li>
                 <a href="#">Dịch vụ</a>
@@ -80,7 +85,7 @@
                 <a href="#">Hỗ trợ</a>
             </li>
             <li>
-                <a href="#">Giới thiệu</a>
+                <a href="../../pages/About/about.php">Giới thiệu</a>
             </li>
             <li>
                 <a href="#">Tài khoản</a>

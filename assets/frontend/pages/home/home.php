@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="../../component/header/header.css" />
   <link rel="stylesheet" href="../../component/Footer/Footer.css" />
-  <link rel="stylesheet" href="../../component/productCard/productCard.css" />
-  <title>Home</title>
+  <!-- <link rel="stylesheet" href="../../component/productCard/productCard.css" /> -->
+  <title>Trang chủ</title>
 </head>
 
 <body>
@@ -26,9 +26,6 @@
     </div>
     <!--main content-->
     <div class="main-container">
-      <div class="path">
-        <a href="./Home.php">Trang chủ</a>
-      </div>
     </div>
 
     <!--ads-->
