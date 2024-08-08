@@ -33,11 +33,17 @@
                 case 'about':
                     include "./assets/frontend/pages/About/about.php";
                     break;
+                case 'signIn':
+                    include "./assets/frontend/pages/Form/signIn.php";
+                    break;
+                case 'signUp':
+                    include "./assets/frontend/pages/Form/signUp.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
             }
-        }else{
+        } else {
             include "./assets/frontend/pages/home/home.php";
         }
 
