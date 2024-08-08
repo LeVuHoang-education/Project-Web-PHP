@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../../db/connect.php');
 
 // Kiểm tra xem các biến POST có tồn tại hay không
@@ -23,6 +24,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if ($row != null) {
             // Đăng nhập thành công
             echo "Login successful";
+            $_SESSION['user_id'] = $row['userid']; //Luu thong tin vao session de su dung
             header("Location: ../../index.php");
         } else {
             echo "Login failed";

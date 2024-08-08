@@ -1,5 +1,5 @@
- <?php
-require './db/connect.php';
+<?php
+require __DIR__ . '../../../db/connect.php';
 function getOrder()
 {
     global $conn;
@@ -60,4 +60,31 @@ function getAddressbyID($id)
     $result = $conn->query($getAddress_sql);
     return $result;
 }
+function getPasswordbyID($id)
+{
+    global $conn;
+    $getPassword_sql = "SELECT * FROM account where id = $id";
+    $result = $conn->query($getPassword_sql);
+    return $result;
+}
+
+function fetchDataFromAPi($url)
+{
+    $curl = curl_init();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode == 200) {
+        $data = json_decode($result, true);
+    } else {
+        echo "API không còn hoạt động hoặc không truy cập được. Mã HTTP: $httpCode";
+    }
+    return $data;
+}
+
 ?>
