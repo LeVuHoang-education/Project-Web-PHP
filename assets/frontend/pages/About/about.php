@@ -45,8 +45,12 @@
                                 <div class="slides fade">
                                     <img src="./assets/frontend/src/about/Ảnh-nền-hoạt-hình-cực-ngầu-scaled.jpg" alt="Image">
                                 </div>
-                                <a class="prev" onclick=plusSlides(-1)>[-] </a>
-                                <a class="next" onclick=plusSlides(1)>[-]</a>
+                                <button class="prev" onclick="plusSlides(-1)">
+                                    <img src="assets/frontend/img/Icon/caret-left.svg"/> 
+                                </button>
+                                <button class="next" onclick="plusSlides(1)">
+                                <img src="assets/frontend/img/Icon/caret-right.svg"/>
+                                </button>
                             </div>
                             <br />
                             <div class="dots" style="text-align:center">
@@ -57,9 +61,7 @@
                                 <span class="dot" onclick="currentSlide(5)"></span>
                             </div>
                         </div>
-                        <script>
 
-                        </script>
                     </div>
                 </div>
             </div>
@@ -82,6 +84,8 @@
             </div>
         </div>
     </div>
+    <script>
+    </script>
 </body>
 
 </html>

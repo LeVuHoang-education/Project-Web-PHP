@@ -28,7 +28,7 @@
                     </a>
                 </div>
                 <div id="account">
-                    <a class="signIn" href="../../pages/Form/SignIn.php">Đăng nhập</a>
+                    <a class="signIn" href="assets/frontend/pages/Form/SignIn.php">Đăng nhập</a>
                     <a class="signUp" href="#">/Đăng ký</a>
                 </div>
             </div>
