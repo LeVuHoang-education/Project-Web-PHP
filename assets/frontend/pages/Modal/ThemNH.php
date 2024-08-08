@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . '../../../../../fontend/pages/Function.php';
+    include __DIR__ . '../../../../../frontend/pages/Function.php';
     $apiUrl = "https://api.vietqr.io/v2/banks";
     $dataNH = fetchDataFromAPi($apiUrl);
 ?>
@@ -8,7 +8,7 @@
     <div class="modal-content">
         <span class="close" data-modal="modal3">&times;</span>
         <h2>Thêm ngân hàng </h2>
-        <form action="">
+        <form action="../../../../frontend/pages/ThemNh.php" method="post">
             <div class="input-groupNH">
                 <label for="bank_name">Tên ngân hàng</label>
                 <select name="bank_name" id="">
@@ -19,17 +19,17 @@
             </div>
             <div class="input-groupNH">
                 <label for="stk">Số tài khoản</label>
-                <input type="text" id="stk" name="stk" required>
+                <input type="text" id="stk" name="account_number" required>
             </div>
             <div class="input-groupNH">
                 <label for="ngayhethan">Ngày hết hạn</label>
-                <input type="date" id="chinhanh" name="chinhanh" required>
+                <input type="date" id="ngayhethan" name="expiration_date" required>
                 <label for="cvv">Mã cvv</label>
                 <input type="text" id="cvv" name="cvv" required>
             </div>
             <div class="input-groupNH">
                 <label for="hoten">Họ và tên chủ thẻ</label>
-                <input type="text" id="HoTen" name="HoTen" required>
+                <input type="text" id="HoTen" name="account_name" required>
             <div class="input-groupNH">
                 <button type="submit" class="btn" name="ThemNH" value="ThemNH">Thêm</button>
             </div>

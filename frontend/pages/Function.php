@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . '../../../db/connect.php';
-
 function getOrder()
 {
     global $conn;
@@ -87,3 +86,5 @@ function fetchDataFromAPi($url)
     }
     return $data;
 }
+
+?>
