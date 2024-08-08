@@ -1,5 +1,5 @@
-<?php
-require('../../db/connect.php');
+ <?php
+require './db/connect.php';
 function getOrder()
 {
     global $conn;
@@ -60,5 +60,4 @@ function getAddressbyID($id)
     $result = $conn->query($getAddress_sql);
     return $result;
 }
-
 ?>

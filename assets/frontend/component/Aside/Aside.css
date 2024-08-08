@@ -1,60 +1,65 @@
 Aside{
     margin: 0;
     padding: 0;
-    width:30%;
-    float: left;
+    width: 20%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    font-family:arial;
+}
+
+.aside-profile{
+    width: 100%;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
-.aside-profile{
-    display: flex;
-    width: 100%;
-    height: auto;
-    justify-content: center ;
-}
-.aside-profile__avatar img{
-    padding: 10px;
-    margin: 0 15px 0 0;
-    background-color:lavender;
-    border-radius: 50%;
-}
-.aside-profile__info{
 
-}
 .aside-hr{
     width: 50%;
     margin: 10px auto;
     padding: 0;
     height: 1px;
 }
-.aside-menu{
 
-}
-.aside-profile-menu{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    justify-content: right;
-}
-.aside-profile-menu span {
-    margin-left: 10px;
-}
-.submenu{
+
+.aside-menu{
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
-}
-.submenu a {
-    padding: 0 0 0 70px;
-}
-.aside-don-mua{
-    display: flex;
-    align-items: center;
     justify-content: center;
-    width: auto;
-    height: auto;
+    align-items: center;
+    font-size:16px;
 }
-.aside-don-mua img {
-    padding: 10px;
+.aside-profile-menu, .aside-don-mua{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width:50%;
+}
+
+.aside-profile-menu img,
+.aside-don-mua img{
+    margin-right:20px;
+}
+
+.aside-menu .submenu{
+    margin:10px 0;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left:20%;
+}
+
+.submenu a{
+    text-decoration: none;
+    color: black;
+}
+.submenu a:hover{
+    text-decoration: underline;
 }
