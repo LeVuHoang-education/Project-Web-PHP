@@ -4,17 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./about.css">
-    <link rel="stylesheet" href="../../component/header/header.css">
-    <link rel="stylesheet" href="../../component/footer/footer.css">
-    <script src="./about.js"></script>
+    <script src="./assets/frontend/pages/About/about.js"></script>
     <title>Về chúng tôi</title>
 </head>
 
 <body>
-    <?php include "../../component/header/header.php"; ?>
-    <div class="container">
-        <div class="content">
+    <div class="about-container">
+        <div class="about-content">
             <div class="group-content-container">
                 <div class="group-content-1 left">
                     <div class="content-1">
@@ -35,22 +31,22 @@
                         <div class="slideshow">
                             <div class="slideshow-container">
                                 <div class="slides fade">
-                                    <img src="../../src/about/112131.png" alt="Image">
+                                    <img src="./assets/frontend/src/about/112131.png" alt="Image">
                                 </div>
                                 <div class="slides fade">
-                                    <img src="../../src/about/537456.jpg" alt="Image">
+                                    <img src="./assets/frontend/src/about/537456.jpg" alt="Image">
                                 </div>
                                 <div class="slides fade">
-                                    <img src="../../src/about/674709.jpg" alt="Image">
+                                    <img src="./assets/frontend/src/about/674709.jpg" alt="Image">
                                 </div>
                                 <div class="slides fade">
-                                    <img src="../../src/about/cropped-1920-1080-174965.png" alt="Image">
+                                    <img src="./assets/frontend/src/about/cropped-1920-1080-174965.png" alt="Image">
                                 </div>
                                 <div class="slides fade">
-                                    <img src="../../src/about/Ảnh-nền-hoạt-hình-cực-ngầu-scaled.jpg" alt="Image">
+                                    <img src="./assets/frontend/src/about/Ảnh-nền-hoạt-hình-cực-ngầu-scaled.jpg" alt="Image">
                                 </div>
-                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                <a class="prev" onclick=plusSlides(-1)>[-] </a>
+                                <a class="next" onclick=plusSlides(1)>[-]</a>
                             </div>
                             <br />
                             <div class="dots" style="text-align:center">
@@ -62,7 +58,7 @@
                             </div>
                         </div>
                         <script>
-                            
+
                         </script>
                     </div>
                 </div>
@@ -86,7 +82,6 @@
             </div>
         </div>
     </div>
-    <?php include "../../component/footer/footer.php"; ?>
 </body>
 
 </html>

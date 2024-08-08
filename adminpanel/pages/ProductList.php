@@ -19,7 +19,7 @@
     ?>
     <div class="container">
         <h2>
-            <a href="index.php?act=ThemSanPham"> <img src="../../assets/fontend/img/Icon/add-product.png" alt="" /></a>
+            <a href="index.php?act=ThemSanPham"> <img src="../../assets/frontend/img/Icon/add-product.png" alt="" /></a>
             <form action="index.php" method="get">
                 <input type="hidden" name="act" value="<?php echo htmlspecialchars($act); ?>">
                 <input type="hidden" name="page" value="<?php echo htmlspecialchars($page); ?>">
