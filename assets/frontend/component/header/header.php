@@ -104,7 +104,7 @@
                             <a href="../../../../index.php?act=about">Giới thiệu</a>
                         </li>
                         <li>
-                            <a href="../../pages/Profile/Profile.php">Tài khoản</a>
+                            <a href="../../../../index.php?act=account&feature=brief">Tài khoản</a>
                         </li>
                     </ul>
                 </div>
