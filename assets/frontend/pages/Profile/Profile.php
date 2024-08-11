@@ -27,6 +27,12 @@
                         case 'address':
                             include 'assets/frontend/pages/Profile/DiaChi.php';
                             break;
+                        case 'changePassword':
+                            include 'assets/frontend/pages/Profile/Doimk.php';
+                            break;
+                            case 'order':
+                                include 'assets/frontend/pages/Profile/Donhang.php';
+                            break;
                         default:
                             include 'assets/frontend/pages/Profile/brief.php';
                     }
