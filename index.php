@@ -57,6 +57,4 @@
     include_once "./assets/frontend/component/Footer/footer.php";
     ?>
 </body>
-
-</html>
->>>>>>> 02595b1bebefa7b4030fc2605e585cd727523062
+</html
