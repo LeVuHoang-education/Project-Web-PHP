@@ -20,7 +20,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width:75%;
+    width:70%;
     height: auto;
     background-color: #FFFFFF;
     flex-direction: column;
