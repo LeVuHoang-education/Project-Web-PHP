@@ -1,0 +1,98 @@
+.bank-connection {
+    height: max-content;
+    width: 70%;
+  }
+  .bank-connection h1 .bank-connection button .line {
+    font-weight: 20px;
+  }
+  .line{
+      width:100%;
+  }
+  .bank-connection #submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .bank-connection #submit button:hover {
+    cursor: pointer;
+    color: #0158af;
+    opacity: 1;
+    background-color: white;
+  }
+  
+  .bank-content{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+  }
+  
+  //for bank list
+  .bank-list {
+  }
+  .empty {
+      width:50%;
+    color: red;
+  }
+  
+  //for add account banking information
+  .add-account-bank {
+      
+  }
+  .showing {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: showForm 1.5s;
+      width: 50%;
+      height: 350px;
+  }
+  
+  @keyframes showForm {
+      from{
+          opacity: 0;
+          height: 0;
+      }
+      to{
+          opacity: 1;
+          height:350px;
+      }
+  }
+  
+  .hidden{
+      display:none;
+  }
+  
+  .field-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .field-form input,
+  .field-form select {
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border-radius: 5px;
+  }
+  
+  .field-form input:focus,
+  .field-form select:focus {
+    outline: 2px solid #0158af;
+  }
+  
+  .field-form .box-input {
+      width: 70%;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid #222222;
+      border-radius: 5px;
+  }
+  

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/Doimk.css">
+    <link rel="stylesheet" href="assets/frontend/css/Doimk.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="DoimkCon">
         <form action="" method="post" class="formDoimk">
@@ -28,9 +30,10 @@
                 </div>
             </div>
             <div class="DoimkButton">
-                <button type="submit">Lưu</button>
+                <button id="btn" type="submit">Lưu</button>
             </div>
         </form>
     </div>
 </body>
+
 </html>

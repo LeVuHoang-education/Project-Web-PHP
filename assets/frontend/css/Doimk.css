@@ -1,0 +1,44 @@
+.DoimkCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formDoimk{
+    width:60%;
+}
+.DoimkForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.DoimkFormInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.DoimkButton{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#btn{
+  padding:10px 20px;
+  margin:10px 0;
+  background-color: #0158af;
+  color:white;
+  font-weight: bold;
+  font-size:16px;
+  opacity:1;
+  border-radius:5px;
+}
+#btn:hover{
+  cursor:pointer;
+}

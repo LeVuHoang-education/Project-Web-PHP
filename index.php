@@ -39,6 +39,9 @@
                 case 'signUp':
                     include "./assets/frontend/pages/Form/signUp.php";
                     break;
+                    case 'account':
+                        include "./assets/frontend/pages/Profile/Profile.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
