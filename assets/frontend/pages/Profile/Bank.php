@@ -15,7 +15,7 @@
         </div>
         <hr class="line">
         <div class="bank-content">
-
+ 
             <div class="bank-list empty"> Bạn chưa có tài khoản ngân hàng.
                 <hr class="line">
                 <div id="submit">
