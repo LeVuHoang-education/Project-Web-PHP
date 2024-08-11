@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/ProductList.css">
     <script>
-             var nf = new Intl.NumberFormat();
+             var nf = new Intl.NumberFormat();  
     </script>
     <title>Product manager</title>
 </head>

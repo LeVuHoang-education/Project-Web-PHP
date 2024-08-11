@@ -14,6 +14,13 @@ function getOrderbyID($id)
     $result = $conn->query($getOD_sql);
     return $result;
 }
+function getCartbyID($id)
+{
+    global $conn;
+    $getOD_sql = "SELECT * FROM `orders` WHERE userid = $id and status = 'Đang chờ xử lí'";
+    $result = $conn->query($getOD_sql);
+    return $result;
+}
 function getItembyID($id)
 {
     global $conn;
@@ -60,7 +67,7 @@ function getAddressbyID($id)
     $result = $conn->query($getAddress_sql);
     return $result;
 }
-function getPasswordbyID($id)
+function getUserbyID($id)
 {
     global $conn;
     $getPassword_sql = "SELECT * FROM account where id = $id";
@@ -86,5 +93,3 @@ function fetchDataFromAPi($url)
     }
     return $data;
 }
-
-?>
