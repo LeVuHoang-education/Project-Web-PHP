@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/frontend/pages/productInfo/productInfo.css">
     <link rel="stylesheet" href="assets/frontend/pages/productList/productList.css">
     <link rel="stylesheet" href="assets/frontend/pages/About/about.css">
+    <link rel="stylesheet" href="assets/frontend/pages/Dichvu/DichVu.css">
 
 
 </head>
@@ -19,6 +20,7 @@
     include_once "./assets/frontend/component/header/header.php";
     ?>
     <div class="layout-container">
+
         <?php
         include_once "./db/connect.php";
         echo "<div class='content'>";
@@ -39,8 +41,20 @@
                 case 'signUp':
                     include "./assets/frontend/pages/Form/signUp.php";
                     break;
-                    case 'account':
-                        include "./assets/frontend/pages/Profile/Profile.php";
+                case 'account':
+                    include "./assets/frontend/pages/Profile/Profile.php";
+                    break;
+                case 'chinh-sach-ban-hang':
+                    include "assets/frontend/pages/Dichvu/CSBH.php";
+                    break;
+                case 'giao-hang-va-lap-dat':
+                    include "assets/frontend/pages/Dichvu/CSGHLD.php";
+                    break;
+                case 'chinh-sach-doi-tra':
+                    include "assets/frontend/pages/Dichvu/CSDT.php";
+                    break;
+                case 'chinh-sach-bao-hanh':
+                    include "assets/frontend/pages/Dichvu/CSBHBT.php";
                     break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
@@ -57,4 +71,5 @@
     include_once "./assets/frontend/component/Footer/footer.php";
     ?>
 </body>
+
 </html
