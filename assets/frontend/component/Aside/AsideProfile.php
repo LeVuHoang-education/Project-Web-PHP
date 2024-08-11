@@ -15,9 +15,9 @@
                 <span>Tài khoản của tôi</span>
             </div>
             <div class="submenu" id="submenuProfile">
-                <a href="../../../../index.php?act=account" >Hồ sơ</a>
+                <a href="../../../../index.php?act=account&feature=brief" >Hồ sơ</a>
                 <a href="../../../../index.php?act=account&feature=bank ">Ngân hàng</a>
-                <a href="#">Địa chỉ</a>
+                <a href="../../../../index.php?act=account&feature=address">Địa chỉ</a>
                 <a href="#">Đổi mật khẩu</a>
             </div>
             <div class="aside-don-mua">

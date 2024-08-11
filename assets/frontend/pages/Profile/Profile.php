@@ -24,6 +24,9 @@
                         case 'bank':
                             include 'assets/frontend/pages/Profile/bank.php';
                             break;
+                        case 'address':
+                            include 'assets/frontend/pages/Profile/DiaChi.php';
+                            break;
                         default:
                             include 'assets/frontend/pages/Profile/brief.php';
                     }
