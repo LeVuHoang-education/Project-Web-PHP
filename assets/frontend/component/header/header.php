@@ -96,6 +96,12 @@
                         </li>
                         <li>
                             <a href="#">Dịch vụ</a>
+                            <ul class="sub-navbar">
+                                <li><a href="../../../../index.php?act=chinh-sach-ban-hang">Chính Sách Bán Hàng</a></li>
+                                <li><a href="../../../../index.php?act=giao-hang-va-lap-dat">Chính Sách Giao Hàng & Lắp Đặt</a></li>
+                                <li><a href="../../../../index.php?act=chinh-sach-doi-tra">Chính Sách Đổi Trả</a></li>
+                                <li><a href="../../../../index.php?act=chinh-sach-bao-hanh">Chính Sách Bảo Hành & Bảo Trì</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">Hỗ trợ</a>

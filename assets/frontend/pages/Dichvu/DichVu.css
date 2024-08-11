@@ -1,0 +1,63 @@
+.CS-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    width: 80%;
+}
+.CS-header h1{
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    padding: 0;
+    text-shadow: none;
+}
+.CS-content {
+    width: 100%;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.CS-con {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.CS-box {
+    width: 25%;
+    text-align: center;
+    border: 1px solid #ccc;
+    border: 0 1px 0 1px;
+}
+
+.CS-box img {
+    width: 20%;
+    height: auto;
+    padding: 20px;
+    margin: 10px;
+}
+
+.CS-box h3 {
+    font-size: 1.5em;
+    color: #626262;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.CS-box p {
+    font-size: 1.5em;
+    color: #626262;
+    font-family: Arial, Helvetica, sans-serif;;
+}
+
+.CS-box:hover {
+    background-color: #f5f5f5;
+    transition: 0.5s;
+}
+
+.CS-box:hover .zoom-target {
+    transform: scale(1.1);
+    transition: 0.5s;
+}

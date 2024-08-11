@@ -1,7 +1,8 @@
 <?php
-include __DIR__ .  "../../../../fontend/pages/Function.php";
+include __DIR__ .  "../../../../../frontend/pages/Function.php";
 $apiUrl = 'https://esgoo.net/api-tinhthanh/1/0.htm';
 $dataTP = fetchDataFromAPi($apiUrl);
+
 ?>
 <div id="modal_themdc" class="modal">
     <div class="modal-content">
