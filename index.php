@@ -19,6 +19,7 @@
     <?php
     include_once "./assets/frontend/component/header/header.php";
     ?>
+
     <div class="layout-container">
 
         <?php
@@ -56,6 +57,9 @@
                 case 'chinh-sach-bao-hanh':
                     include "assets/frontend/pages/Dichvu/CSBHBT.php";
                     break;
+                case 'DieuKhoan':
+                    include "assets/frontend/pages/Footer/DieuKhoan.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
@@ -69,7 +73,7 @@
     </div>
     <?php
     include_once "./assets/frontend/component/Footer/footer.php";
+    
     ?>
 </body>
-
 </html
