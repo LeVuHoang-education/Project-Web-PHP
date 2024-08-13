@@ -1,0 +1,24 @@
+.container-shopping{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-shopping .form-group{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width:80%;
+}
+
+.shopping-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:70%;
+    height: auto;
+    background-color: #FFFFFF;
+    flex-direction: column;
+}

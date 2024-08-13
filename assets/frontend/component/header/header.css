@@ -41,7 +41,7 @@ svg{
     border-radius:40px;
     background-color: #134B70;
 }
-#account .signIn,.signUp{
+#account .signIn,.signUp,.current{
     color:white;
     text-decoration: none;
     font-weight:bold;

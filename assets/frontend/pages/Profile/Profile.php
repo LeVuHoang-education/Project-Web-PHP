@@ -30,8 +30,8 @@
                         case 'changePassword':
                             include 'assets/frontend/pages/Profile/Doimk.php';
                             break;
-                            case 'order':
-                                include 'assets/frontend/pages/Profile/Donhang.php';
+                        case 'order':
+                            include 'assets/frontend/pages/Profile/Donhang.php';
                             break;
                         default:
                             include 'assets/frontend/pages/Profile/brief.php';
@@ -42,7 +42,6 @@
             ?>
 
         </div>
-    </div>
     </div>
 </body>
 
