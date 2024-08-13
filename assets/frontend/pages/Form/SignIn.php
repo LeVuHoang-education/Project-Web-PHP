@@ -14,7 +14,7 @@
             <h1> <img class="icon" src="../../img/Icon/right-to-bracket-solid.svg"></h1>
             <h2>Sign In</h2>
             <hr>
-            <form action="../../../../fontend/pages/DangNhap.php" method="post">
+            <form action="../../../../frontend/pages/DangNhap.php" method="POST">
                 <div class="groupBox">
                     <label for="email">Email</label><br>
                     <div class="ae">

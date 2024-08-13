@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <?php
+    include __DIR__ .  "../../../../../frontend/pages/Function.php";
+    $apiUrl = 'https://esgoo.net/api-tinhthanh/1/0.htm';
+    $dataTP = fetchDataFromAPi($apiUrl);
+    ?>
     <div class="bank-connection">
         <div class="bank=header">
             <h3>Địa chỉ của tôi</h3>
@@ -23,45 +28,38 @@
                 </div>
             </div>
             <div class="add-account-bank hidden">
-                <form class="field-form">
-                    <label id="name-bank">Thành phố</label>
+                <form class="field-form" action="fontend/pages/Themdc.php" method="post">
+                    <label id="city-name">Thành phố</label>
                     <div class="box-input">
-                        <select id="name-bank" name="name-bank">
-                            <option value="none">---</option>
-                            <option value="TPHCM">TP. Hồ Chí Minh</option>
-                            <option value="DongNai">Đồng Nai</option>
-                            <option value="TayNinh">Tây Ninh</option>
-                            <option value="BaRiaVungTau">Bà Rịa - Vũng Tàu</option>
+                        <select id="city-name" name="city-name">
+                            <option value="">Chọn tỉnh/thành phố</option>
+                            <?php foreach ($dataTP['data'] as $tp) : ?>
+                                <option value="<?php echo $tp['name']; ?>"><?php echo $tp['name']; ?></option>
+                            <?php endforeach;
+                            ?>
                         </select>
                     </div>
-                </form>
-                <form class="field-form">
-                    <label for="account-number">Quận / Huyện</label>
-                    <div class="box-input">
-                        <select id="name-bank" name="name-bank">
-                            <option value="none">---</option>
-                            <option value="TPHCM">TP. Hồ Chí Minh</option>
-                            <option value="DongNai">Đồng Nai</option>
-                            <option value="TayNinh">Tây Ninh</option>
-                            <option value="BaRiaVungTau">Bà Rịa - Vũng Tàu</option>
-                        </select>
+                    <div class="field-form">
+                        <label for="account-number">Quận / Huyện</label>
+                        <div class="box-input">
+                            <select id="name-bank" name="name-bank">
+                                <option value="none">---</option>
+                            </select>
+                        </div>
                     </div>
-                </form>
-                <form class="field-form">
-                    <label for="card-ID">Xã / phường / Thị Trấn</label>
-                    <div class="box-input">
-                        <select id="card-type" name="card-type">
-                            <option value="none">---</option>
-                            <option value="napas">Thẻ NAPAS</option>
-                            <option value="visa">Thẻ VISA</option>
-                            <option value="vip">Thẻ VIP</option>
-                        </select>
+                    <div class="field-form">
+                        <label for="card-ID">Xã / phường / Thị Trấn</label>
+                        <div class="box-input">
+                            <select id="card-type" name="card-type">
+                                <option value="none">---</option>
+                            </select>
+                        </div>
                     </div>
-                </form>
-                <form class="field-form">
-                    <label for="card-type">Số nhà + đường</label>
-                    <div class="box-input">
-                        <input type="text" id="card-number" name="card-number" required>
+                    <div class="field-form">
+                        <label for="card-type">Số nhà + đường</label>
+                        <div class="box-input">
+                            <input type="text" id="card-number" name="card-number" required>
+                        </div>
                     </div>
                 </form>
                 <div id="submit">

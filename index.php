@@ -45,6 +45,9 @@
                 case 'account':
                     include "./assets/frontend/pages/Profile/Profile.php";
                     break;
+                case 'shopping':
+                    include "./assets/frontend/pages/shopping/shopping.php";
+                    break;
                 case 'chinh-sach-ban-hang':
                     include "assets/frontend/pages/Dichvu/CSBH.php";
                     break;
