@@ -75,5 +75,6 @@
     include_once "./assets/frontend/component/Footer/footer.php";
     
     ?>
+    <script src="./assets/frontend/component/header/header.js"></script>
 </body>
 </html
