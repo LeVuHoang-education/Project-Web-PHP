@@ -12,7 +12,7 @@
     <div class="main">
         <div class="containner">
             <h1> <img class="icon" src="../../img/Icon/right-to-bracket-solid.svg"></h1>
-            <h2>Sign In</h2>
+            <h2>Đăng nhập</h2>
             <hr>
             <form action="../../../../frontend/pages/DangNhap.php" method="POST">
                 <div class="groupBox">
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="groupBox">
-                    <label for="password">Password</label><br>
+                    <label for="password">Mật khẩu</label><br>
                     <div class="ae">
                         <img class="iconInput" src="../../img/Icon/iconPassword.svg">
                         <input type="password" name="password" id="password" required placeholder="Enter your password" width="100%">
@@ -32,11 +32,11 @@
                 </div>
 
                 <div class="button_t">
-                    <button type="submit" name="btn-reg" value="Sign In">Sign In</button><br>
+                    <button type="submit" name="btn-reg" value="Sign In">Đăng nhập</button><br>
                 </div>
                 <div class="a_link">
-                    <a href="SignUp.php">Sign Up</a></a>
-                    <a href="#">Forgot password?</a>
+                    <a href="SignUp.php">Đăng kí </a></a>
+                    <a href="#">Quên mật khẩu?</a>
                 </div>
             </form>
         </div>
