@@ -1,181 +1,264 @@
-@font-face{
-    font-family:"MuseonModeno";
+@font-face {
+    font-family: "MuseonModeno";
     src: url("../../src/font/MuseoModerno-Bold.ttf");
 }
-
+.header-container{
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
 /*Banners*/
-.banner-brand{
-    padding:0;
-    margin:0;
-    display:flex;
+.banner-brand {
+    padding: 0;
+    margin: 0;
+    display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.title{
+.title {
     font-weight: bold;
-    font-family: "Helvetica Neue",Helvetica,Arial;
-    text-shadow:0 2px 4px #0158AF;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    text-shadow: 0 2px 4px #0158AF;
+}
+.title-brand img{
+    padding: 0;
+    margin: 0;
+    border: 1px dotted black;
 }
 
-.individual{
+.individual {
     display: flex;
 }
-.love-list,.backet{
-    padding:10px 0;
-    margin:10px;
+
+.love-list,
+.backet {
+    padding: 10px 0;
+    margin: 10px;
 }
+
 .love-list a,
-.backet a{
-    color:black;
+.backet a {
+    color: black;
 }
-svg{
+
+svg {
     width: 20px;
     height: 20px;
 }
-#account{
-    width:auto;
-    height:max-content;
-    margin:10px 0;
-    padding:10px 15px;
-    border-radius:40px;
-    background-color: #134B70;
-}
-#account .signIn,.signUp,.current{
-    color:white;
-    text-decoration: none;
-    font-weight:bold;
-    font-family:Arial,sans-serif;
+
+#account {
+    width: auto;
+    height: max-content;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 40px;
+    background-color: #c300ff;
 }
 
-.header{
+#account .signIn,
+.signUp {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.header {
     height: auto;
     text-align: center;
-    display:flex;;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
 
-.intro-brand{
-    display:flex;
+.intro-brand {
+    display: flex;
     justify-content: space-around;
     flex-direction: row;
 }
-.thumbnail-brand{
 
-    height:90px;
-    margin-bottom:10px;
-    margin-top:10px;
-}
-.title-brand{
-    font-size:30px;
-    font-weight:bold;
-    font-family:MuseonModeno;
-}
-.title-brand a{
-    text-decoration:none;
-    color:black;
+.thumbnail-brand {
+
+    height: 90px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.image-brands{
+.title-brand {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: MuseonModeno;
 }
 
-#image-brand{
-    width:45px;
+.title-brand a {
+    text-decoration: none;
+    color: black;
 }
 
+.image-brands {}
+
+#image-brand {
+    width: 45px;
+}
+.hr-header{
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    background:linear-gradient(90deg, red, orange, rgb(209, 209, 60));
+}
 /*taskbar*/
-.taskbar{
-    height: auto;
+.taskbar-container {
+    position: relative;
+}
+
+.taskbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    font-weight:bold;
-    font-family: "arial";
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    height: auto;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: auto;
+    padding: 10px;
 }
 
-.taskbar-container{
-    position: relative;
-    background-color: #EEEEEE;
-}
-
-.sticky{
+.sticky {
     position: fixed;
-    width:100%;
-    z-index:999;
-    top:0;
-}
-.navbar{
-    width: max-content;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
-.navbar ul{
-    display:flex;
-    flex-wrap: wrap;
-    padding:0;
-    margin:0;
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
-.navbar ul li{
+
+.ALL-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.ALL-navbar li {
     list-style-type: none;
-    display: inline-block;
-    background-color: #508C9B;
-    text-align: center;
-    position:relative;
-}
-.navbar ul li a{
-    display:block;
-    color:white;
-}
-.navbar ul li a:link{
-    width:150px;
-    display: block;
-    padding-top: 26px;
-    padding-bottom: 26px;
     text-decoration: none;
-    color:white;
-}
-.navbar ul li a:hover{
-    background-color:#134B70;
-    transform:scale(1);
-    -webkit-box-shadow: 0 2px 4px #363636;
-    -moz-box-shadow: 0 2px 4px #363636;
-    box-shadow:0 2px 4px #363636;
 }
 
-ul.sub-navbar{
+.navbar-item {
+    position: relative;
+    padding-bottom: 5px;
+}
+/*lien ket trong navbar*/
+.navbar-item a {
+    display: block;
+    padding: 10px;
+    background-color: none;
+    text-decoration: none;
+    color: #333;
+}
+
+.arrow {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/*menu dropdown*/
+.navbar-submenu {
+    display: none;
     position: absolute;
-    display:none;
-} 
-ul.sub-navbar li{
-    width: 200px;
-    padding:5px;
+    background-color: #f9f9f9;
+    width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 18px 26px;
+    z-index: 1;
+    top: 90%;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
-ul.sub-navbar li a:link{
-    width:100%;
+.navbar-submenu li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
 }
 
-.navbar ul li:hover .sub-navbar{
-    display:block;
-    z-index:1;
-    box-shadow:0 2px 4px #363636;
+.navbar ul li .underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 3px;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 200%;
+    background-position: left;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease, background-position 0.5s ease;
+    z-index: 2;
 }
-@media (max-width:1060px){
-    .navbar ul{
+
+.navbar ul li:hover .underline {
+    transform: scaleX(1);
+    transform-origin: left;
+    background-position: right;
+}
+.navbar-item:hover  .navbar-submenu {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px);
+    transition: all 1s ease;
+}
+
+.navbar-item:hover .arrow {
+    transform: rotate(180deg);
+}
+
+.navbar-submenu li a:hover {
+    transition: all 1s ease;
+    transform:rotate(360deg);
+    background-color: wheat;
+    border-radius: 20px;
+}
+@media (max-width:1060px) {
+    .navbar ul {
         justify-content: center;
     }
 }
-@media (max-width: 960px){
-    .taskbar{
-        height:max-content;
+
+@media (max-width: 960px) {
+    .taskbar {
+        height: max-content;
     }
-    .navbar{
+
+    .navbar {
         height: auto;
     }
-    .signIn{
+
+    .signIn {
         display: block;
         text-align: center;
     }
-    .signUp{
-        display:none;
+
+    .signUp {
+        display: none;
     }
 }

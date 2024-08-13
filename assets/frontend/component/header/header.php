@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <hr />
+        <hr class="hr-header">
         <!--taskbar-->
         <div class="taskbar-container">
             <div class="taskbar">
@@ -85,13 +85,15 @@
                     $listCategory = $conn->query($sql);
 
                     ?>
-                    <ul>
-                        <li>
+                    <ul class="ALL-navbar">
+                        <li class="navbar-item">
                             <a href="../../../../index.php">Trang chủ</a>
+                            <div class="underline"></div>
                         </li>
-                        <li>
-                            <a href="#">Danh sách</a>
-                            <ul class="sub-navbar">
+                        <li class="navbar-item">
+                            <a href="#">Danh sách <span class="arrow">&#8744;</span></a>
+
+                            <ul class="navbar-submenu">
                                 <?php
                                 include "./frontend/global/variable.php";
                                 $minPrice = 0;
@@ -107,37 +109,45 @@
                                 };
                                 ?>
                             </ul>
+                            <div class="underline"></div>
                         </li>
-                        <li>
-                            <a href="#">Giá sốc</a>
-                            <ul class="sub-navbar">
+                        <li class="navbar-item">
+                            <a href="#">Giá sốc <span class="arrow">&#8744;</span></a>
+
+                            <ul class="navbar-submenu">
                                 <li><a href="#">Ưu đãi thành viên</a></li>
                                 <li><a href="#">Ngày lễ siêu rẻ</a></li>
                                 <li><a href="#">Ngày hội mua sắm</a></li>
                             </ul>
+                            <div class="underline"></div>
                         </li>
-                        <li>
-                            <a href="#">Dịch vụ</a>
-                            <ul class="sub-navbar">
+                        <li class="navbar-item">
+                            <a href="#">Dịch vụ <span class="arrow">&#8744;</span></a>
+
+                            <ul class="navbar-submenu">
                                 <li><a href="../../../../index.php?act=chinh-sach-ban-hang">Chính Sách Bán Hàng</a></li>
                                 <li><a href="../../../../index.php?act=giao-hang-va-lap-dat">Chính Sách Giao Hàng & Lắp Đặt</a></li>
                                 <li><a href="../../../../index.php?act=chinh-sach-doi-tra">Chính Sách Đổi Trả</a></li>
                                 <li><a href="../../../../index.php?act=chinh-sach-bao-hanh">Chính Sách Bảo Hành & Bảo Trì</a></li>
                             </ul>
+                            <div class="underline"></div>
                         </li>
-                        <li>
+                        <li class="navbar-item">
                             <a href="#">Hỗ trợ</a>
+                            <div class="underline"></div>
                         </li>
-                        <li>
+                        <li class="navbar-item">
                             <a href="../../../../index.php?act=about">Giới thiệu</a>
+                            <div class="underline"></div>
                         </li>
-                        <li>
+                        <li class="navbar-item">
                             <a href="../../../../index.php?act=account&feature=brief">Tài khoản</a>
+                            <div class="underline"></div>
                         </li>
                     </ul>
                 </div>
+
             </div>
-            <hr />
         </div>
     </div>
     <script src="./assets/frontend/component/header/header.js"></script>

@@ -3,43 +3,83 @@
     bottom:0;
     text-align: center;
     font-family:"Helvetica Neue", Helvetica, Arial;
-    background-color: #508C9B;
-    color:white;
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
     margin-top:40px;
     padding:3rem 0;
+    display: flex;
+    justify-content: center;
 }
 
-.main-footer-content{
-    width: 100%;
+.footer-content{
+    width: 96%;
     display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-bottom:2rem;
 }
 
 h2{
    text-transform:uppercase;
 }
-
-.about-us, .support,.guide{
-    width:400px;
+.footer-gt{
+    width: 20%;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
 }
 
-ul.list-about-us,
-ul.list-support,
-ul.list-guide{
-    list-style: none;
-    margin:0;
-    padding:0;
+.footer-aboutus{
+    width: 15%;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
 }
-ul li{
-    line-height:1.5rem;
+.footer-aboutus a{
+    text-decoration: none;
+    color: black;
 }
-
-ul li a{
-    text-decoration:none;
-    color:white;
+.footer-aboutus a:hover{
+    color: #ffc906;
+    
+}
+.footer-ttlh{
+    width: 35%;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+}
+.footer-mxh{
+    width: 30%;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+}
+.mxh {
+    display: flex;
+    margin: 0 0 40px 0;
+    text-decoration: none;
+    color: black;
+}
+.mxh p{
+    overflow: hidden;
+}
+.mxh:hover img{
+    padding: 5px;
+    border-radius: 50%;
+    transform: scale(1.1);
+    transition: 0.7s;
+    border: 5px solid #efda8b;
+    margin: 10px;
+}
+.footer-content ul{
+    list-style-type: none;
+    padding: 0; 
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
 }
 @media all and (max-width:960px){
     .main-footer-content{
