@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="groupBox">
-                    <label for="password">Password</label><br>
+                    <label for="password">Mật khẩu</label><br>
                     <div class="ae">
                         <img class="iconInput" src="assets/frontend/img/Icon/iconPassword.svg">
                         <input type="password" name="password" id="password" required placeholder="Enter your password" width="100%">
@@ -33,11 +33,11 @@
                 </div>
 
                 <div class="button_t">
-                    <button type="submit" name="btn-reg" value="Sign In">Sign In</button><br>
+                    <button type="submit" name="btn-reg" value="Sign In">Đăng nhập</button><br>
                 </div>
                 <div class="a_link">
-                    <a href="SignUp.php">Sign Up</a></a>
-                    <a href="#">Forgot password?</a>
+                    <a href="SignUp.php">Đăng kí </a></a>
+                    <a href="#">Quên mật khẩu?</a>
                 </div>
             </form>
             <hr>

@@ -30,7 +30,6 @@
                 <div id="account">
                     <?php
                     session_start();
-
                     if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != null) {
                         $userid = $_SESSION["user_id"];
                         include "db/connect.php";
@@ -63,7 +62,7 @@
                     <img class="thumbnail-brand" src="./assets/frontend/src/Home/LogoFA.png" alt="Logo" />
                 </div>
                 <div class="title-brand">
-                    <a href="../../pages/home/home.php"><img src="./assets/frontend/src/header/banner.png" /></a>
+                    <a href="../../pages/home/home.php"><img src="./assets/frontend/src/header/banner.png" width="100%" height="auto" /></a>
                 </div>
                 <div class="image-brands">
                     <img id="image-brand" src="./assets/frontend/src/Home/LogoFA.png" alt="Image" />
@@ -130,10 +129,6 @@
                                 <li><a href="../../../../index.php?act=chinh-sach-doi-tra">Chính Sách Đổi Trả</a></li>
                                 <li><a href="../../../../index.php?act=chinh-sach-bao-hanh">Chính Sách Bảo Hành & Bảo Trì</a></li>
                             </ul>
-                            <div class="underline"></div>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="#">Hỗ trợ</a>
                             <div class="underline"></div>
                         </li>
                         <li class="navbar-item">
