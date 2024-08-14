@@ -1,4 +1,5 @@
 .bank-connection {
+  text-align: center;
   height: max-content;
   width: 70%;
 }
@@ -6,7 +7,7 @@
   font-weight: 20px;
 }
 .line{
-    width:100%;
+  width:100%;
 }
 .bank-connection #submit {
   display: flex;
@@ -21,7 +22,9 @@
   opacity: 1;
   background-color: white;
 }
-
+.bank-header h3{
+  width: 100%;
+}
 .bank-content{
     display:flex;
     justify-content: center;

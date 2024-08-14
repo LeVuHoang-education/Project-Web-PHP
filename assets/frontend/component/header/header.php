@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <hr />
+        <hr class="hr-header">
 
         <div class="header">
             <div class="intro-brand">

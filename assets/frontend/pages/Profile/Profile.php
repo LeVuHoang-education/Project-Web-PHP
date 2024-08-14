@@ -17,24 +17,26 @@
             echo "<div class='profile-content'>";
             if (isset($_GET['act'])) {
                 if ($_GET['act'] == 'account') {
-                    switch ($_GET['feature']) {
-                        case 'brief':
-                            include 'assets/frontend/pages/Profile/brief.php';
-                            break;
-                        case 'bank':
-                            include 'assets/frontend/pages/Profile/bank.php';
-                            break;
-                        case 'address':
-                            include 'assets/frontend/pages/Profile/DiaChi.php';
-                            break;
-                        case 'changePassword':
-                            include 'assets/frontend/pages/Profile/Doimk.php';
-                            break;
-                        case 'order':
-                            include 'assets/frontend/pages/Profile/Donhang.php';
-                            break;
-                        default:
-                            include 'assets/frontend/pages/Profile/brief.php';
+                    if (isset($_SESSION['use_id'])) {
+                        switch ($_GET['feature']) {
+                            case 'brief':
+                                include 'assets/frontend/pages/Profile/brief.php';
+                                break;
+                            case 'bank':
+                                include 'assets/frontend/pages/Profile/bank.php';
+                                break;
+                            case 'address':
+                                include 'assets/frontend/pages/Profile/DiaChi.php';
+                                break;
+                            case 'changePassword':
+                                include 'assets/frontend/pages/Profile/Doimk.php';
+                                break;
+                            case 'order':
+                                include 'assets/frontend/pages/Profile/Donhang.php';
+                                break;
+                            default:
+                                include 'assets/frontend/pages/Profile/brief.php';
+                        }
                     }
                 }
             }
