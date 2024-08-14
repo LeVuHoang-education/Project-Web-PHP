@@ -10,10 +10,6 @@
 <body>
 
   <div class="container">
-    <!--ads-->
-    <div class="ads">
-      <a href='#'><img class='ads-img' src='./assets/frontend/src/Home/ads/2015.png' alt='ads' /></a>
-    </div>
     <!--main content-->
     <div class="main-container">
       <?php
@@ -26,32 +22,40 @@
         $category = 0;
         include "./assets/frontend/pages/productList/productList.php";
       }
+      function getProductBySugestion(array $type)
+      {
+        include "./frontend/global/variable.php";
+        $itemID = array_values($type);
+        include "./assets/frontend/component/suggestion/suggestion.php";
+      }
       ?>
 
+
       <div class="content">
-        <h1>Sản phẩm trên 10 triệu</h1>
+        <h1>Các bộ nội thất cao cấp</h1>
         <?php
         getProductByRange(10000000, 99999999, $conn);
         ?>
       </div>
       <div class="content">
-        <h1>Sản phẩm trên 5 triệu</h1>
+        <h1>Gương mặt nổi nhất lúc này</h1>
+        <?php
+        $arr = [12,12,12,12,12];
+        getProductBySugestion($arr);
+        ?>
+      </div>
+      <div class="content">
+        <h1>Những bộ nội thất tầm trung</h1>
         <?php
         getProductByRange(5000000, 9999999, $conn);
         ?>
       </div>
       <div class="content">
-        <h1>Sản phẩm dưới 5 triệu</h1>
+        <h1>Dòng sản phẩm phổ biến</h1>
         <?php
         getProductByRange(0, 4999999, $conn);
         ?>
       </div>
-    </div>
-    <!--ads-->
-    <div class="ads">
-      <a href="#">
-        <img class="ads-img" src="./assets/frontend/src/Home/ads/2015.png" alt="ads" />
-      </a>
     </div>
   </div>
 </body>

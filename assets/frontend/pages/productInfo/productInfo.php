@@ -14,10 +14,9 @@
 </head>
 
 <body>
-    <?php include("../../component/header/header.php"); ?>
     <?php
     $id = isset($_GET['prodID']) ? ($_GET['prodID']) : 27;
-    require('../../../../db/connect.php');
+
     $sql = "SELECT * FROM product where proid=$id";
 
     $result = $conn->query($sql);
@@ -48,7 +47,11 @@
                     </div>
                     <div class="act">
                         <div class="btn">
-                            <button class="order-btn">Mua ngay</button>
+                            <button class="order-btn">
+                                <a href="../../../../index.php?act=shopping">
+                                    Mua ngay
+                                </a>
+                            </button>
                             <button class="pre-order-btn">Thêm vào giỏ</button>
                             <button class="review-btn">Đánh giá</button>
                         </div>
@@ -62,7 +65,6 @@
     <?php
     }
     ?>
-    <?php include("../../component/footer/footer.php"); ?>
 </body>
 
 </html>

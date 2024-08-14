@@ -59,9 +59,15 @@ Aside{
 .submenu a{
     text-decoration: none;
     color: black;
+    padding:10px 15px;
+    border-radius:50px;
+    width:max-content;
+    height:20px;
+    margin:5px 0;
+
 }
 .submenu a:hover{
-    text-decoration: underline;
+    background-color: #0158AF;
 }
 
 .aside-menu #btn{

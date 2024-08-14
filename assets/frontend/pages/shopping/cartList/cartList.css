@@ -50,3 +50,30 @@
 .quantity-content .quantity{
     margin:0 2px;
 }
+
+
+.cart-list-container div.paymentDetail{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.paymentDetail .costDetail{
+    color:green;
+}
+
+.paymentDetail .payment-btn button{
+    padding:10px 15px;
+    color:white;
+    font-weight:bold;
+    background-color: #016BD4;
+    border-radius:5px;
+    opacity:1;
+}
+
+.paymentDetail .payment-btn button:hover{
+    background-color: #0059a4;
+    cursor:pointer;
+}

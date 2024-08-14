@@ -32,6 +32,12 @@
                 </div>
             </div>
         </div>
+        <div class="paymentDetail">
+            <div class="costDetail">ratnhieutien</div>
+            <div class="payment-btn">
+                <button>Thanh toán</button>
+            </div>
+        </div>
     </div>
 </body>
 

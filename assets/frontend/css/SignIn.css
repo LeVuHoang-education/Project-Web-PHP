@@ -1,129 +1,153 @@
-body{
-    padding: 0 ;
-    margin: 0;
-    align-items: center;
-    
-    display: flex;
-}
-
-.main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background-color: #dde5f4;
-
-}
-
-.iconInput{
-    width: 20px;
-    height: 20px;
-    justify-content: center;
-    align-items: center;
- 
-
-}
-
-.containner {
-    padding: 20px;
-    margin: 20px;
-    align-items: center;
-    background-color: #f0f6fe;
-    width: 50vh;
-    height: 60vh;
-    border-radius: 20px;
-        
-}
-
-.containner h1, h2 {
-    text-align: center;
-    color: #000000;
-    font-size: 30px;
-    margin: 0;
-    padding: 0%;
-}
-
-.icon {
-    text-align: center;
-    color: #000000;
-    margin: 0;
-    padding: 0%;
-    width: 50px;
-    height: auto;
-}
-
-form{
-    background-color: #f0f6fe;
-}
-
-input[type=password],input[type=email],select {
-    padding:10px 20px;
-    display: inline-block;
-    box-sizing: border-box;
-    background : #ffffff;
-    border: none;
-    outline: none;
-    width: 100%;
-}
-
-label {
-    color: #000000;
-}
-
-.groupBox{
-    border-radius: 20px;
-    background-color: #ffffff;
-    border: none;
-    padding: 10px;
-    margin: 0 0 15px 0;
-    box-sizing: border-box;
-
-}
-
-.ae{
-    display: flex;
+body {
+  padding: 0;
+  margin: 0;
   align-items: center;
 }
 
-button{
-    background-color: #3e4684;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    width: 80%;
-    height: 40px;
-    box-sizing: border-box;
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  width: 100%;
+  background-color: #eeeeee;
 }
 
-.button_t{
-    display: flex;
-    justify-content: center;
+.iconInput {
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn-container {
+  padding: 20px;
+  margin: 20px;
+  align-items: center;
+  background-color: #dadadaaf;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px #b3b3b3;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.signIn-container .title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.signIn-container h1,
+.signIn-container h2 {
+  font-family: arial, sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px #0158af;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  margin:0 5px;
+}
+
+.signIn-container img.logo{
+    width:20%;
+}
+
+.icon {
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  padding: 0%;
+  width: 50px;
+  height: auto;
+}
+
+form {
+    width:80%;
+  border-radius: 10px;
+  background-color: #f0f6fe;
+  padding:10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+input[type="password"],
+input[type="email"],
+select {
+  padding: 10px 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+label {
+  color: #000000;
+}
+
+.groupBox {
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: none;
+  padding: 10px;
+  margin: 0 0 15px 0;
+  width: 80%;
+}
+
+.ae {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: #253ad6;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+  height: 40px;
+  box-sizing: border-box;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.button_t {
+  display: flex;
+  justify-content: center;
 }
 
 .a_link {
-    margin: 20px;
-    text-align: center;
-    font-size: 12   px;
-    justify-content: space-between;
-    display: flex;
+  text-align: center;
+  font-size: 16px;
+  justify-content: space-between;
+  display: flex;
 }
 
-.a_link a{
-    color: #868686;
-    text-decoration: none;
+.a_link a {
+  margin: 20px;
+  color: #868686;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+}
+.a_link a:hover {
+  background-color: #253ad6;
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        font-size: 2vw; /* Thu nhỏ kích thước chữ trên màn hình nhỏ hơn 600px */
-    }
+  body {
+    font-size: 2vw; /* Thu nhỏ kích thước chữ trên màn hình nhỏ hơn 600px */
+  }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1200px) {
-    body {
-        font-size: 2vw; /* Tăng kích thước chữ trên màn hình từ 601px đến 1200px */
-    }
+  body {
+    font-size: 2vw; /* Tăng kích thước chữ trên màn hình từ 601px đến 1200px */
+  }
 }

@@ -4,5 +4,8 @@ $maxPrice;
 $category;
 
 //for sign in
-$nameAccount;
+global $nameAccount;
 $AccountID;
+
+$itemID = [];
+$ID;

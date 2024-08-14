@@ -5,15 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/SignUp.css">
-
-
-    <title>Sign Up</title>
 </head>
-
 <body style="align-items: center;">
     <div class="main">
         <div class="containner">
-
             <h1> <img class="icon" src="../../img/Icon/SignUpIcon.png"></h1>
             <h2>Fill this form to sign up</h2>
             <hr>
