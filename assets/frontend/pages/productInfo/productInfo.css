@@ -94,6 +94,12 @@
   align-items: center;
   flex-direction: row;
 }
+
+#form-add-cart{
+  background-color:  #00a2ca;
+  width: 49%;
+}
+
 .order-btn,
 .pre-order-btn,
 .review-btn {
@@ -118,19 +124,15 @@
 .review-btn:hover {
   background-color: #134b70;
 }
-/* .order-btn{
-    margin-right:10px;
-    }
-    .pre-order{
-        margin-left:10px;
-        } */
 .order-btn,
 .pre-order-btn {
   background-color: #00a2ca;
-  width: 49%;
-  margin-bottom: 10px;
 }
 
+
+.order-btn{
+  width:49%;
+}
 .order-btn a{
     text-decoration: none;
     color: white;
@@ -143,7 +145,7 @@
 
 .review-btn {
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .hotline {

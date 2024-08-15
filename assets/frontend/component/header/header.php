@@ -76,7 +76,6 @@
             <div class="taskbar">
                 <div class="navbar">
                     <?php
-
                     require './db/connect.php';
                     $sql = "SELECT * FROM category";
                     $listCategory = $conn->query($sql);
