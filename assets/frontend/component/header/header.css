@@ -1,236 +1,269 @@
 @font-face {
-    font-family: "MuseonModeno";
-    src: url("../../src/font/MuseoModerno-Bold.ttf");
+  font-family: "MuseonModeno";
+  src: url("../../src/font/MuseoModerno-Bold.ttf");
 }
-.header-container{
-    background-color: white;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: auto;
+.header-container {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
 }
 /*Banners*/
 .banner-brand {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .title {
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    text-shadow: 0 2px 4px #0158AF;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  text-shadow: 0 2px 4px #0158af;
 }
-.title-brand img{
-    padding: 0;
-    margin: 0;
-    border: 1px dotted black;
+.title-brand img {
+  padding: 0;
+  margin: 0;
+  border: 1px dotted black;
 }
 
 .individual {
-    display: flex;
+  display: flex;
 }
 
 .love-list,
 .backet {
-    padding: 10px 0;
-    margin: 10px;
+  padding: 10px 0;
+  margin: 10px;
 }
 
 .love-list a,
 .backet a {
-    color: black;
+  color: black;
 }
 
 svg {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 #account {
-    width: auto;
-    height: max-content;
-    margin: 10px 0;
-    padding: 10px 15px;
-    border-radius: 40px;
-    background-color: #0158AF;
+  width: auto;
+  height: max-content;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 40px;
+  background-color: #0158af;
 }
 
 #account .signIn,
-.signUp, .current {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+.signUp,
+.current {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
 }
 
 .header {
-    height: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .intro-brand {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
 }
 
 .thumbnail-brand {
-
-    height: 90px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+  height: 90px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .title-brand {
-    font-size: 30px;
-    font-weight: bold;
-    font-family: MuseonModeno;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: MuseonModeno;
 }
 
 .title-brand a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
-.image-brands {}
+.image-brands {
+}
 
 #image-brand {
-    width: 45px;
+  width: 45px;
 }
-.hr-header{
-    width: 100%;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    background:linear-gradient(90deg, red, orange, rgb(209, 209, 60));
+.hr-header {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg, red, orange, rgb(209, 209, 60));
 }
 /*taskbar*/
 .taskbar-container {
-    position: relative;
+  position: relative;
 }
 
 .taskbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    height: auto;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    height: auto;
-    padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  height: auto;
+  font-family: Arial, sans-serif;
+  height: auto;
+  padding: 10px;
 }
 
 .sticky {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
 }
 
 .navbar {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, sans-serif;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
 }
 
 .ALL-navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .ALL-navbar li {
-    list-style-type: none;
-    text-decoration: none;
+  list-style-type: none;
+  text-decoration: none;
 }
 
 .navbar-item {
-    position: relative;
-    padding-bottom: 5px;
+  position: relative;
+  padding-bottom: 5px;
 }
 /*lien ket trong navbar*/
 .navbar-item a {
-    display: block;
-    padding: 10px;
-    background-color: none;
-    text-decoration: none;
-    color: #333;
+  display: block;
+  padding: 10px;
+  background-color: none;
+  text-decoration: none;
+  color: #333;
 }
 
 .arrow {
-    display: inline-block;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
 }
 
 /*menu dropdown*/
 .navbar-submenu {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    width: max-content;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 18px 26px;
-    z-index: 1;
-    left: 0;
-    opacity: 0;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: max-content;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 18px 26px;
+  z-index: 1;
+  left: 0;
+  opacity: 0;
 }
 .navbar-submenu li a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
-.navbar-item:hover  .navbar-submenu {
-    display: block;
-    opacity: 1;
+.navbar-item:hover .navbar-submenu {
+  display: block;
+  opacity: 1;
 }
 
 .navbar-submenu li a:hover {
-    
-    background-color: #006FDD;
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0 2px 4px #8A8A8A;
+  background-color: #006fdd;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 2px 4px #8a8a8a;
 }
-@media (max-width:1060px) {
-    .navbar ul {
-        justify-content: center;
-    }
+
+/*for search icon*/
+.navbar-item #form-field #form-field-search{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+#form-field-search #input-search{
+  height: 2rem;
+  width: auto;
+  padding: 5px;
+  border-radius: 50px;
+  border: 1px solid #c1c1c156;
+}
+#form-field-search #input-search:focus {
+  border-color: #006fdd;
+  outline: none;
+}
+
+#form-field-search button.icon-img {
+  margin-left: 5px;
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+}
+
+#form-field-search button.icon-img:hover{
+  cursor:pointer;
+}
+
+@media (max-width: 1060px) {
+  .navbar ul {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 960px) {
-    .taskbar {
-        height: max-content;
-    }
+  .taskbar {
+    height: max-content;
+  }
 
-    .navbar {
-        height: auto;
-    }
+  .navbar {
+    height: auto;
+  }
 
-    .signIn {
-        display: block;
-        text-align: center;
-    }
+  .signIn {
+    display: block;
+    text-align: center;
+  }
 
-    .signUp {
-        display: none;
-    }
+  .signUp {
+    display: none;
+  }
 }

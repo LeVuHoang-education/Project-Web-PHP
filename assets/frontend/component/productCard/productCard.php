@@ -32,8 +32,6 @@
         <?php
         while ($row = $listProducts->fetch_assoc()) {
             $ID = $row['proid'];
-            echo $ID;
-
             include "./assets/frontend/component/Item/item.php";
         }
         ?>

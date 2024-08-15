@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/frontend/component/header/header.css" />
-
 </head>
 
 <body>
@@ -138,6 +136,18 @@
                         <li class="navbar-item">
                             <a href="../../../../index.php?act=account&feature=brief">Tài khoản</a>
                             <div class="underline"></div>
+                        </li>
+                        <li class="navbar-item">
+                            <form action="frontend/pages/searchItems.php" method="post"  id="form-field">
+                                <div id="form-field-search">
+                                    <input id="input-search" type=" text" name="search-item" placeholder="search"/>
+                                    <button class="icon-img" name="search-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
                         </li>
                     </ul>
                 </div>

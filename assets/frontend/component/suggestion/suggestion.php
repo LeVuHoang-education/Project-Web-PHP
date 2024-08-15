@@ -3,22 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="assets/frontend/component/suggestion/sugesstion.css">
 </head>
 
 <body>
     <div class="suggestion-container">
         <div class="suggestion-content">
-            <?php 
+            <?php
             include "db/connect.php";
-            include "frontend/global/variable.php";
-            if (empty($itemID)){
-                echo "<script>alert('empty');</script>";
-            }
-            foreach ($itemID as $item) {
-                $ID=$item;
-                echo $ID;
+            foreach ($GLOBALS['itemID'] as $item) {
+                $ID = $item;
                 include 'assets/frontend/component/Item/item.php';
             } ?>
         </div>
