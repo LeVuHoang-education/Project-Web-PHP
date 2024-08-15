@@ -52,7 +52,13 @@
                                     Mua ngay
                                 </a>
                             </button>
-                            <button class="pre-order-btn">Thêm vào giỏ</button>
+                            <form action= "../../../../index.php?act=GioHang" method="post">
+                                <input type="hidden" name="idSP" value="<?php echo $row['proid']?> ">
+                                <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
+                                <input type="hidden" name="priceSP" value="<?php echo $row['proprice'] ?>">
+                                <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
+                                <input type="submit" class="pre-order-btn" name="addcart" value="Thêm vào giỏ">
+                            </form>
                             <button class="review-btn">Đánh giá</button>
                         </div>
                         <div class="hotline">Gọi ngay để được tư vấn:<br /> 01234567890</div>

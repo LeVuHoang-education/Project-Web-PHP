@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/frontend/pages/Dichvu/DichVu.css">
     <link rel="stylesheet" href="assets/frontend/component/Item/item.css">
     <link rel="stylesheet" href="./assets/frontend/component/header/header.css" />
+
 </head>
 
 <body style="background-color: #EEEEEE;">
@@ -46,9 +47,6 @@
                 case 'account':
                     include "./assets/frontend/pages/Profile/Profile.php";
                     break;
-                case 'shopping':
-                    include "./assets/frontend/pages/shopping/shopping.php";
-                    break;
                 case 'chinh-sach-ban-hang':
                     include "assets/frontend/pages/Dichvu/CSBH.php";
                     break;
@@ -64,14 +62,18 @@
                 case 'DieuKhoan':
                     include "assets/frontend/pages/Footer/DieuKhoan.php";
                     break;
+                case 'GioHang':
+                    include "assets/frontend/pages/Cart/Cart.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
             }
         } else {
+           
             include "./assets/frontend/pages/home/home.php";
-        }
-
+        }       
+        
         echo "</div>";
         ?>
     </div>

@@ -1,0 +1,86 @@
+.order-item {
+    width: 80%;
+    height: auto;
+    border-collapse: collapse;
+    border: 1px solid #7f7f7f;
+    border-radius: 5px;
+    background-color: #a0d0ff;
+    table-layout: fixed;
+}
+
+tbody {
+    width: 100%;
+    height: auto;
+}
+
+.CartHeader {
+    background-color: #ffc096;
+    border-radius: 5px;
+    border: 1px solid #7f7f7f;
+}
+
+.CartContent {
+    background-color: #ffffff;
+}
+.CardName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: start;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.btn {
+    width: 33.2px;
+    height: 33.2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+    border: 1px solid #7f7f7f;
+    padding: 0;
+}
+
+.btn:hover {
+    background-color: #9f9f9f;
+}
+.Q {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.CartFooter{
+    background-color: #ffc096;
+    border-radius: 5px;
+    border: 1px solid #7f7f7f;
+}
