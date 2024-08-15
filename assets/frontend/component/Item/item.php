@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="assets/frontend/component/Item/item.css">
 </head>
 
 <body>
@@ -10,13 +9,12 @@
     include "db/connect.php";
     include "frontend/global/variable.php";
     $sql = "SELECT * FROM product WHERE proid = $ID";
-    echo $ID;
     $info =$conn->query($sql);
     $row = $info->fetch_assoc();
 
     ?>
     <div class="product">
-        <a href="../../../../index.php?act=productInfo&prodID<?php echo $row['proid'] ?>">
+        <a href="../../../../index.php?act=productInfo&prodID=<?php echo $row['proid'] ?>">
             <div class="show-thumbnail">
                 <img class="thumbnail-product" src="../../../UploadImage/<?php echo htmlspecialchars($row['image_path']); ?>" alt="type" />
             </div>

@@ -16,27 +16,27 @@
         <hr class="vachpro">
         <div class="main-content">
             <div class="tttrai">
-                <form class="field-form">
+                <div class="field-form">
                     <label for="TDN">Tên đăng nhập</label>
                     <input type="text" id="TDN" name="TDN" placeholder="Tên đăng nhập" value="BN21102002">
-                </form>
-                <form class="field-form">
+                </div>
+                <div class="field-form">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="2251120349@ut.edu.vn">
-                </form>
-                <form class="field-form">
+                </div>
+                <div class="field-form">
                     <label for="phonenumber">Số điện thoại</label>
                     <input type="text" name="phonenumber" id="phonenumber" value="0987654321">
-                </form>
-                <form class="field-form">
+                </div>
+                <div class="field-form">
                     <label>Giới tính</label>
                     <input type="radio" name="gender" value="male">nam
                     <input type="radio" name="gender" value="female">nữ
-                </form>
-                <form class="field-form">
+                </div>
+                <div class="field-form">
                     <label for="birthday">Ngày sinh</label>
                     <input type="date" name="birthday" id="birthday" value="2002-10-21">
-                </form>
+                </div>
             </div>
             <div class="profilephai">
                 <div class="vertical-line"></div>

@@ -7,5 +7,5 @@ $category;
 global $nameAccount;
 $AccountID;
 
-$itemID = [];
+$GLOBALS['itemID']=[];
 $ID;

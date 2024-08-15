@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="assets/frontend/pages/productList/productList.css">
     <link rel="stylesheet" href="assets/frontend/pages/About/about.css">
     <link rel="stylesheet" href="assets/frontend/pages/Dichvu/DichVu.css">
-
-
+    <link rel="stylesheet" href="assets/frontend/component/Item/item.css">
+    <link rel="stylesheet" href="./assets/frontend/component/header/header.css" />
 </head>
 
 <body style="background-color: #EEEEEE;">
     <?php
     include_once "./assets/frontend/component/header/header.php";
+    include_once "./frontend/global/variable.php";
     ?>
 
     <div class="layout-container">

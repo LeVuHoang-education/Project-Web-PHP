@@ -25,7 +25,7 @@
       function getProductBySugestion(array $type)
       {
         include "./frontend/global/variable.php";
-        $itemID = array_values($type);
+        $GLOBALS['itemID'] = $type;
         include "./assets/frontend/component/suggestion/suggestion.php";
       }
       ?>
@@ -38,9 +38,10 @@
         ?>
       </div>
       <div class="content">
-        <h1>Gương mặt nổi nhất lúc này</h1>
+        <h1>Siêu ưu đãi cùng Nhật Hoàng</h1>
+        <img id="ads" src="assets/frontend/src/Home/ads/ads_1.png">
         <?php
-        $arr = [12,12,12,12,12];
+        $arr = [12,27,28,12,12];
         getProductBySugestion($arr);
         ?>
       </div>
