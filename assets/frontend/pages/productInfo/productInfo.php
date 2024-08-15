@@ -3,10 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../component/header/header.css" />
-    <link rel="stylesheet" href="../../component/Footer/Footer.css" />
-    <link rel="stylesheet" href="./productInfo.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <script>
         var nf = new Intl.NumberFormat();
     </script>
@@ -52,7 +49,7 @@
                                     Mua ngay
                                 </a>
                             </button>
-                            <form action= "../../../../index.php?act=GioHang" method="post">
+                            <form id="form-add-cart" action= "../../../../index.php?act=GioHang" method="post">
                                 <input type="hidden" name="idSP" value="<?php echo $row['proid']?> ">
                                 <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
                                 <input type="hidden" name="priceSP" value="<?php echo $row['proprice'] ?>">
