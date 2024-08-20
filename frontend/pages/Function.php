@@ -93,3 +93,69 @@ function fetchDataFromAPi($url)
     }
     return $data;
 }
+
+function themItemCart($userID, $proID, $quantity, $price)
+{
+    global $conn;
+    $sql = "INSERT INTO `cart-item` (userID, proID, quantity, itemprice) VALUES ( ? , ? , ? , ? )";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Lỗi prepare SQL: (" . $conn->errno . ") " . $conn->error);
+    }
+
+    $stmt->bind_param("iiii", $userID, $proID, $quantity, $price);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+
+    $stmt->close();
+}
+function updateQuantityItemCart($userID, $proID, $quantity)
+{
+    global $conn;
+    $sql = "UPDATE `cart-item` SET quantity = ? WHERE userID = ? and proID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iii", $quantity, $userID, $proID);
+    $stmt->execute();
+    $stmt->close();
+}
+function delItemCart($userID, $proID)
+{
+    global $conn;
+    $sql = "DELETE FROM `cart-item` WHERE userID = ? and proID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $userID, $proID);
+    $stmt->execute();
+    $stmt->close();
+}
+function delAllItemCart($userID)
+{
+    global $conn;
+    $sql = "DELETE FROM `cart-item` WHERE userID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userID);
+    $stmt->execute();
+    $stmt->close();
+}
+function getAllItemCart($userID)
+{
+    global $conn;
+    $sql = "SELECT `cart-item`.*, product.image_path, product.proname FROM `cart-item` INNER JOIN product ON `cart-item`.proID = product.proid WHERE `cart-item`.userID = ? ";
+
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Lỗi prepare SQL: (" . $conn->errno . ") " . $conn->error);
+    }
+
+    $stmt->bind_param("i", $userID);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+
+    $result = $stmt->get_result();
+    if ($result === false) {
+        die("Lỗi get_result: (" . $stmt->errno . ") " . $stmt->error);
+    }
+
+    return $result;
+}

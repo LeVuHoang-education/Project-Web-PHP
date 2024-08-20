@@ -82,5 +82,6 @@
     
     ?>
     <script src="./assets/frontend/component/header/header.js"></script>
+    <script src="./assets/frontend/pages/Cart/Cart.js"></script>
 </body>
 </html
