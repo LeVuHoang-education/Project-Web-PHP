@@ -8,4 +8,5 @@ global $nameAccount;
 $AccountID;
 
 $GLOBALS['itemID']=[];
+
 $ID;
