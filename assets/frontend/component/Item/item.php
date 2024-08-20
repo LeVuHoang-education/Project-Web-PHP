@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <script>
+        var nf = new Intl.NumberFormat();
+    </script>
 </head>
 
 <body>
@@ -9,7 +12,7 @@
     include "db/connect.php";
     include "frontend/global/variable.php";
     $sql = "SELECT * FROM product WHERE proid = $ID";
-    $info =$conn->query($sql);
+    $info = $conn->query($sql);
     $row = $info->fetch_assoc();
 
     ?>

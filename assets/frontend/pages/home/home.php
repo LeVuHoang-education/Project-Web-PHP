@@ -16,7 +16,6 @@
       require('./db/connect.php');
       function getProductByRange($min, $max, $conn)
       {
-        include "./frontend/global/variable.php";
         $minPrice = $min;
         $maxPrice = $max;
         $category = 0;
@@ -24,7 +23,6 @@
       }
       function getProductBySugestion(array $type)
       {
-        include "./frontend/global/variable.php";
         $GLOBALS['itemID'] = $type;
         include "./assets/frontend/component/suggestion/suggestion.php";
       }
