@@ -20,6 +20,8 @@
     <?php
     include_once "./assets/frontend/component/header/header.php";
     include_once "./frontend/global/variable.php";
+    $minPrice = 0;
+    $maxPrice = 0;
     ?>
 
     <div class="layout-container">
@@ -47,6 +49,9 @@
                 case 'account':
                     include "./assets/frontend/pages/Profile/Profile.php";
                     break;
+                case 'search':
+                    include "./assets/frontend/pages/searchPage/searchPage.php";
+                    break;
                 case 'chinh-sach-ban-hang':
                     include "assets/frontend/pages/Dichvu/CSBH.php";
                     break;
@@ -70,17 +75,18 @@
                     break;
             }
         } else {
-           
+
             include "./assets/frontend/pages/home/home.php";
-        }       
-        
+        }
+
         echo "</div>";
         ?>
     </div>
     <?php
     include_once "./assets/frontend/component/Footer/footer.php";
-    
+
     ?>
     <script src="./assets/frontend/component/header/header.js"></script>
 </body>
+
 </html
