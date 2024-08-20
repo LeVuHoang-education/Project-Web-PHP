@@ -50,7 +50,7 @@
                                 </a>
                             </button>
                             <form id="form-add-cart" action= "../../../../index.php?act=GioHang" method="post">
-                                <input type="hidden" name="idSP" value="<?php echo $row['proid']?> ">
+                                <input type="hidden" name="idSP" value="<?php echo $id ?> ">
                                 <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
                                 <input type="hidden" name="priceSP" value="<?php echo $row['proprice'] ?>">
                                 <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">

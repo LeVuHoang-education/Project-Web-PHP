@@ -7,17 +7,40 @@ include __DIR__ . "../../../../../frontend/pages/Function.php";
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
+if (!isset($_SESSION['dataiGH'])) {
+    $_SESSION['dataiGH'] = false;
+}
+if (isset($_SESSION['user_id']) && $_SESSION['dataiGH'] == false) {
+    $cartData = getAllItemCart($_SESSION['user_id']);
+    while ($row = $cartData->fetch_assoc()) {
+        $idsp = $row['proID'];
+        $name = $row['proname'];
+        $price = $row['itemprice'];
+        $img = $row['image_path'];
+        $quantity = $row['quantity'];
+
+        $sp = [$idsp, $name, $quantity, $price, $img];
+        $_SESSION['cart'][] = $sp;
+    }
+    $_SESSION['dataiGH'] = true; // Đánh dấu đã tải dữ liệu giỏ hàng
+}
+
+
+//xoa gio hang
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delcart'])) {
         unset($_SESSION['cart']);
+        delAllItemCart($_SESSION['user_id']);
     }
 }
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['del'])){
+//xoa sp
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['del'])) {
         $id = $_POST['Cart-item-id'];
-        foreach($_SESSION['cart'] as $key => $item){
-            if($item[0] == $id){
+        foreach ($_SESSION['cart'] as $key => $item) {
+            if ($item[0] == $id) {
                 unset($_SESSION['cart'][$key]);
+                delItemCart($_SESSION['user_id'], $id);
                 break;
             }
         }
@@ -25,23 +48,29 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 //lay data tu form
 if (isset($_POST['addcart'])) {
-    $id = $_POST['idSP'];
+    $idsp = $_POST['idSP'];
     $name = $_POST['nameSP'];
     $price = $_POST['priceSP'];
     $img = $_POST['imgSP'];
     $quantity = 1;
     //ktra xem co sp chua
     $is_exist = false;
-    foreach ($_SESSION['cart'] as $item) {
-        if ($item[0] == $id) {
+    foreach ($_SESSION['cart'] as &$item) {
+        if ($item[0] == $idsp) {
             $is_exist = true;
-            $item[3] += 1;
+            $item[2]++;
+            if (isset($_SESSION['user_id'])) {
+                updateQuantityItemCart($_SESSION['user_id'], $idsp, $item[2]);
+            }
             break;
         }
     }
     if ($is_exist == false) {
-        $sp = [$id, $name, $quantity, $price, $img];
+        $sp = [$idsp, $name, $quantity, $price, $img];
         $_SESSION['cart'][] = $sp;
+        if (isset($_SESSION['user_id'])) {
+            themItemCart($_SESSION['user_id'], $idsp, $quantity, $price);
+        }
     }
 }
 ?>
@@ -53,7 +82,7 @@ if (isset($_POST['addcart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/frontend/pages/Cart/Cart.css">
     <script>
-        var nf = new Intl.NumberFormat();
+
     </script>
 </head>
 
@@ -76,7 +105,7 @@ if (isset($_POST['addcart'])) {
         ?>
                 <tr class="CartContent">
                     <td>
-                        <input type="checkbox" name="choose-order" id="choose-order">
+                        <input type="checkbox" name="choose-order" onchange="updateTotalmount()" data-checkbox="<?php echo $itemOrder[3] ?>" id="choose-order">
                     </td>
                     <td>
                         <img max-width="100%" ; height="100px" id="thumbnail" src="../../../../UploadImage/<?php echo htmlspecialchars($itemOrder[4]); ?>" alt="Product Image">
@@ -84,50 +113,63 @@ if (isset($_POST['addcart'])) {
                     <td>
                         <h4 class="CardName"><?php echo htmlspecialchars($itemOrder[1]); ?></h4>
                     </td>
+                    <td class="price" data-price="<?php echo $itemOrder[3] ?>"></td>
                     <td>
-                        <script>
-                            document.write(nf.format(<?php echo htmlspecialchars($itemOrder[3]); ?>));
-                        </script>
-                    </td>
-                    <td>
-                        <div class="Q" onkeyup="tien(this)" contenteditable="true">
-                            <button class="btn minus">-</button>
-                            <input id="quantity" type="number" value="<?php echo htmlspecialchars($itemOrder[2]); ?>" min="1">
-                            <button class="btn plus">+</button>
+                        <div class="soluong">
+                            <button class="btn" onclick="giam(this)">-</button>
+                            <input id="quantity" type="number" value="<?php echo htmlspecialchars($itemOrder[2]); ?>" disabled min="1" max="100" onchange="updateTotal(this)">
+                            <button class="btn" onclick="tang(this)">+</button>
                         </div>
                     </td>
-                    <td>
-                        <div class=""></div>
-                    </td>
+                    <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
                     <td>
                         <form action="index.php?act=GioHang" method="post">
-                            <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]);?>">
-                            <input type="submit" value="Xóa" name="del">
+                            <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
+                            <input type="submit" value="Xóa" name="del" class="btn-del">
                         </form>
                     </td>
                 </tr>
         <?php
             }
         } else {
+
             echo "<tr><td colspan='7' class='TB'>Không có sản phẩm nào trong giỏ hàng</td></tr>";
+
+            echo '<pre>';
+            print_r($_SESSION);
+            echo '</pre>';
+
+            // $cartData = getAllItemCart($_SESSION['user_id']);
+            // while ($row = $cartData->fetch_assoc()) {
+            //     $idsp = $row['proID'];
+            //     $name = $row['proname'];
+            //     $price = $row['itemprice'];
+            //     $img = $row['image_path'];
+            //     $quantity = $row['quantity'];
+
+            //     $sp = [$idsp, $name, $quantity, $price, $img];
+            //     echo '<pre>';
+            //     print_r($sp);
+            //     echo '</pre>';
+            // }
         }
         ?>
         <tr class="CartFooter">
-            <th><input type="checkbox" name="choose-order" id="choose-order"></th>
+            <th><input type="checkbox" name="choose-order" id="choose-all"></th>
             <th colspan="2">
                 <form action="index.php?act=GioHang" method="post">
-                    <input type="submit" value="Xóa giỏ hàng" name="delcart">
+                    <input type="submit" class="btn-mua" value="Xóa tất cả sản phẩm" name="delcart">
                 </form>
             </th>
             <th colspan="3">
-                <div id="totalmount">Tổng tiền: </div>
+                <div>Tổng tiền: <span id="totalamount">0</span></div>
             </th>
             <th>
-                <a href="#">Mua hàng</a>
+                <form action="#" method="post">
+                    <input class="btn-mua" type="submit" value="Mua hàng">
+                </form>
             </th>
-        </tr>
     </table>
-    <script src="assets/frontend/pages/Cart/Cart.js"></script>
 </body>
 
 </html>

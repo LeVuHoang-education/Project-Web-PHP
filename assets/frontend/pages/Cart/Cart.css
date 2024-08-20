@@ -11,12 +11,14 @@
 tbody {
     width: 100%;
     height: auto;
+    border-radius: 20px;
+    border: none;
 }
 
 .CartHeader {
-    background-color: #ffc096;
-    border-radius: 5px;
-    border: 1px solid #7f7f7f;
+    background-color: #ecffd4;
+    border: 1px solid #000000;
+    color: #000000;
 }
 
 .CartContent {
@@ -80,7 +82,41 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 .CartFooter{
-    background-color: #ffc096;
+    background-color: #fff6f0;
     border-radius: 5px;
     border: 1px solid #7f7f7f;
+}
+.soluong{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-mua{
+    width: auto;
+    height: auto;
+    background-color: #ffc096;
+    border: none;
+    cursor: pointer;
+    font-size: medium;
+    padding: 10px;
+    border-radius: 20px;
+}
+.btn-mua:hover{
+    background-color: #ffa600;
+    color: #ffffff;
+}
+.btn-del{
+    width: 50%;
+    height: auto;
+    background-color: #b8ffff;
+    border: none;
+    cursor: pointer;
+    font-size: medium;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+}
+.btn-del:hover{
+    background-color: #ff0000;
+    color: #ffffff;
 }
