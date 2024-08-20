@@ -165,8 +165,8 @@ if (isset($_POST['addcart'])) {
                 <div>Tổng tiền: <span id="totalamount">0</span></div>
             </th>
             <th>
-                <form action="#" method="post">
-                    <input class="btn-mua" type="submit" value="Mua hàng">
+                <form action="index.php?act=ThanhToan" method="post" id="checkout-form">
+                    <input class="btn-mua" type="submit" value="Mua hàng" name="checkout">
                 </form>
             </th>
     </table>

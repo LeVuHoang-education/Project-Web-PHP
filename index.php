@@ -65,6 +65,9 @@
                 case 'GioHang':
                     include "assets/frontend/pages/Cart/Cart.php";
                     break;
+                case 'ThanhToan':
+                    include "assets/frontend/pages/Checkout/Checkout.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;

@@ -78,35 +78,86 @@ document.getElementById('choose-all').addEventListener('change', function ()
     updateTotalmount();
 });
 
-    function sendDatatoServer()
+function sendDatatoServer()
+{
+    var cartItems = [];
+    var cartRows = document.querySelectorAll('.CartContent');
+
+    cartRows.forEach(function (Rows)
     {
-        var cartItems = [];
-        var cartRows = document.querySelectorAll('.CartContent');
+        var id = Rows.querySelector('input[name="Cart-item-id"]').value;
+        var quantity = Rows.querySelector('input[type="number"]').value;
 
-        cartRows.forEach(function (Rows)
-        {
-            var id = Rows.querySelector('input[name="Cart-item-id"]').value;
-            var quantity = Rows.querySelector('input[type="number"]').value;
+        cartItems.push({
+            id: id,
+            quantity: quantity
+        });
+    })
 
-            cartItems.push({
-                id: id,
-                quantity: quantity
-            });
-        })
-
-        fetch("./frontend/pages/Update-cart.php", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cartItems)
-        })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('ERROR:', error));
-    }
+    fetch("./frontend/pages/Update-cart.php", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartItems)
+    })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('ERROR:', error));
+}
 
 setTimeout(function ()
 {
     sendDatatoServer();
 }, 60000); // 60s
+
+document.querySelector('.btn-mua').addEventListener('click', function (e)
+{
+    e.preventDefault();
+    var selectedItems = [];
+    var checkboxes = document.querySelectorAll('.CartContent input[name="choose-order"]:checked');
+
+    checkboxes.forEach(function(check) {
+        var row = check.closest('.CartContent');
+        var id = row.querySelector('input[name="Cart-item-id"]').value;
+        var quantity = row.querySelector('input[type="number"]').value;
+        var total = row.querySelector('td.ThanhTien').getAttribute('data-total');
+
+        selectedItems.push({
+            id:id,
+            quantity:quantity,
+            total:total
+        });
+    });
+    if(selectedItems.length > 0) {
+        var form = document.getElementById('checkout-form');
+        var oldInputs = form.querySelectorAll('input[type="hidden"]');
+        oldInputs.forEach(function(input) {
+            input.remove();
+        });
+
+        selectedItems.forEach(function(item,index) {
+            var inputID = document.createElement('input');
+            inputID.type = 'hidden';
+            inputID.name = 'item_id[]';
+            inputID.value = item.id;
+            form.appendChild(inputID);
+
+            var inputQuantity = document.createElement('input');
+            inputQuantity.type = 'hidden';
+            inputQuantity.name = 'quantity[]';
+            inputQuantity.value = item.quantity;
+            form.appendChild(inputQuantity);
+
+
+            var inputTotal = document.createElement('input');
+            inputTotal.type = 'hidden';
+            inputTotal.name = 'total[]';
+            inputTotal.value = item.total;
+            form.appendChild(inputTotal);
+        });
+        form.submit();
+    } else {
+        alert('Vui lòng chọn ít nhất một sản phẩm để mua.');
+    }
+});
