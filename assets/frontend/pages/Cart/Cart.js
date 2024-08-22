@@ -109,55 +109,27 @@ function sendDatatoServer()
 setTimeout(function ()
 {
     sendDatatoServer();
-}, 60000); // 60s
+}, 5000); // 60s
 
-document.querySelector('.btn-mua').addEventListener('click', function (e)
-{
-    e.preventDefault();
-    var selectedItems = [];
-    var checkboxes = document.querySelectorAll('.CartContent input[name="choose-order"]:checked');
+document.getElementById('checkout-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const selectedItems = [];
+    const checkboxes = document.querySelectorAll('input[name="choose-order"]:checked');
 
-    checkboxes.forEach(function(check) {
-        var row = check.closest('.CartContent');
-        var id = row.querySelector('input[name="Cart-item-id"]').value;
-        var quantity = row.querySelector('input[type="number"]').value;
-        var total = row.querySelector('td.ThanhTien').getAttribute('data-total');
-
-        selectedItems.push({
-            id:id,
-            quantity:quantity,
-            total:total
-        });
+    checkboxes.forEach(function (checkbox) {
+        selectedItems.push(checkbox.value);
     });
-    if(selectedItems.length > 0) {
-        var form = document.getElementById('checkout-form');
-        var oldInputs = form.querySelectorAll('input[type="hidden"]');
-        oldInputs.forEach(function(input) {
-            input.remove();
-        });
 
-        selectedItems.forEach(function(item,index) {
-            var inputID = document.createElement('input');
-            inputID.type = 'hidden';
-            inputID.name = 'item_id[]';
-            inputID.value = item.id;
-            form.appendChild(inputID);
-
-            var inputQuantity = document.createElement('input');
-            inputQuantity.type = 'hidden';
-            inputQuantity.name = 'quantity[]';
-            inputQuantity.value = item.quantity;
-            form.appendChild(inputQuantity);
-
-
-            var inputTotal = document.createElement('input');
-            inputTotal.type = 'hidden';
-            inputTotal.name = 'total[]';
-            inputTotal.value = item.total;
-            form.appendChild(inputTotal);
-        });
-        form.submit();
-    } else {
-        alert('Vui lòng chọn ít nhất một sản phẩm để mua.');
+    if(selectedItems.length > 0 ) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'selected_cart_ids';
+        input.value = selectedItems.join(',');
+        
+        this.appendChild(input);
+        this.submit();
+    }
+    else {
+        alert('Vui lòng chọn sản phẩm cần mua');
     }
 });

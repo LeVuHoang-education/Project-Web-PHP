@@ -101,11 +101,11 @@ if (isset($_POST['addcart'])) {
         $i = 0;
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $itemOrder) {
-                $i++;
+                $cartData = getItemCartbyID($_SESSION['user_id'],$itemOrder[0]);
         ?>
                 <tr class="CartContent">
                     <td>
-                        <input type="checkbox" name="choose-order" onchange="updateTotalmount()" data-checkbox="<?php echo $itemOrder[3] ?>" id="choose-order">
+                        <input type="checkbox" value="<?php echo $cartData->fetch_assoc()['cartid']?>" name="choose-order" onchange="updateTotalmount()" data-checkbox="<?php echo $itemOrder[3] ?>" id="choose-order">
                     </td>
                     <td>
                         <img max-width="100%" ; height="100px" id="thumbnail" src="../../../../UploadImage/<?php echo htmlspecialchars($itemOrder[4]); ?>" alt="Product Image">
@@ -135,9 +135,9 @@ if (isset($_POST['addcart'])) {
 
             echo "<tr><td colspan='7' class='TB'>Không có sản phẩm nào trong giỏ hàng</td></tr>";
 
-            echo '<pre>';
-            print_r($_SESSION);
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($_SESSION);
+            // echo '</pre>';
 
             // $cartData = getAllItemCart($_SESSION['user_id']);
             // while ($row = $cartData->fetch_assoc()) {
