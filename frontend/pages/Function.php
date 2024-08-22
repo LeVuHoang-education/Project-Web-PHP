@@ -31,8 +31,11 @@ function getItembyID($id)
 function getProductbyID($id)
 {
     global $conn;
-    $getProduct_sql = "SELECT * FROM product where proid = $id";
-    $result = $conn->query($getProduct_sql);
+    $getProduct_sql = "SELECT * FROM product where proid = ?";
+    $stmt = $conn->prepare($getProduct_sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result;
 }
 define('ENCRYPTION_KEY', 'your-secret-key-here');
@@ -70,7 +73,7 @@ function getAddressbyID($id)
 function getUserbyID($id)
 {
     global $conn;
-    $getPassword_sql = "SELECT * FROM account where id = $id";
+    $getPassword_sql = "SELECT * FROM account where userid = $id";
     $result = $conn->query($getPassword_sql);
     return $result;
 }
@@ -148,6 +151,76 @@ function getAllItemCart($userID)
     }
 
     $stmt->bind_param("i", $userID);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+
+    $result = $stmt->get_result();
+    if ($result === false) {
+        die("Lỗi get_result: (" . $stmt->errno . ") " . $stmt->error);
+    }
+
+    return $result;
+}
+
+
+//lay tt thanh toan
+function getTTKH($id)
+{
+    global $conn;
+    $getTTKH = "SELECT * FROM ttkh WHERE userid = ?";
+    $stmt = $conn->prepare($getTTKH);
+    $stmt->bind_param("i", $id);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    $result = $stmt->get_result();
+    if ($result === false) {
+        die("Lỗi get_result: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    return $result;
+}
+
+function getDC($id)
+{
+    global $conn;
+    $getDC = "SELECT * FROM dckh WHERE userid = ?";
+    $stmt = $conn->prepare($getDC);
+    $stmt->bind_param("i", $id);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    $result = $stmt->get_result();
+    if ($result === false) {
+        die("Lỗi get_result: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    return $result;
+}
+
+function getItemCartbyID ($id, $proID) {
+    global $conn;
+    $getsql = "SELECT * FROM `cart-item` WHERE userID = ? AND proID = ?";
+    $stmt = $conn->prepare($getsql);
+    $stmt->bind_param("ii", $id, $proID);
+    if (!$stmt->execute()) {
+        die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    $result = $stmt->get_result();
+    if ($result === false) {
+        die("Lỗi get_result: (" . $stmt->errno . ") " . $stmt->error);
+    }
+    return $result;
+}
+
+function getItembyCartID($cartid)
+{
+    global $conn;
+    $sql = "SELECT `cart-item`.*, product.image_path, product.proname FROM `cart-item` INNER JOIN product ON `cart-item`.proID = product.proid WHERE `cart-item`.cartid = ? ";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Lỗi prepare SQL: (" . $conn->errno . ") " . $conn->error);
+    }
+    $stmt->bind_param("i", $cartid);
     if (!$stmt->execute()) {
         die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
     }

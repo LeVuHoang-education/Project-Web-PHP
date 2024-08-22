@@ -78,35 +78,58 @@ document.getElementById('choose-all').addEventListener('change', function ()
     updateTotalmount();
 });
 
-    function sendDatatoServer()
+function sendDatatoServer()
+{
+    var cartItems = [];
+    var cartRows = document.querySelectorAll('.CartContent');
+
+    cartRows.forEach(function (Rows)
     {
-        var cartItems = [];
-        var cartRows = document.querySelectorAll('.CartContent');
+        var id = Rows.querySelector('input[name="Cart-item-id"]').value;
+        var quantity = Rows.querySelector('input[type="number"]').value;
 
-        cartRows.forEach(function (Rows)
-        {
-            var id = Rows.querySelector('input[name="Cart-item-id"]').value;
-            var quantity = Rows.querySelector('input[type="number"]').value;
+        cartItems.push({
+            id: id,
+            quantity: quantity
+        });
+    })
 
-            cartItems.push({
-                id: id,
-                quantity: quantity
-            });
-        })
-
-        fetch("./frontend/pages/Update-cart.php", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cartItems)
-        })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('ERROR:', error));
-    }
+    fetch("./frontend/pages/Update-cart.php", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartItems)
+    })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('ERROR:', error));
+}
 
 setTimeout(function ()
 {
     sendDatatoServer();
-}, 60000); // 60s
+}, 5000); // 60s
+
+document.getElementById('checkout-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const selectedItems = [];
+    const checkboxes = document.querySelectorAll('input[name="choose-order"]:checked');
+
+    checkboxes.forEach(function (checkbox) {
+        selectedItems.push(checkbox.value);
+    });
+
+    if(selectedItems.length > 0 ) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'selected_cart_ids';
+        input.value = selectedItems.join(',');
+        
+        this.appendChild(input);
+        this.submit();
+    }
+    else {
+        alert('Vui lòng chọn sản phẩm cần mua');
+    }
+});
