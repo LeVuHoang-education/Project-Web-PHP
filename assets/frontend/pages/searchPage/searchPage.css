@@ -1,11 +1,21 @@
-.search-container{
-    width: 100%;
-
+.search-container {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
 }
-.search-content{
-    width:90%;
+
+.search-container .notify{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    font-size: 24px;
+}
+
+.search-content {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

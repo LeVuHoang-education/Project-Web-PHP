@@ -2,6 +2,7 @@
     <script>
         var nf = new Intl.NumberFormat();
     </script>
+    <script src="./productCard.js"></script>
     <?php
     include "frontend/global/variable.php";
 
@@ -28,19 +29,30 @@
             $row = $listCategory->fetch_assoc();
             ?></h3>
     </div>
-    <div id="show-products">
-        <?php
+
+    <?php
+    function show_more($listProducts, $productsPerPage)
+    {
+        $count = 0;
         while ($row = $listProducts->fetch_assoc()) {
             $ID = $row['proid'];
             include "./assets/frontend/component/Item/item.php";
+            $count++;
+            if ($count >= $productsPerPage) {
+                break;
+            }
         }
+
+        // Kiểm tra xem còn sản phẩm chưa hiển thị
+        if ($listProducts->num_rows > $count) {
+            echo '<button type="submit" name="show-more" id="show-more-btn" onclick="showMoreProducts()">Xem thêm sản phẩm</button>';
+        }
+    }
+    ?>
+
+    <div id="show-products">
+        <?php
+        show_more($listProducts, 5);
         ?>
     </div>
-    <script>
-        function fillColor(productId) {
-            const svg = document.getElementById("love-btn-" + productId); // Construct the ID from the argument
-            svg.style.fill = svg.style.fill === "red" ? "black" : "red";
-            alert("Sản phẩm đã được thêm vào danh sách yêu thích");
-        }
-    </script>
 </div>

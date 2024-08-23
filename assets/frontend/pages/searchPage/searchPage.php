@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/frontend/pages/searchPage/searchPage.css">
+    <title>Tìm kiếm</title>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
         <div class="notify">Bạn đang tìm kiếm bằng từ khóa
             <?php
             if (isset($_SESSION['keySearch'])) {
-                echo $_SESSION['keySearch'];
+                echo " ' ". $_SESSION['keySearch'] ." ' ";
             }
             ?></div>
     </div>
