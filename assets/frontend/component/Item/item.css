@@ -1,67 +1,75 @@
-.product{
-    border-radius:20px;
-    width:250px;
-    height:400px;
-    margin:20px;
-    box-shadow:0 2px 4px #8B8B8B;
-    background-color:#CFCFCF5E;
-    position:relative;
+.product {
+  border-radius: 20px;
+  width: 250px;
+  height: 400px;
+  margin: 20px;
+  box-shadow: 0 2px 4px #8b8b8b;
+  background-color: #cfcfcf5e;
+  position: relative;
 }
-.product:hover{
-    box-shadow:0 3px 4px #3F3F3F;
+.product:hover {
+  box-shadow: 0 3px 4px #3f3f3f;
 }
-.product a{
-    text-decoration:none;
-    text-align:center;
+.product a {
+  text-decoration: none;
+  text-align: center;
 }
 
-.info{
-    height:40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.info {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .info ul {
-    list-style-type: none;
-    margin:0;
-    padding:0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color:#A79277;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #a79277;
 }
 
-.show-thumbnail{
-    border-radius:20px 20px 0 0;
-    width:100%;
-    height:60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.show-thumbnail {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.thumbnail-product{
-    width:100%;
-    height:100%;
-    align-items:center;
-    border-radius:20px 20px 0 0;
-    overflow:hidden;    
+.thumbnail-product {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
 }
 
-.pro-name, #pro_price,.pro-origin, .pro-stock{
-    color:#474747;
-    font-size:16px;
+.pro-name,
+#pro_price,
+.pro-origin,
+.pro-stock {
+  color: #474747;
+  font-size: 16px;
 }
 
-#pro_price{
-    color:#134B70;
+#pro_price {
+  color: #134b70;
 }
 
-.love-product{
-    z-index: 1;
-    position: absolute;
-    right: 10px;
-    bottom: 5px;
-    cursor:pointer;
+.love-product {
+  z-index: 1;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+button.add-product {
+  cursor: pointer;
+  opacity: 1;
+  background-color: transparent;
 }

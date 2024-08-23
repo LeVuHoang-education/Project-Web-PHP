@@ -4,15 +4,17 @@ require_once "../../db/connect.php";
 
 if (isset($_POST['search-item'])) {
     $_SESSION['keySearch'] = $_POST['search-item'];
-    $key_searching = $_POST['search-item'];
-    $sql = "SELECT * FROM `product` WHERE UPPER(proname) LIKE UPPER('%$key_searching%');";
+    $key_searching[] = "% ".$_POST['search-item'] . " %";
+    $key_searching[] = $_POST['search-item'] . " %";
+    $key_searching[] = "% ".$_POST["search-item"]."%";
+    $sql = "SELECT * FROM `product` WHERE UPPER(proname) LIKE UPPER('$key_searching[0]') 
+    OR UPPER(proname) LIKE  UPPER('$key_seaching[1]')
+    OR UPPER(proname) LIKE  UPPER('$key_searching[2]')";
     $listProduct = $conn->query($sql);
 
     $list = [];
     while ($row = $listProduct->fetch_assoc()) {
-        if (strpos($row["proname"], $key_searching) !== false) {
-            $list[] = $row['proid'];
-        }
+        $list[] = $row['proid'];
     }
 
     if (isset($_SESSION['itemList'])) {

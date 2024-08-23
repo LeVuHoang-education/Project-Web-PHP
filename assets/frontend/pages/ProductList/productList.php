@@ -14,11 +14,10 @@
       if ($_GET['act'] == 'productList') {
         if (isset($_GET['feature']) && $_GET['feature'] == 'searching') {
           include "./assets/frontend/component/suggestion/suggestion.php";
-        } else
-          include  "./assets/frontend/component/productCard/productCard.php";
+        } 
       }
-    } else
-      include  "./assets/frontend/component/productCard/productCard.php";
+    }
+    include  "./assets/frontend/component/productCard/productCard.php";
 
     ?>
   </div>

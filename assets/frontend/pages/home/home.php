@@ -27,28 +27,39 @@
         include "./assets/frontend/component/suggestion/suggestion.php";
       }
       ?>
-
-
       <div class="content">
         <h1>Các bộ nội thất cao cấp</h1>
         <?php
-        getProductByRange(10000000, 99999999, $conn);
+        getProductByRange(30000000, 99999999, $conn);
         ?>
       </div>
+      <hr/>
       <div class="content">
-        <h1>Siêu ưu đãi cùng Nhật Hoàng</h1>
         <img id="ads" src="assets/frontend/src/Home/ads/ads_1.png">
         <?php
-        $arr = [12,27,28,12,12];
+        $arr = [12, 27, 28, 12, 12];
         getProductBySugestion($arr);
         ?>
       </div>
+      <hr/>
+
       <div class="content">
         <h1>Những bộ nội thất tầm trung</h1>
         <?php
         getProductByRange(5000000, 9999999, $conn);
         ?>
       </div>
+      <hr/>
+
+      <div class="content">
+        <img id="ads" src="assets/frontend/src/Home/ads/thiet-ke-hien-dai-tien-loi-thoai-mai.png">
+        <?php
+        $arr = [12, 33, 40, 43, 16];
+        getProductBySugestion($arr);
+        ?>
+      </div>
+      <hr/>
+
       <div class="content">
         <h1>Dòng sản phẩm phổ biến</h1>
         <?php
