@@ -30,29 +30,12 @@
             ?></h3>
     </div>
 
-    <?php
-    function show_more($listProducts, $productsPerPage)
-    {
-        $count = 0;
+    <div id="show-products">
+        <?php
         while ($row = $listProducts->fetch_assoc()) {
             $ID = $row['proid'];
             include "./assets/frontend/component/Item/item.php";
-            $count++;
-            if ($count >= $productsPerPage) {
-                break;
-            }
         }
-
-        // Kiểm tra xem còn sản phẩm chưa hiển thị
-        if ($listProducts->num_rows > $count) {
-            echo '<button type="submit" name="show-more" id="show-more-btn" onclick="showMoreProducts()">Xem thêm sản phẩm</button>';
-        }
-    }
-    ?>
-
-    <div id="show-products">
-        <?php
-        show_more($listProducts, 5);
         ?>
     </div>
 </div>

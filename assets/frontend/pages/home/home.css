@@ -16,7 +16,6 @@ body{
 }
 
 .content{
-    margin:20px 0;
     font-weight: bold;
     font-family:MuseoMadeno;
     display: flex;
@@ -33,7 +32,7 @@ body{
 
 #ads{
     width:90%;
-    margin:20px 10px 0 20px;
+    margin:10px 0;
 }
 
 img.ads-img{
