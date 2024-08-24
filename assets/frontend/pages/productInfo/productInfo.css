@@ -105,30 +105,18 @@
 .review-btn {
   background-color: #00a2ca;
   height: 50px;
-  padding: 0;
   margin: 0;
   color: white;
   border: none;
   cursor: pointer;
   opacity: 1;
 }
-.order-btn button,
-.pre-order-btn button {
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-}
+
 .order-btn:hover,
 .pre-order-btn:hover,
-.review-btn:hover {
+.review-btn:hover{
   background-color: #134b70;
 }
-.order-btn,
-.pre-order-btn {
-  background-color: #00a2ca;
-}
-
 
 .order-btn{
   width:49%;
@@ -141,6 +129,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+input.pre-order-btn{
+  width:100%;
 }
 
 .review-btn {

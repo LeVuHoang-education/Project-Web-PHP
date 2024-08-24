@@ -28,8 +28,8 @@
       }
       ?>
       <div class="content">
-        <h1>Các bộ nội thất cao cấp</h1>
-        <?php
+      <img id="ads" src="assets/frontend/src/Home/ads/phong-cach-cao-cap.png">
+      <?php
         getProductByRange(30000000, 99999999, $conn);
         ?>
       </div>
