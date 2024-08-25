@@ -20,24 +20,25 @@
     </div>
     <div class="search-content">
         <div class="search-by-range">
-            <form id="form-field-range" action="assets/frontend/pages/searchPage/searchByRange.php" method="POST">
+            <form id="form-field-range" action="frontend/pages/searchItems.php" method="POST">
                 <label for="search-by-range">Tìm kiếm theo khoảng giá:</label>
                 <div class="show-range">
                     <div class="show-content">
                         <label>Từ</label>
                         <div id="min">
-                            <input type="range" name="min-range" id="min-range" min="0" max="50000000" value="0" oninput="changeValue()">
+                            <input type="range" name="min-range" id="min-range" min="0" max="50000000" value=0 oninput="changeValue()">
                             <div id="min-value">0</div>
                         </div>
                     </div>
                     <div class="show-content">
                         <label>Đến</label>
                         <div id="max">
-                            <input type="range" name="max-range" id="max-range" min="0" max="50000000" value="50000000"  oninput="changeValue()">
+                            <input type="range" name="max-range" id="max-range" min="0" max="50000000" value=50000000 oninput="changeValue()">
                             <div id="max-value">50000000</div>
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="key_search" value="<?= $_SESSION['keySearch']; ?>">
                 <button id="btn-search" type="submit" onclick=" return  checkValue()">Lọc sản phẩm</button>
             </form>
         </div>
@@ -53,6 +54,20 @@
             ?>
         </div>
     </div>
+    <script>
+        window.onload = function() {
+            var minValue = document.getElementById("min-range");
+            var maxValue = document.getElementById("max-range");
+
+            minValue.value = <?= $_SESSION['minValue'] ?>;
+            maxValue.value = <?= $_SESSION['maxValue'] ?>;
+            alert(minValue);
+        }
+    </script>
+    <?php
+    unset($_SESSION['minValue']);
+    unset($_SESSION['maxValue']);
+    ?>
 </body>
 
 </html>

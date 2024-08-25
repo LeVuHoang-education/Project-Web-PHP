@@ -12,7 +12,7 @@ function changeValue() {
 function checkValue() {
   const minRange = document.getElementById("min-range");
   const maxRange = document.getElementById("max-range");
-  if (minRange.value >= maxRange.value) {
+  if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
     alert("Giá trị mà bạn chọn không hợp lệ! Vui lòng chọn lại.");
     return false;
   }
