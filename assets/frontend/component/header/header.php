@@ -9,7 +9,7 @@
 <body>
     <div class="header-container">
         <div class="banner-brand">
-            <div class="title">NHẬT HOÀNG - NỘI THẤT GIA ĐÌNH PHONG CÁCH HIỆN ĐẠI SỐ 10 VIỆT NAM</div>
+            <div class="title">NỘI THẤT NHẬT HOÀNG - CHẤT LƯỢNG ĐỒNG HÀNH, PHONG CÁCH THĂNG HOA</div>
             <div class="individual">
                 <div class="love-list">
                     <a href="../../../../index.php?act=shopping&feature=loveList">

@@ -2,7 +2,7 @@
     <script>
         var nf = new Intl.NumberFormat();
     </script>
-    <script src="./productCard.js"></script>
+    <script src="assets/frontend/component/productCard/productCard.js"></script>
     <?php
     include "frontend/global/variable.php";
 
