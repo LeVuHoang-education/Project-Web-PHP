@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/frontend/pages/searchPage/searchPage.css">
+    <script src="assets/frontend/pages/searchPage/searchPage.js"></script>
     <title>Tìm kiếm</title>
 </head>
 
@@ -13,20 +14,44 @@
         <div class="notify">Bạn đang tìm kiếm bằng từ khóa
             <?php
             if (isset($_SESSION['keySearch'])) {
-                echo " ' ". $_SESSION['keySearch'] ." ' ";
+                echo " ' " . $_SESSION['keySearch'] . " ' ";
             }
             ?></div>
     </div>
     <div class="search-content">
-        <?php
-        if (isset($_SESSION["itemList"])) {
-            include "frontend/global/variable.php";
-            foreach ($_SESSION['itemList'] as $itemID) {
-                $ID = $itemID;
-                include 'assets/frontend/component/Item/item.php';
+        <div class="search-by-range">
+            <form id="form-field-range" action="assets/frontend/pages/searchPage/searchByRange.php" method="POST">
+                <label for="search-by-range">Tìm kiếm theo khoảng giá:</label>
+                <div class="show-range">
+                    <div class="show-content">
+                        <label>Từ</label>
+                        <div id="min">
+                            <input type="range" name="min-range" id="min-range" min="0" max="50000000" value="0" oninput="changeValue()">
+                            <div id="min-value">0</div>
+                        </div>
+                    </div>
+                    <div class="show-content">
+                        <label>Đến</label>
+                        <div id="max">
+                            <input type="range" name="max-range" id="max-range" min="0" max="50000000" value="50000000"  oninput="changeValue()">
+                            <div id="max-value">50000000</div>
+                        </div>
+                    </div>
+                </div>
+                <button id="btn-search" type="submit" onclick=" return  checkValue()">Lọc sản phẩm</button>
+            </form>
+        </div>
+        <div class="search-results">
+            <?php
+            if (isset($_SESSION["itemList"])) {
+                include "frontend/global/variable.php";
+                foreach ($_SESSION['itemList'] as $itemID) {
+                    $ID = $itemID;
+                    include 'assets/frontend/component/Item/item.php';
+                }
             }
-        }
-        ?>
+            ?>
+        </div>
     </div>
 </body>
 

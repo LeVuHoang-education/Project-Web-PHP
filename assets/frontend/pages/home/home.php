@@ -28,12 +28,12 @@
       }
       ?>
       <div class="content">
-      <img id="ads" src="assets/frontend/src/Home/ads/phong-cach-cao-cap.png">
-      <?php
+        <img id="ads" src="assets/frontend/src/Home/ads/phong-cach-cao-cap.png">
+        <?php
         getProductByRange(30000000, 99999999, $conn);
         ?>
       </div>
-      <hr/>
+      <hr />
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/ads_1.png">
         <?php
@@ -41,24 +41,25 @@
         getProductBySugestion($arr);
         ?>
       </div>
-      <hr/>
+      <hr />
 
       <div class="content">
-        <h1>Những bộ nội thất tầm trung</h1>
+        <img id="ads" src="assets/frontend/src/Home/ads/mau-sac-tuoi-sang-nhe-nhang.png">
         <?php
-        getProductByRange(5000000, 9999999, $conn);
-        ?>
-      </div>
-      <hr/>
-
-      <div class="content">
-        <img id="ads" src="assets/frontend/src/Home/ads/thiet-ke-hien-dai-tien-loi-thoai-mai.png">
-        <?php
-        $arr = [12, 33, 40, 43, 16];
+        $arr = [12, 14, 15, 16, 10];
         getProductBySugestion($arr);
         ?>
       </div>
-      <hr/>
+      <hr />
+
+      <div class="content">
+        <img id="ads" src="assets/frontend/src/Home/ads/nang-tam-trai-nghiem.png">
+        <?php
+        $arr = [3, 27, 28, 29, 30];
+        getProductBySugestion($arr);
+        ?>
+      </div>
+      <hr />
 
       <div class="content">
         <h1>Dòng sản phẩm phổ biến</h1>

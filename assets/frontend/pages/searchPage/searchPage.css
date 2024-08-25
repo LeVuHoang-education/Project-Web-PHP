@@ -4,18 +4,75 @@
   padding: 10px;
 }
 
-.search-container .notify{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
+.search-container .notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
 }
 
 .search-content {
   width: 90%;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+//searching by range of cost
+.search-content .search-by-range {
+  width: 15%;
+  
+}
+
+.search-by-range #form-field-range {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.search-by-range #form-field-range .show-range {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#form-field-range .show-range .show-content {
+  display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+}
+
+.show-range .show-content #min,
+.show-range .show-content #max {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#btn-search {
+  margin-top: 10px;
+  opacity: 1;
+  border: none;
+  background-color: #0cb2db;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#btn-search:hover {
+  background-color: #0081ac;
+  cursor: pointer;
+}
+
+.search-content .search-results {
   flex-wrap: wrap;
+  display: flex;
+  width: 85%;
 }
