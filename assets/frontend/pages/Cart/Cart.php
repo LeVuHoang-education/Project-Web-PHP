@@ -30,7 +30,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['dataiGH'] == false) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delcart'])) {
         unset($_SESSION['cart']);
-        delAllItemCart($_SESSION['user_id']);
+        if (isset($_SESSION['user_id'])) {
+            delAllItemCart($_SESSION['user_id']);
+        }
     }
 }
 //xoa sp
@@ -40,7 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($_SESSION['cart'] as $key => $item) {
             if ($item[0] == $id) {
                 unset($_SESSION['cart'][$key]);
-                delItemCart($_SESSION['user_id'], $id);
+                if (isset($_SESSION['user_id'])) {
+                    delItemCart($_SESSION['user_id'], $id);
+                }
                 break;
             }
         }
@@ -73,6 +77,9 @@ if (isset($_POST['addcart'])) {
         }
     }
 }
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,35 +108,95 @@ if (isset($_POST['addcart'])) {
         $i = 0;
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $itemOrder) {
-                $cartData = getItemCartbyID($_SESSION['user_id'],$itemOrder[0]);
+                if (isset($_SESSION['user_id'])) {
+                    $cartData = getItemCartbyID($_SESSION['user_id'], $itemOrder[0]);
         ?>
-                <tr class="CartContent">
-                    <td>
-                        <input type="checkbox" value="<?php echo $cartData->fetch_assoc()['cartid']?>" name="choose-order" onchange="updateTotalmount()" data-checkbox="<?php echo $itemOrder[3] ?>" id="choose-order">
-                    </td>
-                    <td>
-                        <img max-width="100%" ; height="100px" id="thumbnail" src="../../../../UploadImage/<?php echo htmlspecialchars($itemOrder[4]); ?>" alt="Product Image">
-                    </td>
-                    <td>
-                        <h4 class="CardName"><?php echo htmlspecialchars($itemOrder[1]); ?></h4>
-                    </td>
-                    <td class="price" data-price="<?php echo $itemOrder[3] ?>"></td>
-                    <td>
-                        <div class="soluong">
-                            <button class="btn" onclick="giam(this)">-</button>
-                            <input id="quantity" type="number" value="<?php echo htmlspecialchars($itemOrder[2]); ?>" disabled min="1" max="100" onchange="updateTotal(this)">
-                            <button class="btn" onclick="tang(this)">+</button>
-                        </div>
-                    </td>
-                    <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
-                    <td>
-                        <form action="index.php?act=GioHang" method="post">
-                            <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
-                            <input type="submit" value="Xóa" name="del" class="btn-del">
-                        </form>
-                    </td>
-                </tr>
-        <?php
+                    <tr class="CartContent">
+                        <td>
+                            <input type="checkbox"
+                            value="<?php echo $cartData->fetch_assoc()['cartid'] ?>"
+                            name="choose-order"
+                            onchange="updateTotalmount()"
+                            id="choose-order">
+                        </td>
+                        <td>
+                            <img max-width="100%"
+                            height="100px"
+                            id="thumbnail" src="../../../../UploadImage/<?php echo htmlspecialchars($itemOrder[4]); ?>"
+                            alt="Product Image">
+                        </td>
+                        <td>
+                            <h4 class="CardName"><?php echo htmlspecialchars($itemOrder[1]); ?></h4>
+                        </td>
+                        <td class="price" data-price="<?php echo $itemOrder[3] ?>"></td>
+                        <td>
+                            <div class="soluong">
+                                <button class="btn" onclick="giam(this)">-</button>
+
+                                <input id="quantity"
+                                type="number"
+                                data-item-id="<?php echo $itemOrder[0];?>"
+                                value="<?php echo htmlspecialchars($itemOrder[2]); ?>"
+                                disabled
+                                min="1"
+                                max="100"
+                                onchange="updateTotal(this)">
+
+                                <button class="btn" onclick="tang(this)">+</button>
+                            </div>
+                        </td>
+                        <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
+                        <td>
+                            <form action="index.php?act=GioHang" method="post">
+                                <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
+                                <input type="submit" value="Xóa" name="del" class="btn-del">
+                            </form>
+                        </td>
+                    </tr>
+                <?php
+                } else { ?>
+                    <tr class="CartContent">
+                        <td>
+                            <input type="checkbox"
+                            name="choose-order"
+                            onchange="updateTotalmount()"
+                            id="choose-order">
+                        </td>
+                        <td>
+                            <img max-width="100%"
+                            height="100px"
+                            id="thumbnail" src="../../../../UploadImage/<?php echo htmlspecialchars($itemOrder[4]); ?>"
+                            alt="Product Image">
+                        </td>
+                        <td>
+                            <h4 class="CardName"><?php echo htmlspecialchars($itemOrder[1]); ?></h4>
+                        </td>
+                        <td class="price" data-price="<?php echo $itemOrder[3] ?>"></td>
+                        <td>
+                            <div class="soluong">
+                                <button class="btn" onclick="giam(this)">-</button>
+
+                                <input id="quantity"
+                                data-item-id="<?php echo $itemOrder[0];?>"
+                                type="number"
+                                value="<?php echo htmlspecialchars($itemOrder[2]); ?>"
+                                disabled
+                                min="1"
+                                max="100"
+                                onchange="updateTotal(this)">
+
+                                <button class="btn" onclick="tang(this)">+</button>
+                            </div>
+                        </td>
+                        <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
+                        <td>
+                            <form action="index.php?act=GioHang" method="post">
+                                <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
+                                <input type="submit" value="Xóa" name="del" class="btn-del">
+                            </form>
+                        </td>
+                    </tr>
+        <?php }
             }
         } else {
 
@@ -165,7 +232,12 @@ if (isset($_POST['addcart'])) {
                 <div>Tổng tiền: <span id="totalamount">0</span></div>
             </th>
             <th>
-                <form action="index.php?act=ThanhToan" method="post" id="checkout-form">
+                <form action="index.php?act=<?php 
+                if(isset($_SESSION['user_id'])) {
+                    echo "ThanhToan";
+                }else {
+                    echo "ThanhToanGuest";
+                }?>" method="post" id="checkout-form">
                     <input class="btn-mua" type="submit" value="Mua hàng" name="checkout">
                 </form>
             </th>
