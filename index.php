@@ -73,15 +73,24 @@
                 case 'ThanhToan':
                     include "assets/frontend/pages/Checkout/Checkout.php";
                     break;
+                case 'ThanhToanGuest':
+                    include "assets/frontend/pages/Checkout/CheckoutGuest.php";
+                    break;
                 // case 'bill':
                 //     include "./frontend/pages/MuaHang.php";
                 //     break;
+                case 'addDataGuest':
+                    include "./frontend/pages/ThemDataGuest.php";
+                    break;
+                case 'Muahangguest':
+                    include "./frontend/pages/MuaHangGuest.php";
+                    break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
             }
         } else {
-
+            
             include "./assets/frontend/pages/home/home.php";
         }
 

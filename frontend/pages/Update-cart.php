@@ -1,7 +1,7 @@
 <?php
 session_start();
 require __DIR__ . "../../../db/connect.php";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
     header('Content-Type: application/json');
     $data = file_get_contents('php://input');
     $cartItems = json_decode($data, true);
