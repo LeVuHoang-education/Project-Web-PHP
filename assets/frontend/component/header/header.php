@@ -134,21 +134,36 @@
                             <div class="underline"></div>
                         </li>
                         <li class="navbar-item">
-                            <a href="../../../../index.php?act=account&feature=brief">Tài khoản</a>
-                            <div class="underline"></div>
+                            <a href="../../../../index.php?act=account&feature=brief">Tài khoản <span class="arrow">&#8744;</a>
+                            <ul class="navbar-submenu">
+                                <?php if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != null) { ?>
+                                    <li><a href="../../../../index.php?act=account&feature=order">Đơn hàng</a></li>
+                                    <li><a href="../../../../index.php?act=account&feature=info">Thông tin cá nhân</a></li>
+                                    <li>
+                                        <form id="logoutForm" method="POST" action="../../../../frontend/pages/logout.php">
+                                            <input type="hidden" name="action" value="logout">
+                                    <li><a href="#" onclick="document.getElementById('logoutForm').submit(); return false;">Đăng xuất</a></li>
+                                    </form>
                         </li>
-                        <li class="navbar-item">
-                            <form action="../../../../frontend/pages/searchItems.php" method="POST" id="form-field">
-                                <div id="form-field-search">
-                                    <input id="input-search" type=" text" name="search-item" placeholder="search" />
-                                    <button class="icon-img" name="btn-reg" type="submit">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </form>
-                        </li>
+                    <?php } else { ?>
+                        <li><a class="signIn" data-modal="popupLogin" href="#">Đăng nhập</a></li>
+                        <li><a class="signUp" data-modal="popupSignUp" href="#">Đăng ký</a></li>
+                    <?php } ?>
+                    </ul>
+                    <div class="underline"></div>
+                    </li>
+                    <li class="navbar-item">
+                        <form action="../../../../frontend/pages/searchItems.php" method="POST" id="form-field">
+                            <div id="form-field-search">
+                                <input id="input-search" type=" text" name="search-item" placeholder="search" />
+                                <button class="icon-img" name="btn-reg" type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </li>
                     </ul>
                 </div>
 
@@ -161,7 +176,7 @@
         <div class="popup-content">
             <span class="popup-close" id="closePopupLogin">&times;</span>
             <h2>Đăng nhập</h2>
-            <form action="../../../../frontend/pages/DangNhap.php" method="post" class="popup-formlogin" >
+            <form action="../../../../frontend/pages/DangNhap.php" method="post" class="popup-formlogin">
                 <input type="text" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Mật khẩu" required>
                 <button type="submit">Đăng nhập</button>
@@ -179,7 +194,7 @@
             <h1><img src="/assets/frontend/img/Icon/SignUpIcon.png" alt=""></h1>
             <h2>Điền biểu mẫu để đăng kí</h2>
             <hr>
-            <form action="../../../../frontend/pages/DangKi.php" method="post" class="popup-formsignup" >
+            <form action="../../../../frontend/pages/DangKi.php" method="post" class="popup-formsignup">
                 <label for="username">Tên đăng nhập</label>
                 <input type="text" name="username" id="username" placeholder="Enter user name" required width="100%">
                 <label for="email">Email</label>
