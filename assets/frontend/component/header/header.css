@@ -2,6 +2,7 @@
   font-family: "MuseonModeno";
   src: url("../../src/font/MuseoModerno-Bold.ttf");
 }
+
 .header-container {
   background-color: white;
   padding: 0;
@@ -9,6 +10,7 @@
   width: 100%;
   height: auto;
 }
+
 /*Banners*/
 .banner-brand {
   padding: 0;
@@ -23,6 +25,7 @@
   font-family: "Helvetica Neue", Helvetica, Arial;
   text-shadow: 0 2px 4px #0158af;
 }
+
 .title-brand img {
   padding: 0;
   margin: 0;
@@ -63,7 +66,6 @@ svg {
 .current {
   color: white;
   text-decoration: none;
-  font-weight: bold;
   font-family: Arial, sans-serif;
 }
 
@@ -92,12 +94,12 @@ svg {
   color: black;
 }
 
-.image-brands {
-}
+.image-brands {}
 
 #image-brand {
   width: 45px;
 }
+
 .hr-header {
   width: 100%;
   height: 1px;
@@ -105,6 +107,7 @@ svg {
   padding: 0;
   background: linear-gradient(90deg, red, orange, rgb(209, 209, 60));
 }
+
 /*taskbar*/
 .taskbar-container {
   position: relative;
@@ -159,6 +162,7 @@ svg {
   position: relative;
   padding-bottom: 5px;
 }
+
 /*lien ket trong navbar*/
 .navbar-item a {
   display: block;
@@ -171,7 +175,6 @@ svg {
 .arrow {
   display: inline-block;
   margin-left: 10px;
-  transition: transform 0.3s ease;
 }
 
 /*menu dropdown*/
@@ -209,7 +212,7 @@ svg {
 }
 
 /*for search icon*/
-.navbar-item #form-field #form-field-search{
+.navbar-item #form-field #form-field-search {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -217,13 +220,15 @@ svg {
   width: 100%;
   height: 100%;
 }
-#form-field-search #input-search{
+
+#form-field-search #input-search {
   height: 2rem;
   width: auto;
   padding: 5px;
   border-radius: 50px;
   border: 1px solid #c1c1c156;
 }
+
 #form-field-search #input-search:focus {
   border-color: #006fdd;
   outline: none;
@@ -236,8 +241,8 @@ svg {
   opacity: 1;
 }
 
-#form-field-search button.icon-img:hover{
-  cursor:pointer;
+#form-field-search button.icon-img:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 1060px) {
@@ -267,7 +272,8 @@ svg {
 
 /*dada*/
 .popup {
-  display: none; /* Ẩn popup theo mặc định */
+  display: none;
+  /* Ẩn popup theo mặc định */
   position: fixed;
   left: 0;
   top: 0;
@@ -296,13 +302,15 @@ svg {
   font-size: 20px;
 }
 
-.popup-formlogin, .popup-formsignup {
+.popup-formlogin,
+.popup-formsignup {
   display: flex;
   flex-direction: column;
   height: auto;
 }
 
-.popup-formlogin input , .popup-formsignup input {
+.popup-formlogin input,
+.popup-formsignup input {
   margin-bottom: 10px;
   margin-top: 5px;
   padding: 5px;
@@ -310,7 +318,8 @@ svg {
   border: 1px solid #ddd;
 }
 
-.popup-formlogin button, .popup-formsignup button {
+.popup-formlogin button,
+.popup-formsignup button {
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -319,7 +328,8 @@ svg {
   cursor: pointer;
 }
 
-.popup-formlogin button:hover, .popup-formsignup button:hover {
+.popup-formlogin button:hover,
+.popup-formsignup button:hover {
   background-color: #000000;
   color: white;
 }
@@ -328,21 +338,25 @@ svg {
   width: 10%;
   height: auto;
 }
-.popup-content h1{
+
+.popup-content h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .popup-content label {
   font-weight: bold;
   font-family: Arial, sans-serif;
   margin: 0;
 }
+
 .popup-content a {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
+
 .popup-content a:hover {
   color: rgb(255, 255, 255);
   text-decoration: underline;
