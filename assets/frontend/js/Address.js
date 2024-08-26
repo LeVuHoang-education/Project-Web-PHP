@@ -1,6 +1,3 @@
-// var cityID;
-// var districtID;
-// var wardID;
 function getCities() {
   const url = "https://esgoo.net/api-tinhthanh/1/0.htm";
 
@@ -72,12 +69,12 @@ document.addEventListener("DOMContentLoaded", getCities);
 // Attach event listeners to city and district selects
 const citySelect = document.getElementById("city-name");
 citySelect.addEventListener("change", function () {
-  const cityId = this.value;
+  cityId = this.value;
   getDistricts(cityId);
 });
 
 const districtSelect = document.getElementById("district-name");
 districtSelect.addEventListener("change", function () {
-  const districtId = this.value;
+  districtId = this.value;
   getWards(districtId);
 });

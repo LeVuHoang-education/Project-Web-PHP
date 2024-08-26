@@ -60,7 +60,7 @@
         </div>
     </div>
     <script src="assets/frontend/js/effect.js"></script>
-    <script src="assets/frontend/js/Address.js"></script>
+    <script src="assets/frontend/js/Address_local.js"></script>
 </body>
 
 </html>

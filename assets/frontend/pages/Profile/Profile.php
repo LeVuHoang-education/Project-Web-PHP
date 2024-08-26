@@ -16,8 +16,10 @@
             <?php
             echo "<div class='profile-content'>";
             if (isset($_GET['act'])) {
+
                 if ($_GET['act'] == 'account' && isset($_SESSION['user_id'])) {
                     if (isset($_SESSION['use_id'])) {
+
                         switch ($_GET['feature']) {
                             case 'brief':
                                 include 'assets/frontend/pages/Profile/brief.php';
@@ -37,6 +39,8 @@
                             default:
                                 include 'assets/frontend/pages/Profile/brief.php';
                         }
+                    } else {
+                        echo "<div>Dell có tài khoản mà đòi vô đây xem chùa trang này à:D</div>";
                     }
                 } else {
                     echo "<h3>Bạn chưa đăng nhập</h3>";
