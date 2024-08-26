@@ -16,7 +16,7 @@
 
 </head>
 
-<body style="background-color: #EEEEEE;">
+<body style="background-color: #EEEEEE; margin:0;overflow-x:hidden;overflow-y:scroll;">
     <?php
     include_once "./assets/frontend/component/header/header.php";
     include_once "./frontend/global/variable.php";
@@ -89,7 +89,7 @@
                     break;
             }
         } else {
-            
+
             include "./assets/frontend/pages/home/home.php";
         }
 
@@ -99,7 +99,7 @@
     <?php
     include_once "./assets/frontend/component/Footer/footer.php";
     ?>
-    
+
     <script src="./assets/frontend/js/Modal.js"></script>
     <script src="./assets/frontend/component/header/header.js"></script>
     <script src="./assets/frontend/pages/Cart/Cart.js"></script>
