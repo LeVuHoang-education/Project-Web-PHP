@@ -25,9 +25,6 @@
             <div class="info">
                 <ul>
                     <li class="pro-name"><?php echo $row['proname']; ?></li>
-                    <li class="pro-origin">Xuất xứ:
-                        <?php echo $row['productOrigin']; ?>
-                    </li>
                     <li id="pro_price">
                         Giá: <script>
                             var price = <?php echo $row['proprice'] ?>;

@@ -1,70 +1,77 @@
-@font-face{
-    font-family:MuseoMadeno;
-    src:url("../../src/font/MuseoModerno-Bold.ttf");
+@font-face {
+  font-family: MuseoMadeno;
+  src: url("../../src/font/MuseoModerno-Bold.ttf");
 }
-body{
-    background-color: #EEEEEE;
+body {
+  background-color: #eeeeee;
 }
 
 /*for body content*/
 
-.container{
-    display:flex;
-    flex-direction: row;
-    margin: 20px auto;
-    width:100%;
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  width: 100%;
 }
 
-.content{
-    font-weight: bold;
-    font-family:MuseoMadeno;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.content {
+  font-weight: bold;
+  font-family: MuseoMadeno;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.content h1{
-    font-size: 40px;
-    text-shadow:0 5px 15px #0158AF;
-    padding:20px 0;
-    border-radius: 10px;
-}
-
-#ads{
-    width:90%;
-    margin:10px 0;
+.content h1 {
+  font-size: 40px;
+  text-shadow: 0 5px 15px #0158af;
+  padding: 20px 0;
+  border-radius: 10px;
 }
 
-img.ads-img{
-    width:100%;
-    height:auto;
+#ads {
+  width: 90%;
+  margin: 10px 0;
 }
 
-.main-container{
-    height:auto;
-    width: 100%;;
+img.ads-img {
+  width: 100%;
+  height: auto;
 }
 
-#category{
-    text-align:center;
-    margin:10px 0 ;
+.main-container {
+  height: auto;
+  width: 100%;
 }
 
-#show-products{
-    display:flex;
-    flex-direction:row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+#category {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#show-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 /*for others devices*/
-@media all and (max-width:960px){
-        /*for ads*/
-        .ads{
-            width:0;
-            margin:0;
-        }
-        .main-container{
-            width:100%;
-        }
+@media all and (max-width: 960px) {
+  .content {
+    flex-wrap: wrap;
+  }
+  .main-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 1366px) {
+  .content {
+    flex-wrap: wrap;
+  }
+  .main-container {
+    width: 100%;
+  }
 }
