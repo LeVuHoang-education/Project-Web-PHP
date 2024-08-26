@@ -183,7 +183,7 @@
             </form>
             <br>
             <a href="#" data-modal="popupSignUp">Đăng kí </a>
-            <a href="#">Quên mật khẩu?</a>
+            <a href="index.php?act=DatLaiMatKhau">Quên mật khẩu?</a>
         </div>
     </div>
 

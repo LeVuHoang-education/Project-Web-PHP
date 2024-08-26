@@ -75,6 +75,9 @@
                 case 'ThanhToanGuest':
                     include "assets/frontend/pages/Checkout/CheckoutGuest.php";
                     break;
+                case 'DatLaiMatKhau':
+                    include "assets/frontend/pages/Form/DatLaiMatKhau.php";
+                    break;
                 // case 'bill':
                 //     include "./frontend/pages/MuaHang.php";
                 //     break;
