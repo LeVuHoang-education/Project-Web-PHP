@@ -23,12 +23,18 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
         if ($row != null) {
             // Đăng nhập thành công
-            echo "Login successful";
-            $_SESSION['user_id'] = $row['userid']; //Luu thong tin vao session de su dung
-            header("Location: ../../index.php");
+             
+            if ($row['userrole'] == 'admin') {
+                $_SESSION['admin_id'] = $row['userid'];
+                header("Location: ../../adminpanel/pages/index.php");
+            } else {
+                $_SESSION['user_id'] = $row['userid']; //Luu thong tin vao session de su dung
+                echo json_encode(['success' => true, 'message' => 'Login successful']);
+            }
         } else {
-            echo "Login failed";
+            echo json_encode(['success' => false, 'message' => 'Tên đăng nhập hoặc mật khẩu không đúng.']);
         }
+        exit();
     } else {
         // Hiển thị lỗi nếu câu truy vấn thất bại
         echo "Error executing query: " . $stmt->error;
@@ -40,4 +46,3 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 } else {
     echo "Email and password are required";
 }
-?>

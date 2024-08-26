@@ -102,3 +102,7 @@ button {
     align-items: center;
     justify-content: center;
 }
+.box_phai p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

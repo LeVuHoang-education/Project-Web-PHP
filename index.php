@@ -99,11 +99,12 @@
     </div>
     <?php
     include_once "./assets/frontend/component/Footer/footer.php";
-       
     ?>
     
+    <script src="./assets/frontend/js/Modal.js"></script>
     <script src="./assets/frontend/component/header/header.js"></script>
     <script src="./assets/frontend/pages/Cart/Cart.js"></script>
+
 </body>
 
 </html

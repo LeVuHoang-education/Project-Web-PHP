@@ -118,7 +118,7 @@
                     <div class=" col-5"><?php echo $fileName ?></div>
                     <div class=" col-6">
                         <a href="../../adminpanel/pages/index.php?act=EditProduct&proid=<?php echo $row['proid'] ?>">Edit</a>
-                        <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" href="../../../../fontend/pages/DeleteProduct.php?proid= <?php echo $row['proid'] ?>">Delete</a>
+                        <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" href="../../../../frontend/pages/DeleteProduct.php?proid= <?php echo $row['proid'] ?>">Delete</a>
                     </div>
                 </li>
             <?php

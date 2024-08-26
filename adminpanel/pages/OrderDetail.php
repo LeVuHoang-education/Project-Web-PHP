@@ -37,7 +37,7 @@
             </div>
             <?php
             require('../../db/connect.php');
-            include('../../fontend/pages/Function.php');
+            include('../../frontend/pages/Function.php');
             $item = getItembyID($id);
             while ($row = $item->fetch_assoc()) {
                 $product = getProductbyID($row['proid']);
@@ -48,7 +48,7 @@
                     <div class="NameSL col-2">
                         <div><?php echo $row1['proname'] ?></div>
                         <br>
-                        <div>Số lượng: <?php echo $row['quantity'] ?></div>
+                        <div>Số lượng: <?php echo $row['quanitity'] ?></div>
                     </div>
                     <div class="col-3">
                         <script>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="itemPrice col-4">
                         <script>
-                            var itemprice = <?php echo $row['itemprice'] ?>;
+                            var itemprice = <?php echo ($row['quanitity'] * $row['price']) ?>;
                             document.write(nf.format(itemprice) + "<sup>đ</sup>");
                         </script>
                     </div>

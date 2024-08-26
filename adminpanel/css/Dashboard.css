@@ -1,0 +1,87 @@
+.dasboard-body {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-overview {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.overbox {
+    width: 22%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: aliceblue;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+.tttext {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tttext span {
+    display: flex;
+    align-items: flex-start;
+    text-align: start;
+    color: #000;
+}
+
+.tttext p {
+    font-size: 1.1em;
+    color: #000;
+    margin: 0;
+}
+
+.overbox img {
+    width: 40%;
+    height: auto;
+}
+.overbox:hover {
+    background-color: #f5d3d3;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.dashboard-recentorder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.dashboard-recentorder table{
+    width: 90%;
+    table-layout: fixed;
+    background-color: rgb(234, 226, 255);
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+}
+.dashboard-recentorder td, .dashboard-recentorder th{
+    padding: 10px;
+    text-align: center;
+}
+.dashboard-recentorder h2 {
+    width: 90%;
+    text-align: left;
+
+}
+.dashboard-recentorder tr:hover{
+    background-color: #f5d3d3;
+    cursor: pointer;
+    transition: 0.2s;
+}
