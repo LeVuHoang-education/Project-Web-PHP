@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include "../../fontend/pages/Function.php";
+    include "../../frontend/pages/Function.php";
     $getOD = getOrderbyID($_GET['ID']);
     $sql = "SHOW COLUMNS FROM orders LIKE 'status'";
     if ($rows = $conn->query($sql)->fetch_assoc()) {
@@ -20,7 +20,7 @@
     }
     while ($row = $getOD->fetch_assoc()) {
     ?>
-        <form action="../../fontend/pages/Updatestatus.php?orderid=<?php echo $row['orderid']?>" method="post">
+        <form action="../../frontend/pages/Updatestatus.php?orderid=<?php echo $row['orderid']?>" method="post">
             <label for="orderid">Mã đơn hàng</label>
             <input type="text" name="orderid" id="orderid" value="<?php echo $row['orderid']; ?>" disabled>
             <label for="status">Trạng thái</label>

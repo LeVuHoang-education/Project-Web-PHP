@@ -16,14 +16,17 @@ if (isset($_POST['Buy'])) {
 
 
     foreach ($dsitem as $item) {
-        $iteminfo = getItembyCartID($item);
-        $rows = $iteminfo->fetch_assoc();
-
-        if (!is_null($rows['itemprice']) && !is_null($rows['quantity'])) {
-            $total += $rows['itemprice'] * $rows['quantity'];
-        } else {
-            die("Lỗi: Giá hoặc số lượng của sản phẩm không hợp lệ.");
+        foreach ($_SESSION['cart'] as $cartItem) {
+            if ($cartItem[0] == $item) {
+                $total += $cartItem[2] * $cartItem[3];
+            }
         }
+
+        // if (!is_null($rows['itemprice']) && !is_null($rows['quantity'])) {
+        //     $total += $rows['itemprice'] * $rows['quantity'];
+        // } else {
+        //     die("Lỗi: Giá hoặc số lượng của sản phẩm không hợp lệ.");
+        // }
     }
 }
 if (isset($_SESSION['user_id'])) {
@@ -40,28 +43,41 @@ if (isset($_SESSION['user_id'])) {
     if ($stmt->execute()) {
         $orderID = $stmt->insert_id;
         $itemStmt = $conn->prepare("INSERT INTO `order-detail` (orderid, proid, quanitity, price) VALUES (?, ?, ?, ?)");
-        $deleteStmt = $conn->prepare("DELETE FROM `cart-item` WHERE cartid = ?");
+        $deleteStmt = $conn->prepare("DELETE FROM `cart-item` WHERE proID = ? AND userID = ?");
 
         foreach ($dsitem as $item) {
-
-
-            $iteminfo = getItembyCartID($item);
-            $row = $iteminfo->fetch_assoc();
-
             foreach ($_SESSION['cart'] as $key => $cartItem) {
-                if ($cartItem[0] == $row['proID']) {
+                if ($cartItem[0] == $item) {
+                    if (!$itemStmt->bind_param("iiid", $orderID, $cartItem[0], $cartItem[2], $cartItem[3])) {
+                        die("Lỗi khi gán tham số vào order-detail: " . $itemStmt->error);
+                    }
+                    if (!$itemStmt->execute()) {
+                        die("Lỗi khi thêm dữ liệu vào bảng order-detail: " . $itemStmt->error);
+                    }
+                    if (!$deleteStmt->bind_param("ii", $cartItem[0], $_SESSION['user_id'])) {
+                        die("Lỗi khi gán tham số vào cart-item: " . $deleteStmt->error);
+                    }
+                    if (!$deleteStmt->execute()) {
+                        die("Lỗi khi xóa dữ liệu vào bảng cart-item: " . $deleteStmt->error);
+                    }
                     unset($_SESSION['cart'][$key]);
-                    break;
                 }
             }
-
-            $itemStmt->bind_param("iiid", $orderID, $row['proID'], $row['quantity'], $row['itemprice']);
-            $itemStmt->execute();
-
-            $deleteStmt->bind_param("i", $item);
-            $deleteStmt->execute();
         }
+        // $row = $iteminfo->fetch_assoc();
 
+        // foreach ($_SESSION['cart'] as $key => $cartItem) {
+        //     if ($cartItem[0] == $row['proID']) {
+        //         unset($_SESSION['cart'][$key]);
+        //         break;
+        //     }
+        // }
+
+        // $itemStmt->bind_param("iiid", $orderID, $row['proID'], $row['quantity'], $row['itemprice']);
+        // $itemStmt->execute();
+
+        // $deleteStmt->bind_param("i", $item);
+        // $deleteStmt->execute();
         echo '<script>alert("Đặt hàng thành công");</script>';
         header('Location: ../../index.php?act=GioHang');
         exit();

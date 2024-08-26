@@ -24,7 +24,7 @@ function getCartbyID($id)
 function getItembyID($id)
 {
     global $conn;
-    $getItem_sql  = "SELECT * FROM orders_item where orderid = $id";
+    $getItem_sql  = "SELECT * FROM `order-detail` where orderid = $id";
     $result = $conn->query($getItem_sql);
     return $result;
 }

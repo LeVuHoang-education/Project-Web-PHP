@@ -46,8 +46,9 @@
                         $stmt->close();
                         $conn->close();
                     } else { ?>
-                        <a class="signIn" href="assets/frontend/pages/Form/SignIn.php">Đăng nhập</a>
-                        <a class="signUp" href="#">/Đăng ký</a>
+                        <a class="signIn" data-modal="popupLogin" href="#">Đăng nhập</a>
+                        <!-- <a class="signIn" href="assets/frontend/pages/Form/SignIn.php">Đăng nhập</a> -->
+                        <a class="signUp" data-modal="popupSignUp" href="#">/Đăng ký</a>
                     <?php } ?>
                 </div>
             </div>
@@ -137,9 +138,9 @@
                             <div class="underline"></div>
                         </li>
                         <li class="navbar-item">
-                            <form action="../../../../frontend/pages/searchItems.php" method="POST"  id="form-field">
+                            <form action="../../../../frontend/pages/searchItems.php" method="POST" id="form-field">
                                 <div id="form-field-search">
-                                    <input id="input-search" type=" text" name="search-item" placeholder="search"/>
+                                    <input id="input-search" type=" text" name="search-item" placeholder="search" />
                                     <button class="icon-img" name="btn-reg" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
@@ -152,6 +153,53 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- modal login -->
+    <div class="popup" id="popupLogin">
+        <div class="popup-content">
+            <span class="popup-close" id="closePopupLogin">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form action="../../../../frontend/pages/DangNhap.php" method="post" class="popup-formlogin" >
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <button type="submit">Đăng nhập</button>
+            </form>
+            <br>
+            <a href="#" data-modal="popupSignUp">Đăng kí </a>
+            <a href="#">Quên mật khẩu?</a>
+        </div>
+    </div>
+
+    <!-- modal signup -->
+    <div class="popup" id="popupSignUp">
+        <div class="popup-content">
+            <span class="popup-close" id="closePopupLogin">&times;</span>
+            <h1><img src="/assets/frontend/img/Icon/SignUpIcon.png" alt=""></h1>
+            <h2>Điền biểu mẫu để đăng kí</h2>
+            <hr>
+            <form action="../../../../frontend/pages/DangKi.php" method="post" class="popup-formsignup" >
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" name="username" id="username" placeholder="Enter user name" required width="100%">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required width="100%">
+                <label for="phonenumber">Số điện thoại</label>
+                <input type="text" name="phonenumber" id="phonenumber" required width="100%" placeholder="Enter your phone number">
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required width="100%">
+                <div class="genderI">
+                    <label for="male">Giới tính</label>
+                    <input type="radio" name="gender" id="male" value="nam">
+                    <label for="male">Nam</label>
+                    <input type="radio" name="gender" id="female" value="nữ">
+                    <label for="female">Nữ</label>
+                </div>
+                <br>
+                <button type="submit">Đăng kí </button>
+            </form>
+            <br>
+            <a href="#" data-modal="popupLogin">Đã có tài khoản? Đăng nhập</a>
         </div>
     </div>
     <script src="./assets/frontend/component/header/header.js"></script>

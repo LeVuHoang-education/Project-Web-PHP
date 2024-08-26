@@ -60,26 +60,29 @@ if (isset($_SESSION['user_id'])) {
             <th>Số lượng</th>
             <th>Thành tiền</th>
         </tr>
-        <?php foreach ($selectedItems as $item){
-            $items = getItembyCartID($item);
-            $row = $items->fetch_assoc();
+        <?php foreach ($selectedItems as $item) {
+            foreach ($_SESSION['cart'] as $cartItem) {
+                if ($cartItem[0] == $item) { ?>
+                    <tr class="content-main">
+                        <td> <img src="../../../UploadImage/<?php echo $cartItem[4] ?>" alt=""></td>
+                        <td><?php echo $cartItem[1] ?></td>
+                        <td>
+                            <script>
+                                document.write(nf.format(<?php echo $cartItem[3] ?>));
+                            </script>
+                        </td>
+                        <td><?php echo $cartItem[2] ?></td>
+                        <td>
+                            <script>
+                                document.write(nf.format(<?php echo ($cartItem[3] * $cartItem[2]) ?>));
+                            </script>
+                        </td>
+                    </tr>
+        <?php
+                }
+            }
+        }
         ?>
-            <tr class="content-main">
-                <td> <img src="../../../UploadImage/<?php echo $row['image_path'] ?>" alt=""></td>
-                <td><?php echo $row['proname'] ?></td>
-                <td>
-                    <script>
-                        document.write(nf.format(<?php echo $row['itemprice'] ?>));
-                    </script>
-                </td>
-                <td><?php echo $row['quantity'] ?></td>
-                <td>
-                    <script>
-                        document.write(nf.format(<?php echo ($row['quantity'] * $row['itemprice']) ?>));
-                    </script>
-                </td>
-            </tr>
-        <?php } ?>
     </table>
     <div class="DatHang">
         <div class="pttt-checkout">
@@ -99,11 +102,13 @@ if (isset($_SESSION['user_id'])) {
                 <script>
                     var total = 0;
                     <?php foreach ($selectedItems as $item) {
-                        $items = getItembyCartID($item);
-                        $row = $items->fetch_assoc();
-                    ?>
-                        total += <?php echo ($row['quantity'] * $row['itemprice']) ?>;
-                    <?php } ?>
+                        foreach ($_SESSION['cart'] as $cartItem) {
+                            if ($cartItem[0] == $item) { ?>
+                                total += <?php echo ($cartItem[2] * $cartItem[3]) ?>;
+
+                    <?php }
+                        }
+                    } ?>
                     document.write(nf.format(total));
                 </script>
             </span>

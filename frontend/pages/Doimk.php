@@ -2,7 +2,7 @@
 session_start();
 require_once "../../db/connect.php";
 include "Function.php";
-if(isset($_POST['doimk']) && $_POST['password'] == getPasswordbyID($_SESSION['user_id'])) {
+if(isset($_POST['doimk']) && $_POST['password'] == (getUserbyID($_SESSION['user_id']))->fetch_assoc()['password']) {
     $Password = htmlspecialchars($_POST['new_password']);
     $id = $_SESSION['userid'];
 

@@ -40,7 +40,7 @@
                     <td><?php echo $row['userrole'];  ?></td>
                     <td>
                         <a href="index.php?act=EditUser&userid=<?php echo $row['userid']?>"> <button type="submit">Edit</button> </a>
-                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../fontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>
+                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../frontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>
                     </td>
                 </tr>
             <?php

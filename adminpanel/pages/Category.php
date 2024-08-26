@@ -40,7 +40,7 @@
                     <td class="catcol-1"> <?php echo $row['catid'] ?></td>
                     <td class="catcol-2"> <?php echo $row['catname'] ?></td>
                     <td class="catcol-3 ">
-                        <a onclick="return confirm('Ban co muon xoa category nay');" href="../../fontend/pages/XoaDanhMuc.php?catid=<?php echo $row['catid'] ?>"> <button type="submit">Delete</button> </a>
+                        <a onclick="return confirm('Ban co muon xoa category nay');" href="../../frontend/pages/XoaDanhMuc.php?catid=<?php echo $row['catid'] ?>"> <button type="submit">Delete</button> </a>
                     </td>
                 </tr>
             <?php
