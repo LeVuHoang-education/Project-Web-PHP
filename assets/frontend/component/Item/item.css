@@ -1,7 +1,8 @@
 .product {
   border-radius: 20px;
-  width: 250px;
-  height: 400px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 380px;
   margin: 20px;
   box-shadow: 0 2px 4px #8b8b8b;
   background-color: #cfcfcf5e;

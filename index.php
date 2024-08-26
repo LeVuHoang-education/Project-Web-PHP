@@ -24,8 +24,7 @@
     $maxPrice = 0;
     ?>
 
-    <div class="layout-container">
-
+    <div class="layout-container" style="width: 100vw;">
         <?php
         include_once "./db/connect.php";
         echo "<div class='content'>";
