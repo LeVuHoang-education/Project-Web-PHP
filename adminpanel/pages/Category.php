@@ -11,7 +11,7 @@
 <body>
     <div id="addCatForm" class="addCat">
         <span class="close">&times;</span>
-        <form action="../../fontend/pages/ThemDanhMuc.php" method="post">
+        <form action="../../frontend/pages/ThemDanhMuc.php" method="post">
             <div class="combobox-Cat">
                 <label for="catname">Category name: </label>
                 <input type="text" name="catname" id="catname" required placeholder="Enter category name">
