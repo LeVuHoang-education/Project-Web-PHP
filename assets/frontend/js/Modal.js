@@ -55,8 +55,6 @@ window.addEventListener('click', function (event)
     }
 });
 
-
-
 document.querySelector('.popup-formlogin').addEventListener('submit', function (event)
 {
     event.preventDefault();
@@ -72,11 +70,16 @@ document.querySelector('.popup-formlogin').addEventListener('submit', function (
         {
             if (data.success)
             {
-                // Đăng nhập thành công: tắt popup và cập nhật trạng thái
-                document.getElementById('popupLogin').style.display = 'none';
-                location.reload();
-                // Cập nhật trạng thái người dùng
-                //document.getElementById('account').innerHTML = '<a class="current" href="../../../../index.php?act=account&feature=order">Xin chào, ' + formData.get('username') + '</a>';
+                if (data.redirect)
+                {
+                    // Chuyển hướng đến trang admin nếu có URL trong redirect
+                    window.location.href = data.redirect;
+                } else
+                {
+                    // Đăng nhập thành công và cập nhật trạng thái người dùng
+                    document.getElementById('popupLogin').style.display = 'none';
+                    location.reload();
+                }
             } else
             {
                 // Hiển thị lỗi nếu đăng nhập không thành công
@@ -105,7 +108,7 @@ document.querySelector('.popup-formsignup').addEventListener('submit', function 
     {
         passwordError.style.display = 'none';
     }
-    
+
     var formData = new FormData(this);
 
     fetch('../../../../frontend/pages/DangKi.php', {

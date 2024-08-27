@@ -73,10 +73,25 @@ function getAddressbyID($id)
 function getUserbyID($id)
 {
     global $conn;
-    $getPassword_sql = "SELECT * FROM account where userid = $id";
-    $result = $conn->query($getPassword_sql);
+    $getPassword_sql = "SELECT * FROM account where userid = ?";
+    $stmt = $conn->prepare($getPassword_sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result;
 }
+function getGuestbyID($id)
+{
+    global $conn;
+    $getGuest_sql = "SELECT * FROM guest where guestid = ?";
+    $stmt = $conn->prepare($getGuest_sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+
 
 function fetchDataFromAPi($url)
 {

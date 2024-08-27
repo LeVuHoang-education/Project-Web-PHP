@@ -1,20 +1,21 @@
 <?php
 session_start();
 require('../../db/connect.php');
+header('Content-Type: application/json');
 
-// Kiểm tra xem các biến POST có tồn tại hay không
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // Sử dụng prepared statements để ngăn chặn SQL injection
-    $stmt = $conn->prepare("SELECT * FROM account WHERE email = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT * FROM account WHERE email = ?");
 
     if ($stmt === false) {
-        die("Error preparing the SQL statement: " . $conn->error);
+        echo json_encode(['success' => false, 'message' => "Error preparing the SQL statement: " . $conn->error]);
+        exit();
     }
 
-    $stmt->bind_param("ss", $email, $password);
+    $stmt->bind_param("s", $email);
 
     // Kiểm tra xem câu truy vấn có thành công hay không
     if ($stmt->execute()) {
@@ -22,27 +23,28 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $row = $result->fetch_assoc();
 
         if ($row != null) {
-            // Đăng nhập thành công
-             
-            if ($row['userrole'] == 'admin') {
-                $_SESSION['admin_id'] = $row['userid'];
-                header("Location: ../../adminpanel/pages/index.php");
+            // Kiểm tra mật khẩu
+            if ($password == $row['password']) {
+                // Đăng nhập thành công
+                if ($row['userrole'] == 'admin') {
+                    $_SESSION['admin_id'] = $row['userid'];
+                    echo json_encode(['success' => true, 'redirect' => 'adminpanel/pages/index.php']);
+                } else {
+                    $_SESSION['user_id'] = $row['userid'];
+                    echo json_encode(['success' => true, 'message' => 'Login successful']);
+                }
             } else {
-                $_SESSION['user_id'] = $row['userid']; //Luu thong tin vao session de su dung
-                echo json_encode(['success' => true, 'message' => 'Login successful']);
+                echo json_encode(['success' => false, 'message' => 'Tên đăng nhập hoặc mật khẩu không đúng.']);
             }
         } else {
             echo json_encode(['success' => false, 'message' => 'Tên đăng nhập hoặc mật khẩu không đúng.']);
         }
-        exit();
     } else {
-        // Hiển thị lỗi nếu câu truy vấn thất bại
-        echo "Error executing query: " . $stmt->error;
+        echo json_encode(['success' => false, 'message' => "Error executing query: " . $stmt->error]);
     }
 
-    // Đóng prepared statement và kết nối
     $stmt->close();
     $conn->close();
 } else {
-    echo "Email and password are required";
+    echo json_encode(['success' => false, 'message' => 'Email and password are required']);
 }
