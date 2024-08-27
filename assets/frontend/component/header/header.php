@@ -58,16 +58,16 @@
         <div class="header">
             <div class="intro-brand">
                 <div class="logo">
-                    <img class="thumbnail-brand" src="./assets/frontend/src/Home/LogoFA.png" alt="Logo" />
+                    <img class="thumbnail-brand" src="./assets/frontend/src/header/logo-nhat-hoang.png" alt="Logo" />
                 </div>
                 <div class="title-brand">
                     <a href="../../pages/home/home.php"><img src="./assets/frontend/src/header/banner.png" width="100%" height="auto" /></a>
                 </div>
                 <div class="image-brands">
-                    <img id="image-brand" src="./assets/frontend/src/Home/LogoFA.png" alt="Image" />
-                    <img id="image-brand" src="./assets/frontend/src/Home/LogoFA.png" alt="Image" /><br />
-                    <img id="image-brand" src="./assets/frontend/src/Home/SnoopyGaming.jpg" alt="Image" />
-                    <img id="image-brand" src="./assets/frontend/src/Home/space-themed-gaming-logo-template-3274.png" alt="Image" />
+                    <img id="image-brand" src="./assets/frontend/src/header/logo-nhat-hoang.png" alt="Image" />
+                    <img id="image-brand" src="./assets/frontend/src/header/logo-minh-hai.png" alt="Image" /><br />
+                    <img id="image-brand" src="./assets/frontend/src/header/logo-an-nam.png" alt="Image" />
+                    <img id="image-brand" src="./assets/frontend/src/header/noi-that-hoang-gia.png" alt="Image" />
                 </div>
             </div>
         </div>
