@@ -183,7 +183,7 @@
             </form>
             <br>
             <a href="#" data-modal="popupSignUp">Đăng kí </a>
-            <a href="#">Quên mật khẩu?</a>
+            <a href="index.php?act=DatLaiMatKhau">Quên mật khẩu?</a>
         </div>
     </div>
 
@@ -212,6 +212,7 @@
                 </div>
                 <br>
                 <button type="submit">Đăng kí </button>
+                <div id="passwordError" style="color: red; display: none;">Mật khẩu phải bao gồm ít nhất 1 chữ hoa , chữ thường, số và phải có ít nhất 8 kí tự</div>
             </form>
             <br>
             <a href="#" data-modal="popupLogin">Đã có tài khoản? Đăng nhập</a>

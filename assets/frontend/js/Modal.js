@@ -93,6 +93,19 @@ document.querySelector('.popup-formsignup').addEventListener('submit', function 
 {
     event.preventDefault();
 
+    var password = document.getElementById('password').value;
+    var passwordError = document.getElementById('passwordError');
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (!passwordRegex.test(password))
+    {
+        passwordError.style.display = 'block';
+        return;
+    } else
+    {
+        passwordError.style.display = 'none';
+    }
+    
     var formData = new FormData(this);
 
     fetch('../../../../frontend/pages/DangKi.php', {
