@@ -31,7 +31,7 @@
                     <div class="field-form">
                         <label for="TDN">Tên đăng nhập</label>
                         <input type="text" id="TDN" name="TDN" placeholder="Tên đăng nhập" value="<?= $username ?>" disabled>
-                        <input type="hidden" name="userid" value="<?= $id ?>">;
+                        <input type="hidden" name="userid" value="<?= $id ?>">
                     </div>
                     <div class="field-form">
                         <label for="email">Email</label>
