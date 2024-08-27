@@ -32,14 +32,25 @@
                         $userid = $_SESSION["user_id"];
                         include "db/connect.php";
                         include "frontend/global/variable.php";
-                        $stmt = $conn->prepare("SELECT * FROM account WHERE userid = ?");
-                        $stmt->bind_param("i", $userid);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        $user = $result->fetch_assoc();
+                        include "frontend/pages/Function.php";
 
-                        $nameAccount = $user['username'];
-
+                        $check = getTTKH($_SESSION['user_id']);
+                        $data = $check->fetch_assoc();
+                        if ($data != null) {
+                            $stmt = $conn->prepare("SELECT fullname FROM ttkh WHERE userid=?");
+                            $stmt->bind_param("i", $userid);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            $account = $result->fetch_assoc();
+                            $nameAccount = $account['fullname'];
+                        } else {
+                            $stmt = $conn->prepare("SELECT * FROM account WHERE userid = ?");
+                            $stmt->bind_param("i", $userid);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            $user = $result->fetch_assoc();
+                            $nameAccount = $user['username'];
+                        }
                     ?>
                         <a class="current" href='../../../../index.php?act=account&feature=order'><?php echo $nameAccount ?></a>
                     <?php

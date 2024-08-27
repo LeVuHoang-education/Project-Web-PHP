@@ -14,6 +14,8 @@
                             $birthday = $_POST['birthday'];
                             $username = $_POST['username'];
 
+                            $_SESSION['username'] = $username;
+
                             $UpdateUser_sql = "UPDATE `account` SET email = ?, phonenumber = ?, gender = ? WHERE userid = ?";
                             $stmt = $conn->prepare($UpdateUser_sql);
                             $stmt->bind_param("ssss", $email, $phonenumber, $gender, $_SESSION["user_id"]);

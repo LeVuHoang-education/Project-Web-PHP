@@ -1,21 +1,17 @@
-function getBanks() {
-  const url = "https://api.viqr.net/list-banks/";
-  fetch(url)
-    .then((reponse) => reponse.json())
-    .then((data) => {
-      if (data.error === 0) {
-        const bankSelect = document.getElementById("name-bank");
-        data.data.forEach((bank) => {
-          const option = document.createElement("option");
-          option.value = bank.id;
-          option.textContent = bank.name;
-          bankSelect.appendChild(option);
-        });
-      } else {
-        console.error("Error fetching bank data: ",error);
-      }
-    })
-    .catch((error) => console.error("Error fetching bank data:", error));
-}
+document.addEventListener("DOMContentLoaded", executeData);
 
-document.addEventListener("DOMContentLoaded", getBanks);
+function executeData() {
+  fetch("frontend/src_xml_htm/api_full_bank.json")
+    .then((response) => response.json())
+    .then((data) => {
+      data.data.forEach(bank => {
+        
+        const bankSelect = document.getElementById("name-bank");
+        const option = document.createElement("option");
+        option.value = bank.short_name;
+        option.textContent = bank.name;
+        bankSelect.appendChild(option);
+        
+      });
+    });
+}

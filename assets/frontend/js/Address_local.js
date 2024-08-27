@@ -4,7 +4,7 @@ var wardId;
 document.addEventListener("DOMContentLoaded", executeData); // Corrected function name
 
 function executeData() {
-  fetch("frontend/src_xml_htm/api_full.json")
+  fetch("frontend/src_xml_htm/api_full_administration.json")
     .then((response) => response.json())
     .then((data) => {
       data.data.forEach((city) => {
