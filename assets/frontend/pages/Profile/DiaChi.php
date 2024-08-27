@@ -84,7 +84,7 @@
                     </div>
                     <label for="number-house">Số nhà + đường</label>
                     <div class="box-input">
-                        <input type="text" id="number-house" name="number-house" required>
+                        <input type="text" id="number-house" name="number-house" required value="">
                     </div>
                     <div id="submit">
                         <button type="submit" value="ThemDC" name="ThemDC">Thêm địa chỉ</button>

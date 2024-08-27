@@ -16,11 +16,11 @@ if (isset($_POST['ThemDC'])) {
 
 
     if ($stmt->execute()) {
-        header("Location: ../../index.php?act=account");
+        header("Location: ../../index.php?act=account&feature=brief");
         echo "<script>alert('Thêm địa chỉ thành công')</script>";
         exit();
     } else {
-        header("Location:../../index.php?act=account");
+        header("Location:../../index.php?act=account&feature=brief");
         echo "<script>alert('Add failed')</script>";
         exit();
     }

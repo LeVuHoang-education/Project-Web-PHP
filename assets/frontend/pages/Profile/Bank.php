@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="add-account-bank hidden">
-                <form class="field-form">
+                <form class="field-form" action="" method="POST">
                     <label for="name-bank">Tên ngân hàng</label>
                     <div class="box-input">
                         <select id="name-bank" name="name-bank">
