@@ -138,7 +138,7 @@
                             <ul class="navbar-submenu">
                                 <?php if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != null) { ?>
                                     <li><a href="../../../../index.php?act=account&feature=order">Đơn hàng</a></li>
-                                    <li><a href="../../../../index.php?act=account&feature=info">Thông tin cá nhân</a></li>
+                                    <li><a href="../../../../index.php?act=account&feature=brief">Thông tin cá nhân</a></li>
                                     <li>
                                         <form id="logoutForm" method="POST" action="../../../../frontend/pages/logout.php">
                                             <input type="hidden" name="action" value="logout">

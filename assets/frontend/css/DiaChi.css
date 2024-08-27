@@ -33,13 +33,36 @@
 }
 
 //for bank list
-.bank-list {
-}
 .empty {
   width: 50%;
   color: red;
 }
 
+#address-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#address-field .address-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#btn-submit {
+  padding: 10px 12px;
+  background-color: #0171E0;
+  border-radius: 5px;
+  margin: 10px 0;
+  opacity:1;
+  font-weight:bold;
+}
+#btn-submit:hover{
+  cursor:pointer;
+}
 //for add account banking information
 .add-account-bank {
 }
@@ -98,6 +121,6 @@
   border-radius: 5px;
 }
 
-#submit button{
+#submit button {
   opacity: 1;
 }

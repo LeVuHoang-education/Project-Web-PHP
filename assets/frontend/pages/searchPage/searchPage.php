@@ -26,14 +26,14 @@
                     <div class="show-content">
                         <label>Từ</label>
                         <div id="min">
-                            <input type="range" name="min-range" id="min-range" min="0" max="50000000" value=0 oninput="changeValue()">
+                            <input type="range" name="min-range" id="min-range" min="0" max="50000000" value=0 step="1000" oninput="changeValue()">
                             <div id="min-value">0</div>
                         </div>
                     </div>
                     <div class="show-content">
                         <label>Đến</label>
                         <div id="max">
-                            <input type="range" name="max-range" id="max-range" min="0" max="50000000" value=50000000 oninput="changeValue()">
+                            <input type="range" name="max-range" id="max-range" min="0" max="50000000" value=50000000 step="1000" oninput="changeValue()">
                             <div id="max-value">50000000</div>
                         </div>
                     </div>
@@ -55,14 +55,19 @@
         </div>
     </div>
     <script>
-        window.onload = function() {
-            var minValue = document.getElementById("min-range");
-            var maxValue = document.getElementById("max-range");
+        var minRange = document.getElementById("min-range");
+        var maxRange = document.getElementById("max-range");
 
-            minValue.value = <?= $_SESSION['minValue'] ?>;
-            maxValue.value = <?= $_SESSION['maxValue'] ?>;
-            alert(minValue);
-        }
+        var minValue = document.getElementById("min-value");
+        var maxValue = document.getElementById("max-value");
+
+        minRange.value = "<?= $_SESSION['minValue'] ?>";
+        maxRange.value = "<?= $_SESSION['maxValue'] ?>";
+
+        var nf = new Intl.NumberFormat();
+
+        minValue.textContent = "<?php echo $_SESSION['minValue'] ?>";
+        maxValue.textContent = "<?php echo $_SESSION['maxValue'] ?>";
     </script>
     <?php
     unset($_SESSION['minValue']);
