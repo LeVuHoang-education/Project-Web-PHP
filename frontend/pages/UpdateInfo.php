@@ -1,44 +1,51 @@
-<?php
-require('../../db/connect.php');
+ <?php
+    require('../../db/connect.php');
+    include_once('./Function.php');
+    session_start();
+    if (isset($_SESSION['user_id'])) {
+        if (isset($_POST['username'])) {
+            if (isset($_POST['email'])) {
+                if (isset($_POST['phonenumber'])) {
+                    if (isset($_POST['gender'])) {
+                        if (isset($_POST['birthday'])) {
+                            $email = $_POST['email'];
+                            $phonenumber = $_POST['phonenumber'];
+                            $gender = $_POST['gender'];
+                            $birthday = $_POST['birthday'];
+                            $username = $_POST['username'];
 
-// Kiểm tra và lấy các giá trị từ GET và POST
-if (isset($_POST['userid']) && isset($_POST['email']) && isset($_POST['phonenumber']) && isset($_POST['gender']) && isset($_POST['birthday'])) {
-    $userid = $_GET['userid'];
-    $email = $_POST['email'];
-    $phonenumber = $_POST['phonenumber'];
-    $gender = $_POST['gender'];
-    $birthday = $_POST['birthday'];
+                            $UpdateUser_sql = "UPDATE `account` SET email = ?, phonenumber = ?, gender = ? WHERE userid = ?";
+                            $stmt = $conn->prepare($UpdateUser_sql);
+                            $stmt->bind_param("ssss", $email, $phonenumber, $gender, $_SESSION["user_id"]);
+                            $stmt->execute();
 
-    // Câu lệnh chuẩn bị
-    $UpdateUser_sql = "UPDATE account SET username = ?, email = ?, phonenumber = ?, gender = ? WHERE userid = ?";
-    $stmt = $conn->prepare($UpdateUser_sql);
+                            $check = getTTKH($_SESSION['user_id']);
+                            $data = $check->fetch_assoc();
 
-    if ($stmt) {
-        // Liên kết các tham số
-        $stmt->bind_param("ssssi", $username, $email, $phonenumber, $gender, $userid);
-        $stmt->execute();
+                            if ($data != null) {
+                                $updateTTKH_sql = "UPDATE `ttkh` SET fullname =?, birthday =? WHERE userid =?";
+                                $stmt = $conn->prepare($updateTTKH_sql);
+                                $stmt->bind_param("sss", $username, $birthday, $_SESSION["user_id"]);
+                                $stmt->execute();
 
-        $UpdateUser_sql = "UPDATE `ttkh` SET birthday = ? WHERE userid = ?";
-        $stmt = $conn->prepare($UpdateUser_sql);
-        // Giả sử $birthday là một đối tượng DateTime
-        $birthdayString = $birthday->format('Y-m-d');
+                                $stmt->close();
+                                $conn->close();
+                                header('Location:../../../../index.php?act=account&feature=brief');
+                                exit();
+                            } else {
+                                $insertTTKH_sql = "INSERT INTO `ttkh` (userid, fullname, birthday) VALUES (?,?,?)";
+                                $stmt = $conn->prepare($insertTTKH_sql);
+                                $stmt->bind_param("sss", $_SESSION['user_id'], $username, $birthday);
+                                $stmt->execute();
 
-        $stmt->bind_param("si", $birthdayString, $userid);
-        $stmt->execute();
-        if ($stmt->affected_rows > 0) {
-            // Chuyển hướng sau khi cập nhật thành công
-            header("Location:../../adminpanel/pages/index.php?act=TaiKhoan");
-            exit();
-        } else {
-            echo "Cập nhật không thành công hoặc không có thay đổi.";
-        }
-
-        $stmt->close();
-    } else {
-        echo "Lỗi chuẩn bị câu lệnh.";
-    }
-
-    $conn->close();
-} else {
-    echo "Dữ liệu không đầy đủ.";
-}
+                                $stmt->close();
+                                $conn->close();
+                                header('Location:../../../../index.php?act=account&feature=brief');
+                                exit();
+                            }
+                        } else echo "Can not find the user birthday";
+                    } else echo "Can not find the user gender";
+                } else echo "Can not find the user phone number";
+            } else echo "Can not find the user email";
+        } else echo "Can not find the user name";
+    } else echo "Can not find the user id";

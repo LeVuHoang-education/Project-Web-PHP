@@ -9,7 +9,7 @@
 
 <body>
     <?php if (isset($_SESSION['user_id'])) { ?>
-        <form action="frontend/pages/UpdateInfo.php" class="formpro">
+        <form action="frontend/pages/UpdateInfo.php" class="formpro" method="POST">
             <div class="profile-header">
                 <h3>Hồ sơ của tôi</h3>
                 <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
@@ -22,16 +22,26 @@
             $row = $result->fetch_assoc();
             $id = $row["userid"];
             $email = $row["email"];
-            $username = $row["username"];
             $phonenumber = $row["phonenumber"];
+            $gender=$row["gender"];
             ?>
 
             <div class="main-content">
                 <div class="tttrai">
                     <div class="field-form">
-                        <label for="TDN">Tên đăng nhập</label>
-                        <input type="text" id="TDN" name="TDN" placeholder="Tên đăng nhập" value="<?= $username ?>" disabled>
-                        <input type="hidden" name="userid" value="<?= $id ?>">
+                        <?php
+                        $id = $_SESSION['user_id'];
+                        $sql_1 = "SELECT * FROM `ttkh` WhERE userid=$id";
+                        $result_1 = $conn->query($sql_1);
+                        $row_1 = $result_1->fetch_assoc();
+                        if ($row_1 != null) {
+                            $username = $row_1["fullname"];
+                        } else {
+                            $username = "";
+                        }
+                        ?>
+                        <label for="TDN">Tên người dùng</label>
+                        <input type="text" id="TDN" name="username" placeholder="Tên đăng nhập" value="<?= $username ?>">
                     </div>
                     <div class="field-form">
                         <label for="email">Email</label>
@@ -43,17 +53,20 @@
                     </div>
                     <div class="field-form">
                         <label>Giới tính</label>
-                        <input type="radio" name="gender" value="male" <?php if ($row['gender'] == 'nam') echo "checked"; ?>>nam
-                        <input type="radio" name="gender" value="female" <?php if ($row['gender'] == 'nữ') echo "checked"; ?>>nữ
+                        <input type="radio" name="gender" value="nam" <?php if ($gender == 'nam') echo "checked"; ?>>nam
+                        <input type="radio" name="gender" value="nữ" <?php if ($gender == 'nữ') echo "checked"; ?>>nữ
                     </div>
                     <div class="field-form">
-                        <?php $id = $_SESSION['user_id'];
-                        $sql = "SELECT * FROM `ttkh` WhERE userid=$id";
-                        $result = $conn->query($sql);
-                        $row = $result->fetch_assoc();
-                        if ($row != null) {
-                            $birthday = $row["bidthday"];
-                        } else $birthday = "";
+                        <?php
+                        $id = $_SESSION['user_id'];
+                        $sql_1 = "SELECT * FROM `ttkh` WhERE userid=$id";
+                        $result_1 = $conn->query($sql_1);
+                        $row_1 = $result_1->fetch_assoc();
+                        if ($row_1 != null) {
+                            $birthday = $row_1["birthday"];
+                        } else {
+                            $birthday = null;
+                        }
                         ?>
                         <label for="birthday">Ngày sinh</label>
                         <input type="date" name="birthday" id="birthday" value="<?= $birthday ?>">

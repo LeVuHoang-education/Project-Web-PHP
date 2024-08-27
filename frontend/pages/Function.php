@@ -185,7 +185,7 @@ function getTTKH($id)
     global $conn;
     $getTTKH = "SELECT * FROM ttkh WHERE userid = ?";
     $stmt = $conn->prepare($getTTKH);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("i", $id);    
     if (!$stmt->execute()) {
         die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
     }
