@@ -20,7 +20,41 @@
         </div>
         <hr class="line">
         <div class="bank-content">
-            <div class="bank-list empty"> Bạn chưa có địa chỉ nào để giao hàng.
+            <div class="bank-list">
+                <?php
+                $id = $_SESSION['user_id'];
+                $sql = "SELECT * FROM `dckh` WHERE userid=$id";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows == 0) { ?>
+                    <div class="empyt">
+                        Bạn chưa có địa chỉ nào để giao hàng.
+                    </div>
+                <?php } else { ?>
+                    <form name="address" id="address-field" method="post" action="frontend/pages/setDefaultAddress.php">
+                        <?php
+                        $count = 0;
+                        while ($row = $result->fetch_assoc()) {
+                            $count++;
+                        ?>
+                            <div class="address-item">
+                                <div class="address">Địa chỉ <?php $address = " " . $count . ": " . $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
+                                                                echo $address;  ?></div>
+                                <input type="radio" name="default" value=<?= $row['idDC'] ?> <?php if ($row['defaultDC'] == true) echo "checked";
+                                                                                                else echo "unchecked"; ?>>
+                                <?php if ($row["defaultDC"] == true) { ?>
+                                    <input type="hidden" name="currentDefault" value="<?= $row['idDC'] ?>" />
+                                <?php } ?>
+                            </div>
+                        <?php
+                        } ?>
+                        <div style="display:flex;justify-content:center;width:100%;">
+                            <button id="btn-submit" type="submit">Đặt làm mặc định</button>
+                        </div>
+                    </form>
+                <?php
+                }
+                ?>
                 <hr class="line">
                 <div id="submit">
                     <button id="btn" type="submit" onclick="showingLinkingForm()">Thêm địa chỉ mới</button>
