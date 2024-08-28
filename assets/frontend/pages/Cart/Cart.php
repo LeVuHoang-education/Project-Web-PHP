@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include __DIR__ . "../../../../../frontend/pages/Function.php";
+include_once __DIR__ . "../../../../../frontend/pages/Function.php";
 //ktra gio hang co ton tai ch
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
