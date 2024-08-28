@@ -16,14 +16,12 @@ if (isset($_SESSION['user_id'])) {
     $data_dc = $conn->query($sql);
     $row = $data_dc->fetch_assoc();
     if ($row != null) {
-
         $data_dc = getDC($_SESSION['user_id']);
         $data_nh = getNhbyID($_SESSION['user_id']);
         $data_tt = getTTKH($_SESSION['user_id']);
         $data_user = getUserbyID($_SESSION['user_id']);
 
-
-        if ($data_tt->num_rows > 0) {
+      if ($data_tt->num_rows > 0) {
             $ten = $data_tt->fetch_assoc()['fullname'];
         } else $ten = $data_user->fetch_assoc()['username'];
 

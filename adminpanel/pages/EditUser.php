@@ -62,9 +62,6 @@
                 <label for="phonenumber">Phone Number</label><br>
                 <input type="text" name="phonenumber" id="phonenumber" required width="100%" value="<?php echo $row['phonenumber']?>">
                 <br>
-                <label for="password">Password</label><br>
-                <input type="password" name="password" id="password" required width="100%" value="<?php echo $row['password']?>" >
-                <br>
                 <div class="genderI">
                     <label for="male">Gender: </label>
                     <input type="radio" name="gender" id="male" value="nam">

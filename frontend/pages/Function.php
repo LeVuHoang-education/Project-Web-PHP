@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '../../../db/connect.php';
 function getOrder()
-{
+{   
     global $conn;
     $getOD_sql = "SELECT * FROM orders order by orderid";
     $result = $conn->query($getOD_sql);
