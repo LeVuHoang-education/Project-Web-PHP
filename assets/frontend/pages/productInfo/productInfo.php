@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         var nf = new Intl.NumberFormat();
     </script>
@@ -44,19 +44,28 @@
                     </div>
                     <div class="act">
                         <div class="btn">
-                            <button class="order-btn">
-                                <a href="../../../../index.php?act=shopping">
-                                    Mua ngay
-                                </a>
+                            <button class="order-btn" <?php
+                                                        if ($row['prostock'] == 0) {
+                                                            echo "disabled";
+                                                        }
+                                                        ?>>
+                                <span>
+                                    <a href="../../../../index.php?act=shopping">
+                                        Mua ngay
+                                    </a>
+                                </span>
                             </button>
-                            <form id="form-add-cart" action= "../../../../index.php?act=GioHang" method="post">
+                            <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
                                 <input type="hidden" name="idSP" value="<?php echo $id ?> ">
                                 <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
                                 <input type="hidden" name="priceSP" value="<?php echo $row['proprice'] ?>">
                                 <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
-                                <input type="submit" class="pre-order-btn" name="addcart" value="Thêm vào giỏ">
+                                <input type="submit" class="pre-order-btn" name="addcart" value="Thêm vào giỏ" <?php
+                                                                                                                if ($row['prostock'] == 0) {
+                                                                                                                    echo "disabled";
+                                                                                                                }
+                                                                                                                ?>>
                             </form>
-                            <button class="review-btn">Đánh giá</button>
                         </div>
                         <div class="hotline">Gọi ngay để được tư vấn:<br /> 01234567890</div>
                     </div>

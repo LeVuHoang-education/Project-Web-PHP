@@ -58,7 +58,7 @@ function decryptData($data)
 function getNhbyID($id)
 {
     global $conn;
-    $getAccountBank_sql = "SELECT * FROM account_bank where id = $id";
+    $getAccountBank_sql = "SELECT * FROM `tknh` where userid = $id";
     $result = $conn->query($getAccountBank_sql);
     return  $result;
 }

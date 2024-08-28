@@ -28,7 +28,6 @@
                 <a href="../../../../index.php?act=account&feature=bank ">Ngân hàng</a>
                 <a href="../../../../index.php?act=account&feature=address">Địa chỉ</a>
                 <a href="../../../../index.php?act=account&feature=changePassword">Đổi mật khẩu</a>
-                <a href="../../../../index.php">Đăng xuất</a>
             </div>
             <div class="aside-don-mua">
                 <img src="assets/frontend/img/Icon/cargo.png" width="40px" height="40px">

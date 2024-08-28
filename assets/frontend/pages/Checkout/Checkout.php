@@ -11,20 +11,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 //lay data khach hang
 if (isset($_SESSION['user_id'])) {
-    $data_user = getUserbyID($_SESSION['user_id']);
-    $data_dc = getDC($_SESSION['user_id']);
-    $data_nh = getNhbyID($_SESSION['user_id']);
-    $data_tt = getTTKH($_SESSION['user_id']);
+    $id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM `dckh` WHERE userid = $id";
+    $data_dc = $conn->query($sql);
+    $row = $data_dc->fetch_assoc();
+    if ($row != null) {
 
-    $ten = $data_tt->fetch_assoc()['fullname'];
-    $sdt = $data_user->fetch_assoc()['phonenumber'];
+        $data_dc = getDC($_SESSION['user_id']);
+        $data_nh = getNhbyID($_SESSION['user_id']);
+        $data_tt = getTTKH($_SESSION['user_id']);
+        $data_user = getUserbyID($_SESSION['user_id']);
 
-    while ($row = $data_dc->fetch_assoc()) {
-        if ($row['defaultDC'] == 1) {
-            $dc = $row['address'] . ', ' . $row['city'];
+
+        if ($data_tt->num_rows > 0) {
+            $ten = $data_tt->fetch_assoc()['fullname'];
+        } else $ten = $data_user->fetch_assoc()['username'];
+
+        $data_user = getUserbyID($_SESSION['user_id']);
+        $sdt = $data_user->fetch_assoc()['phonenumber'];
+
+        while ($row = $data_dc->fetch_assoc()) {
+            if ($row['defaultDC'] == 1) {
+                $dc = $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
+            }
         }
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +61,19 @@ if (isset($_SESSION['user_id'])) {
         </div>
 
         <div class="DCNH-content">
-            <span><?php echo $ten ?></span>
-            <span><?php echo $sdt ?></span>
-            <span><?php echo $dc ?></span>
+            <?php
+            $id = $_SESSION['user_id'];
+            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
+            $data_dc = $conn->query($sql);
+            $row = $data_dc->fetch_assoc();
+            if ($row != null) {
+            ?>
+                <span><?php echo $ten ?></span>
+                <span><?php echo $sdt ?></span>
+                <span><?php echo $dc ?></span>
+            <?php } else { ?>
+                <span>Bạn chưa có địa chỉ nhận hàng (mặc định)</span>
+            <?php } ?>
         </div>
     </div>
 
@@ -89,10 +113,19 @@ if (isset($_SESSION['user_id'])) {
             <label for="">Chọn phương thức thanh toán: </label>
             <select name="payment_status" id="paymentSelect" onchange="updateHiddenInput()">
                 <?php if (isset($_SESSION['user_id'])) {
+                    $id = $_SESSION['user_id'];
+
                     echo '<option selected value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>';
-                    echo '<option value="Tài khoản ngân hàng">Tài khoản ngân hàng</option>';
+                    $sql = "SELECT defaultBank FROM `tknh` WHERE userid=$id AND defaultBank = '1'";
+                    $data_bank = $conn->query($sql);
+                    $row = $data_bank->fetch_assoc();
+                    if ($row != null) {
+                        echo '<option value="Tài khoản ngân hàng">Tài khoản ngân hàng</option>';
+                    } else {
+                        echo '<option value="Tài khoản ngân hàng" disabled>Tài khoản ngân hàng</option>';
+                    }
                 } else {
-                    echo '<option disabled value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>';
+                    echo '<option disabled value="Thanh toán khi nhận hàng" selected>Thanh toán khi nhận hàng</option>';
                 } ?>
             </select>
         </div>
@@ -115,7 +148,7 @@ if (isset($_SESSION['user_id'])) {
         </div>
         <form action="../../../../frontend/pages/MuaHang.php" method="post">
             <input type="hidden" name="cartid" id="" value="<?php echo $_POST['selected_cart_ids'] ?>">
-            <input type="hidden" name="pttt" id="paymentHiddenInput" value="">
+            <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
             <input type="submit" value="Đặt hàng" name="Buy">
         </form>
     </div>
