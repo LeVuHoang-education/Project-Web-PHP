@@ -1,0 +1,11 @@
+.order-container {
+  width: 100%;
+}
+table#table-field {
+  width: 100%;
+}
+table#table-field th,
+td {
+  border-bottom: 1px solid #2c7af0;
+  text-align: center;
+}

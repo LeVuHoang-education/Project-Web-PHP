@@ -34,6 +34,9 @@
                             case 'order':
                                 include 'assets/frontend/pages/Profile/Donhang.php';
                                 break;
+                            case 'orderDetail':
+                                include 'assets/frontend/pages/Profile/orderDetail.php';
+                                break;
                             default:
                                 include 'assets/frontend/pages/Profile/brief.php';
                                 break;

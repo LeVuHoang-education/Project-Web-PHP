@@ -74,3 +74,9 @@ Aside{
     color: black;
     text-decoration: none;
 }
+
+.aside-menu span:hover,
+.aside-don-mua span:hover{
+    background-color: #0158AF;
+    color: white;
+}
