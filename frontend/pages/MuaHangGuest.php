@@ -28,7 +28,7 @@ if (isset($_POST['cartid'])) {
     if ($stmt == false) {
         die("Lỗi khi chuẩn bị truy vấn SQL: " . $conn->error);
     }
-
+    
     // Kiểm tra giá trị truyền vào
     if (!isset($_SESSION['guest_id'])) {
         die("Lỗi: guest_id không tồn tại trong session.");

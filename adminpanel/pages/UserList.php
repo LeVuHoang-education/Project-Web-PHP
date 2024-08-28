@@ -16,7 +16,6 @@
                 <th>User name</th>
                 <th>Phone number</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Gender</th>
                 <th>Role</th>
                 <th></th>
@@ -35,7 +34,6 @@
                     <td><?php echo $row['username'];  ?></td>
                     <td><?php echo $row['phonenumber'];  ?></td>
                     <td><?php echo $row['email'];  ?></td>
-                    <td><?php echo $row['password'];  ?></td>
                     <td><?php echo $row['gender'];  ?></td>
                     <td><?php echo $row['userrole'];  ?></td>
                     <td>

@@ -17,6 +17,7 @@ if (isset($_SESSION['user_id'])) {
     $data_tt = getTTKH($_SESSION['user_id']);
 
     $ten = $data_tt->fetch_assoc()['fullname'];
+    
     $sdt = $data_user->fetch_assoc()['phonenumber'];
 
     while ($row = $data_dc->fetch_assoc()) {
