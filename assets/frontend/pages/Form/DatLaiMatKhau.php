@@ -9,6 +9,25 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
+function generateRandomPassword($length = 8)
+{
+    $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    $numbers = '0123456789';
+
+    $password = '';
+    $password .= $uppercase[random_int(0, strlen($uppercase) - 1)];
+    $password .= $lowercase[random_int(0, strlen($lowercase) - 1)];
+    $password .= $numbers[random_int(0, strlen($numbers) - 1)];
+
+    $allCharacters = $uppercase . $lowercase . $numbers;
+    for ($i = 3; $i < $length; $i++) {
+        $password .= $allCharacters[random_int(0, strlen($allCharacters) - 1)];
+    }
+
+    return str_shuffle($password);
+}
+
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $stmt = $conn->prepare("SELECT userid FROM account WHERE email = ?");
@@ -17,13 +36,13 @@ if (isset($_POST['email'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $newPassword = bin2hex(random_bytes(8)); // Tạo mật khẩu mới
-        //$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT); // Mã hóa mật khẩu mới
+        $newPassword = generateRandomPassword();
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
         $stmt->bind_result($user_id);
         $stmt->fetch();
         $updateStmt = $conn->prepare("UPDATE account SET password = ? WHERE email = ?");
-        $updateStmt->bind_param("ss", $newPassword, $email);
+        $updateStmt->bind_param("ss", $hashedPassword, $email);
         $updateStmt->execute();
 
         $mail = new PHPMailer(true);
@@ -33,12 +52,14 @@ if (isset($_POST['email'])) {
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'bx1536hoang@gmail.com';
-            $mail->Password   = 'bjyy swhc vvzl zdth'; 
-            $mail->SMTPSecure = 
-            PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Password   = 'bjyy swhc vvzl zdth';
+            $mail->SMTPSecure =
+                PHPMailer::ENCRYPTION_SMTPS;
             //PHPMailer::ENCRYPTION_STARTTLS; 
             $mail->Port       = 465;
 
+            $mail->CharSet = 'UTF-8';
+            $mail->Encoding = PHPMailer::ENCODING_BASE64;
             $mail->setFrom('bx1536hoang@gmail.com', 'NhatHoang furniture');
             $mail->addAddress($email);
 
@@ -60,7 +81,7 @@ if (isset($_POST['email'])) {
     $stmt->close();
     $conn->close();
 }
-?>  
+?>
 <style>
     .DLMK_container {
         display: flex;

@@ -9,13 +9,15 @@
         $prostock = $_POST['prostock'];
         $imagePath = $_FILES['image_path']['name'];
         $Description = $_POST['prodescription'];
+        $sales = $_POST['sales'];
+
         $targetDir = "../../UploadImage/";
         $imagePath = Uploads($_FILES['image_path'], $targetDir);
 
-        $addSql = "INSERT INTO product(proname, proprice, catid, prostock, image_path, prodescription) VALUES(?, ?, ?, ?, ?, ?)";
+        $addSql = "INSERT INTO product(proname, proprice, catid, prostock, image_path, prodescription, sales) VALUES(?, ?, ?, ?, ?, ?,?)";
         $stmt = $conn->prepare($addSql);
         if($stmt){
-            $stmt->bind_param("sdiiss", $proname, $proprice, $catid, $prostock, $imagePath, $Description);
+            $stmt->bind_param("sdiisss", $proname, $proprice, $catid, $prostock, $imagePath, $Description, $sales);
             $stmt->execute();
 
             if($stmt->affected_rows > 0){

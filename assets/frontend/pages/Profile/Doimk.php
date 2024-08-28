@@ -10,7 +10,7 @@
 
 <body>
     <div class="DoimkCon">
-        <form action="" method="post" class="formDoimk">
+        <form method="post" class="formDoimk">
             <div class="DoimkHeader">
                 <h3>Đổi mật khẩu</h3>
             </div>

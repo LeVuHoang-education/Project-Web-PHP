@@ -33,9 +33,33 @@
                     ?>
                 </select>
             </div>
-            <div class="combobox">
+            <?php
+            $sql = "SHOW COLUMNS FROM product LIKE 'sales'";
+            $result = $conn->query($sql);
+            
+            if ($result) {
+                $row = $result->fetch_assoc();
+                $enumValues = $row['Type'];
+                preg_match_all('/\'(.*?)\'/', $enumValues, $matches);
+                $enumValues = $matches[1];
+            } else {
+                die("Error executing query: " . $conn->error);
+            }?>
+            <div class="combobox1">
                 <label for="prostock">Stock: </label>
                 <input type="number" name="prostock" id="prostock" required placeholder="Enter value of product in stock">
+                <label for="sales">Sales</label>
+                <select name="sales" id="sales">
+                    <?php
+                    foreach ($enumValues as $value) {
+                        if ($value == 'Null') {
+                            echo '<option value="' . htmlspecialchars($value) . '" selected>' . htmlspecialchars($value) . '</option>';
+                        } else {
+                            echo '<option value="' . htmlspecialchars($value) . '">' . htmlspecialchars($value) . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
             </div>
 
             <div class="combobox">

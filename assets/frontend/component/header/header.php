@@ -224,6 +224,7 @@
                 <br>
                 <button type="submit">Đăng kí </button>
                 <div id="passwordError" style="color: red; display: none;">Mật khẩu phải bao gồm ít nhất 1 chữ hoa , chữ thường, số và phải có ít nhất 8 kí tự</div>
+                <div id="emailError" style="color: red; display: none;">Sai định dạng email.</div>
             </form>
             <br>
             <a href="#" data-modal="popupLogin">Đã có tài khoản? Đăng nhập</a>
