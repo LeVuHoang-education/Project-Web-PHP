@@ -24,7 +24,7 @@
     $maxPrice = 0;
     ?>
 
-    <div class="layout-container" style="width: 100vw;">
+    <div class="layout-container" style="width: 100vw;margin-top:40px;">
         <?php
         include_once "./db/connect.php";
         echo "<div class='content'>";
@@ -78,15 +78,15 @@
                 case 'DatLaiMatKhau':
                     include "assets/frontend/pages/Form/DatLaiMatKhau.php";
                     break;
-                // case 'bill':
-                //     include "./frontend/pages/MuaHang.php";
-                //     break;
-                // case 'addDataGuest':
-                //     include "./frontend/pages/ThemDataGuest.php";
-                //     break;
-                // case 'Muahangguest':
-                //     include "./frontend/pages/MuaHangGuest.php";
-                //     break;
+                    // case 'bill':
+                    //     include "./frontend/pages/MuaHang.php";
+                    //     break;
+                    // case 'addDataGuest':
+                    //     include "./frontend/pages/ThemDataGuest.php";
+                    //     break;
+                    // case 'Muahangguest':
+                    //     include "./frontend/pages/MuaHangGuest.php";
+                    //     break;
                 default:
                     include "./assets/frontend/pages/home/home.php";
                     break;
