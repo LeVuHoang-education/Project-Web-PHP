@@ -62,9 +62,11 @@
       <hr />
 
       <div class="content">
-        <h1>Dòng sản phẩm phổ biến</h1>
+        <img id="ads" src="assets/frontend/src/Home/ads/tiec-tra-thuong-hang-huong-thom-quy-phai.png">
         <?php
-        getProductByRange(0, 4999999, $conn);
+        // getProductByRange(0, 4999999, $conn);
+        $arr = [31, 32, 33, 43];
+        getProductBySugestion($arr);
         ?>
       </div>
     </div>

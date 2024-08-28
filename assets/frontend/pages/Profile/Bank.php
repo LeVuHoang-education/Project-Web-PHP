@@ -25,7 +25,10 @@
                     <div class="empyt">
                         Bạn chưa có tài khoản ngân hàng.
                     </div>
-                <?php } else { ?>
+                <?php } else {
+                    include_once "./frontend/pages/Function.php";
+                    ?>
+                    
                     <form name="address" id="address-field" method="post" action="frontend/pages/setDefaultAddress.php">
                         <?php
                         $count = 0;
@@ -52,7 +55,7 @@
                 ?>
                 <hr class="line">
                 <div id="submit">
-                    <button id="btn-add" type="submit" onclick="showingLinkingForm()">Thêm địa chỉ mới</button>
+                    <button id="btn-add" type="submit" onclick="showingLinkingForm()">Thêm tài khoản mới</button>
                 </div>
             </div>
             <div class="add-account-bank hidden">
@@ -84,7 +87,7 @@
                     <div class="field-form">
                         <label for="exp-date">Ngày hết hạn</label>
                         <div class="box-input">
-                            <input type="text" id="exp-date" name="exp-date" required>
+                            <input type="date" id="exp-date" name="exp-date" required>
                         </div>
                     </div>
                     <div class="field-form">

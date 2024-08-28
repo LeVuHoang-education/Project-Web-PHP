@@ -17,7 +17,7 @@ function executeData() {
     });
 }
 function getDistricts(cityId) {
-  fetch("frontend/src_xml_htm/api_full.json")
+  fetch("frontend/src_xml_htm/api_full_administration.json")
     .then((response) => response.json())
     .then((data) => {
       data.data.forEach((city) => {
@@ -35,7 +35,7 @@ function getDistricts(cityId) {
 }
 
 function getWards(districtId) {
-  fetch("frontend/src_xml_htm/api_full.json")
+  fetch("frontend/src_xml_htm/api_full_administration.json")
     .then((response) => response.json())
     .then((data) => {
       data.data.forEach((city) => {
