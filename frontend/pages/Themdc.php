@@ -9,7 +9,6 @@ if (isset($_POST['ThemDC'])) {
     $number_house = htmlspecialchars($_POST['number-house']);
     $id = $_SESSION['user_id'];
 
-    echo $id, ' ', $city,' ', $district,' ', $ward,' ', $number_house;
     $sql = "INSERT INTO dckh (userid,city, district	,ward,number_house) VALUES (? , ? , ? , ? , ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("issss", $id, $city, $district, $ward, $number_house);

@@ -57,7 +57,7 @@
                 ?>
                 <hr class="line">
                 <div id="submit">
-                    <button id="btn" type="submit" onclick="showingLinkingForm()">Thêm địa chỉ mới</button>
+                    <button id="btn-add" type="submit" onclick="showingLinkingForm()">Thêm địa chỉ mới</button>
                 </div>
             </div>
             <div class="add-account-bank hidden">
@@ -87,7 +87,7 @@
                         <input type="text" id="number-house" name="number-house" required value="">
                     </div>
                     <div id="submit">
-                        <button type="submit" value="ThemDC" name="ThemDC">Thêm địa chỉ</button>
+                        <button id="btn-submit" type="submit" value="ThemDC" name="ThemDC">Thêm địa chỉ</button>
                     </div>
                 </form>
             </div>

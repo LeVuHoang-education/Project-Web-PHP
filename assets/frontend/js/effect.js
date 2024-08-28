@@ -1,14 +1,11 @@
 var addLinking;
 var property;
-// window.onload = function () {
-//   addLinking = document.getElementsByClassName("add-account-bank");
-//   property = addLinking[0];
-// };
+
 function showingLinkingForm() {
   addLinking = document.getElementsByClassName("add-account-bank");
   property = addLinking[0];
 
-  var button = document.getElementById("btn");
+  var button = document.getElementById("btn-add");
 
   if (property.classList.contains("hidden")) {
     property.classList.remove("hidden");
