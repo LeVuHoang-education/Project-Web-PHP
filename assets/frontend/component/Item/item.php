@@ -26,10 +26,26 @@
                 <ul>
                     <li class="pro-name"><?php echo $row['proname']; ?></li>
                     <li id="pro_price">
-                        Giá: <script>
-                            var price = <?php echo $row['proprice'] ?>;
-                            document.write(nf.format(price));
-                        </script>đ
+                        <?php if ($row['sales'] == null) { ?>
+                            Giá: <script>
+                                var price = <?php echo $row['proprice'] ?>;
+                                document.write(nf.format(price));
+                            </script>đ
+                        <?php } else { ?>
+                            <div class="old-price" style="color:gray; text-decoration:line-through">
+                                Giá cũ: <script>
+                                    var price = <?php echo $row['proprice'] ?>;
+                                    document.write(nf.format(price));
+                                </script>đ
+                            </div>
+                            <div class="new-price" style="color:red;">
+                                Giá mới: <script>
+                                    var price = <?php echo $row['proprice'] * ($row['sales'] / 100) ?>;
+                                    document.write(nf.format(price));
+                                </script>đ
+                            </div>
+                        <?php
+                        } ?>
                     </li>
                     <li class="pro-stock" style="color: <?php echo ($row['prostock'] > 0) ? "green" : "red"; ?>;">Tình trạng:
                         <?php if ($row['prostock'] > 0) {

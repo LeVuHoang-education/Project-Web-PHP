@@ -37,7 +37,7 @@
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/ads_1.png">
         <?php
-        $arr = [12, 27, 28, 12, 12];
+        $arr = [30, 27, 28, 44, 12];
         getProductBySugestion($arr);
         ?>
       </div>
