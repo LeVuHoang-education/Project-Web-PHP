@@ -72,7 +72,6 @@ document.querySelector('.popup-formlogin').addEventListener('submit', function (
             {
                 if (data.redirect)
                 {
-                    // Chuyển hướng đến trang admin nếu có URL trong redirect
                     window.location.href = data.redirect;
                 } else
                 {
@@ -82,7 +81,7 @@ document.querySelector('.popup-formlogin').addEventListener('submit', function (
                 }
             } else
             {
-                // Hiển thị lỗi nếu đăng nhập không thành công
+                
                 alert(data.message);
             }
         })
@@ -100,6 +99,10 @@ document.querySelector('.popup-formsignup').addEventListener('submit', function 
     var passwordError = document.getElementById('passwordError');
     var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
+    var email = document.getElementById('email').value;
+    var emailError = document.getElementById('emailError');
+    var emailRegex = /.+\..+/;
+
     if (!passwordRegex.test(password))
     {
         passwordError.style.display = 'block';
@@ -107,6 +110,15 @@ document.querySelector('.popup-formsignup').addEventListener('submit', function 
     } else
     {
         passwordError.style.display = 'none';
+    }
+
+    if (!emailRegex.test(email))
+    {
+        emailError.style.display = 'block';
+        return;
+    } else
+    {
+        emailError.style.display = 'none';
     }
 
     var formData = new FormData(this);

@@ -1,27 +1,39 @@
 <?php
 session_start();
-require_once "../../db/connect.php";
-include "Function.php";
-if(isset($_POST['doimk']) && $_POST['password'] == (getUserbyID($_SESSION['user_id']))->fetch_assoc()['password']) {
-    $Password = htmlspecialchars($_POST['new_password']);
-    $id = $_SESSION['userid'];
+require('../../db/connect.php');
 
-    $sql = "UPDATE account SET password = ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $Password, $id);
+if (isset($_POST['oldpassword']) && isset($_POST['newpassword'])) {
+    $oldPassword = $_POST['oldpassword'];
+    $newPassword = $_POST['newpassword'];
+    $userId = $_SESSION['user_id'];
 
-    if($stmt->execute()) {
-        echo "<script>alert('Đổi mật khẩu thành công!');</script>";
-        header("Location:../../index.php?act=Doimk");
-        exit();
-    } else {
-        echo "<script>alert('Đổi mật khẩu thất bại!');</script>";
-    }
+    // Lấy mật khẩu đã mã hóa từ cơ sở dữ liệu
+    $stmt = $conn->prepare("SELECT password FROM account WHERE userid = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($hashedPassword);
+    $stmt->fetch();
     $stmt->close();
-    $conn->close();
-}
-else {
-    echo "<script>alert('Mật khẩu không đúng!');</script>";
+
+    // Kiểm tra mật khẩu cũ
+    if (password_verify($oldPassword, $hashedPassword)) {
+        // Mã hóa mật khẩu mới
+        $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+        $stmt = $conn->prepare("UPDATE account SET password = ? WHERE userid = ?");
+        $stmt->bind_param("si", $newHashedPassword, $userId);
+
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Mật khẩu đã được cập nhật thành công.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Cập nhật mật khẩu không thành công.']);
+        }
+        $stmt->close();
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Mật khẩu cũ không chính xác.']);
+    }
 }
 
-?>
+$conn->close();
