@@ -31,15 +31,27 @@
                         <div class="product-origin">
                             <h4>Xuất xứ:<?php echo $row['productOrigin'] ?></h4>
                         </div>
-                        <div class="product-price">Giá: <script>
-                                var price = <?php
-                                            if ($row['sales'] == null) {
-                                                echo $row['proprice'];
-                                            } else {
-                                                echo $row['proprice'] - ($row['proprice'] * ($row['sales'] / 100));
-                                            } ?>;
-                                document.write(nf.format(price));
-                            </script>đ</div>
+                        <div class="product-price"><?php if ($row['sales'] == null) { ?>
+                                Giá: <script>
+                                    var price = <?php echo $row['proprice'] ?>;
+                                    document.write(nf.format(price));
+                                </script>đ
+                            <?php } else { ?>
+                                <div class="old-price" style="color:gray; text-decoration:line-through">
+                                    Giá cũ: <script>
+                                        var price = <?php echo $row['proprice'] ?>;
+                                        document.write(nf.format(price));
+                                    </script>đ
+                                </div>
+                                <div class="new-price" style="color:red;">
+                                    Giá mới: <script>
+                                        var price = <?php echo $row['proprice'] * (1 - $row['sales'] / 100) ?>;
+                                        document.write(nf.format(price));
+                                    </script>đ
+                                </div>
+                            <?php } ?>
+                        </div>
+
                         <div class="product-description"><?php
                                                             $lines = explode("\n", $row['prodescription']);
                                                             foreach ($lines as $line) {
