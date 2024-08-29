@@ -79,4 +79,6 @@ Aside{
 .aside-don-mua span:hover{
     background-color: #0158AF;
     color: white;
+    padding:10px 15px;
+    border-radius:50px;
 }
