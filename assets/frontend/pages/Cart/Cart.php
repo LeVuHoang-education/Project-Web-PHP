@@ -70,7 +70,7 @@ if (isset($_POST['addcart'])) {
     foreach ($_SESSION['cart'] as &$item) {
         if ($item[0] == $idsp) {
             $is_exist = true;
-            $item[2]++;
+            //$item[2]++;
             if (isset($_SESSION['user_id'])) {
                 updateQuantityItemCart($_SESSION['user_id'], $idsp, $item[2]);
             }
