@@ -135,9 +135,9 @@ if (isset($_POST['addcart'])) {
                         <div class="soluong">
                             <button class="btn" onclick="giam(this)">-</button>
                             <?php
-                                $sql = "SELECT prostock FROM product where proid=$itemOrder[0]";
-                                $result = $conn->query($sql);
-                                $row = $result->fetch_assoc();
+                            $sql = "SELECT prostock FROM product where proid=$itemOrder[0]";
+                            $result = $conn->query($sql);
+                            $row = $result->fetch_assoc();
                             ?>
                             <input id="quantity"
                                 data-item-id="<?php echo $itemOrder[0]; ?>"
@@ -151,7 +151,7 @@ if (isset($_POST['addcart'])) {
                             <button class="btn" onclick="tang(this)">+</button>
                         </div>
                     </td>
-                    <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
+                    <td class="ThanhTien" data-total="<?php echo ( (float)$itemOrder[2] *  (float)$itemOrder[3]) ?>"></td>
                     <td>
                         <form action="index.php?act=GioHang" method="post">
                             <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
@@ -184,7 +184,7 @@ if (isset($_POST['addcart'])) {
             // }
         }
         ?>
-        
+
         <tr class="CartFooter">
             <th><input type="checkbox" name="choose-order" id="choose-all"></th>
             <th colspan="2">
