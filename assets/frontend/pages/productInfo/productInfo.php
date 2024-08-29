@@ -51,6 +51,7 @@
                                 </div>
                             <?php } ?>
                         </div>
+
                         <div class="product-description"><?php
                                                             $lines = explode("\n", $row['prodescription']);
                                                             foreach ($lines as $line) {
@@ -65,22 +66,41 @@
                                                             echo "disabled";
                                                         }
                                                         ?>>
-                                <span>
-                                    <a href="../../../../index.php?act=shopping">
-                                        Mua ngay
-                                    </a>
-                                </span>
+                                <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
+                                    <input type="hidden" name="idSP" value="<?php echo $id ?> ">
+                                    <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
+                                    <input type="hidden" name="priceSP" value="<?php
+                                                                                if ($row['sales'] == null) {
+                                                                                    echo $row['proprice'];
+                                                                                } else {
+                                                                                    echo $row['proprice'] - ($row['proprice'] * ($row['sales'] / 100));
+                                                                                } ?>;">
+                                    <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
+                                    <input type="hidden" name="mua" id="" value="1">
+                                    <input type="submit" class="pre-order-btn" name="addcart" value="Mua ngay" <?php
+                                                                                                                if ($row['prostock'] == 0) {
+                                                                                                                    echo "disabled";
+                                                                                                                }
+                                                                                                                ?>>
+                                </form>
                             </button>
                             <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
                                 <input type="hidden" name="idSP" value="<?php echo $id ?> ">
                                 <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
-                                <input type="hidden" name="priceSP" value="<?php echo $row['proprice'] ?>">
+                                <input type="hidden" name="priceSP" value="<?php
+                                                                            if ($row['sales'] == null) {
+                                                                                echo $row['proprice'];
+                                                                            } else {
+                                                                                echo $row['proprice'] - ($row['proprice'] * ($row['sales'] / 100));
+                                                                            } ?>;">
                                 <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
+                                <input type="hidden" name="mua" id="" value="0">
                                 <input type="submit" class="pre-order-btn" name="addcart" value="Thêm vào giỏ" <?php
                                                                                                                 if ($row['prostock'] == 0) {
                                                                                                                     echo "disabled";
                                                                                                                 }
                                                                                                                 ?>>
+
                             </form>
                         </div>
                         <div class="hotline">Gọi ngay để được tư vấn:<br /> 01234567890</div>

@@ -6,12 +6,11 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['selected_cart_ids']) && !empty($_POST['selected_cart_ids'])) {
-
         $selectedItems = explode(',', $_POST['selected_cart_ids']);
     }
 }
 
-//print_r($selectedItems);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="">Email</label>
                     <div class="inputtype">
                         <img src="assets/frontend/img/Icon/icons8-email-100.png" alt="">
-                        <input type="text" name="guestmail" placeholder="Nhập email" required>
+                        <input type="email" name="guestmail" placeholder="Nhập email" required>
                     </div>
                 </div>
             </form>
@@ -78,20 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php foreach ($selectedItems as $item) {
             foreach ($_SESSION['cart'] as $sessionItem) {
                 if ($sessionItem[0] == $item) {
-
+                    $price = floatval($sessionItem[3]);
+                    $quantity = floatval($sessionItem[2]);
+                    $total = $price * $quantity;
         ?>
                     <tr class="content-main">
                         <td> <img src="../../../UploadImage/<?php echo htmlspecialchars($sessionItem[4]) ?>" alt=""></td>
                         <td><?php echo $sessionItem[1] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo $sessionItem[3] ?>));
+                                document.write(nf.format(<?php echo $price ?>));
                             </script>
                         </td>
                         <td><?php echo $sessionItem[2] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo ($sessionItem[2] * $sessionItem[3]) ?>));
+                                document.write(nf.format(<?php echo $total ?>));
                             </script>
                         </td>
                     </tr>
@@ -135,14 +136,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
 
-        <button class="btn-dathang"  onclick="submitForms()">Đặt hàng</button>
+        <button class="btn-dathang" onclick="submitForms()">Đặt hàng</button>
     </div>
     <script>
+        function validateEmail(email) {
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
         function submitForms() {
-            if (document.getElementById('form1')) {
-                document.getElementById('form1').submit();
+            var email = document.querySelector('input[name="guestmail"]').value;
+
+            if (!validateEmail(email)) {
+                alert("Email không hợp lệ. Vui lòng nhập địa chỉ email hợp lệ.");
+                return;
             }
-            document.getElementById('form2').submit();
+
+
+            var form1Data = new FormData(document.getElementById('form1'));
+
+            fetch('../../../../frontend/pages/ThemDataGuest.php', {
+                    method: 'POST',
+                    body: form1Data
+                })
+                .then(response => response.text())
+                .then(result => {
+
+                    if (result.includes('Lỗi')) {
+                        alert(result);
+                        return;
+                    }
+
+
+                    var form2 = document.getElementById('form2');
+                    form2.submit();
+                })
+                .catch(error => {
+                    console.error('Có lỗi xảy ra:', error);
+                    alert('Có lỗi xảy ra khi gửi dữ liệu.');
+                });
         }
     </script>
 </body>

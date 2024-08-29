@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
 //lay data tu form
 if (isset($_POST['addcart'])) {
     $idsp = $_POST['idSP'];
@@ -62,6 +63,8 @@ if (isset($_POST['addcart'])) {
     $price = $_POST['priceSP'];
     $img = $_POST['imgSP'];
     $quantity = 1;
+
+    $checked = $_POST['mua'];
     //ktra xem co sp chua
     $is_exist = false;
     foreach ($_SESSION['cart'] as &$item) {
@@ -75,7 +78,7 @@ if (isset($_POST['addcart'])) {
         }
     }
     if ($is_exist == false) {
-        $sp = [$idsp, $name, $quantity, $price, $img];
+        $sp = [$idsp, $name, $quantity, $price, $img, $checked];
         $_SESSION['cart'][] = $sp;
         if (isset($_SESSION['user_id'])) {
             themItemCart($_SESSION['user_id'], $idsp, $quantity, $price);
@@ -113,13 +116,15 @@ if (isset($_POST['addcart'])) {
         $i = 0;
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $itemOrder) {
+
         ?>
                 <tr class="CartContent">
                     <td>
                         <input type="checkbox"
                             name="choose-order"
                             onchange="updateTotalmount()"
-                            id="choose-order">
+                            id="choose-order"
+                            <?php if ($itemOrder[5] == 1) echo 'checked'; ?>>
                     </td>
                     <td>
                         <img max-width="100%"
@@ -134,20 +139,24 @@ if (isset($_POST['addcart'])) {
                     <td>
                         <div class="soluong">
                             <button class="btn" onclick="giam(this)">-</button>
-
+                            <?php
+                            $sql = "SELECT prostock FROM product where proid=$itemOrder[0]";
+                            $result = $conn->query($sql);
+                            $row = $result->fetch_assoc();
+                            ?>
                             <input id="quantity"
                                 data-item-id="<?php echo $itemOrder[0]; ?>"
                                 type="number"
                                 value="<?php echo htmlspecialchars($itemOrder[2]); ?>"
                                 disabled
                                 min="1"
-                                max="100"
+                                max="<?php echo $row['prostock']; ?>"
                                 onchange="updateTotal(this)">
 
                             <button class="btn" onclick="tang(this)">+</button>
                         </div>
                     </td>
-                    <td class="ThanhTien" data-total="<?php echo ($itemOrder[2] * $itemOrder[3]) ?>"></td>
+                    <td class="ThanhTien" data-total="<?php echo ( (float)$itemOrder[2] *  (float)$itemOrder[3]) ?>"></td>
                     <td>
                         <form action="index.php?act=GioHang" method="post">
                             <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">
@@ -180,6 +189,7 @@ if (isset($_POST['addcart'])) {
             // }
         }
         ?>
+
         <tr class="CartFooter">
             <th><input type="checkbox" name="choose-order" id="choose-all"></th>
             <th colspan="2">

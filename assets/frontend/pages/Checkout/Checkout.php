@@ -16,14 +16,12 @@ if (isset($_SESSION['user_id'])) {
     $data_dc = $conn->query($sql);
     $row = $data_dc->fetch_assoc();
     if ($row != null) {
-
         $data_dc = getDC($_SESSION['user_id']);
         $data_nh = getNhbyID($_SESSION['user_id']);
         $data_tt = getTTKH($_SESSION['user_id']);
         $data_user = getUserbyID($_SESSION['user_id']);
 
-
-        if ($data_tt->num_rows > 0) {
+      if ($data_tt->num_rows > 0) {
             $ten = $data_tt->fetch_assoc()['fullname'];
         } else $ten = $data_user->fetch_assoc()['username'];
 
@@ -37,7 +35,6 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -72,7 +69,7 @@ if (isset($_SESSION['user_id'])) {
                 <span><?php echo $sdt ?></span>
                 <span><?php echo $dc ?></span>
             <?php } else { ?>
-                <span>Bạn chưa có địa chỉ nhận hàng (mặc định)</span>
+                <span>Bạn chưa có địa chỉ nhận hàng (mặc định). Vui lòng vào trang tài khoản nhập địa chỉ để có thể mua hàng</span>
             <?php } ?>
         </div>
     </div>
@@ -86,19 +83,21 @@ if (isset($_SESSION['user_id'])) {
         </tr>
         <?php foreach ($selectedItems as $item) {
             foreach ($_SESSION['cart'] as $cartItem) {
-                if ($cartItem[0] == $item) { ?>
+                if ($cartItem[0] == $item) {
+                    
+                    ?>
                     <tr class="content-main">
                         <td> <img src="../../../UploadImage/<?php echo $cartItem[4] ?>" alt=""></td>
                         <td><?php echo $cartItem[1] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo $cartItem[3] ?>));
+                                document.write(nf.format(<?php echo (float)$cartItem[3] ?>));
                             </script>
                         </td>
                         <td><?php echo $cartItem[2] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo ($cartItem[3] * $cartItem[2]) ?>));
+                                document.write(nf.format(<?php echo ((float)$cartItem[3] * (float)$cartItem[2]) ?>));
                             </script>
                         </td>
                     </tr>
@@ -137,7 +136,7 @@ if (isset($_SESSION['user_id'])) {
                     <?php foreach ($selectedItems as $item) {
                         foreach ($_SESSION['cart'] as $cartItem) {
                             if ($cartItem[0] == $item) { ?>
-                                total += <?php echo ($cartItem[2] * $cartItem[3]) ?>;
+                                total += <?php echo ((float)$cartItem[2] * (float)$cartItem[3]) ?>;
 
                     <?php }
                         }
@@ -149,7 +148,17 @@ if (isset($_SESSION['user_id'])) {
         <form action="../../../../frontend/pages/MuaHang.php" method="post">
             <input type="hidden" name="cartid" id="" value="<?php echo $_POST['selected_cart_ids'] ?>">
             <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
+            <?php
+            $id = $_SESSION['user_id'];
+            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
+            $data_dc = $conn->query($sql);
+            $row = $data_dc->fetch_assoc();
+            if ($row != null) {
+            ?>
             <input type="submit" value="Đặt hàng" name="Buy">
+            <?php } else { ?>
+            <input type="submit" value="Đặt hàng" name="Buy" disabled>
+            <?php } ?>
         </form>
     </div>
 

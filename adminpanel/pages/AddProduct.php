@@ -10,7 +10,7 @@
 
 <body>
     <div class="containner-ap">
-        <form action="../../../../fontend/pages/ThemSanPham.php" method="post" enctype="multipart/form-data">
+        <form action="../../../../frontend/pages/ThemSanPham.php" method="post" enctype="multipart/form-data">
             <h1><img src="../../assets/fontend/img/Icon/add-product.png" alt=""></h1>
             <div class="combobox">
                 <label for="proname">Name: </label>
@@ -18,7 +18,7 @@
             </div>
             <div class="combobox1">
                 <label for="proprice">Price: </label>
-                <input type="text" pattern="\d+(\.\d{2})" title="Vui lòng nhập số có dấu thập phân và tối đa hai chữ số sau dấu thập phân" required name="proprice" id="proprice">
+                <input type="text" required name="proprice" id="proprice">
                 <label for="category">Category: </label>
                 <select name="catid" id="catname">
                     <?php

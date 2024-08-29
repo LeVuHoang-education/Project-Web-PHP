@@ -41,6 +41,7 @@
                             <div class="new-price" style="color:red;">
                                 Giá mới: <script>
                                     var price = <?php echo $row['proprice'] * (1 - $row['sales'] / 100) ?>;
+
                                     document.write(nf.format(price));
                                 </script>đ
                             </div>
