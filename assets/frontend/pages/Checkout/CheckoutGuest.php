@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-//print_r($selectedItems);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,20 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php foreach ($selectedItems as $item) {
             foreach ($_SESSION['cart'] as $sessionItem) {
                 if ($sessionItem[0] == $item) {
-
+                    $price = floatval($sessionItem[3]);
+                    $quantity = floatval($sessionItem[2]);
+                    $total = $price * $quantity;
         ?>
                     <tr class="content-main">
                         <td> <img src="../../../UploadImage/<?php echo htmlspecialchars($sessionItem[4]) ?>" alt=""></td>
                         <td><?php echo $sessionItem[1] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo $sessionItem[3] ?>));
+                                document.write(nf.format(<?php echo $price ?>));
                             </script>
                         </td>
                         <td><?php echo $sessionItem[2] ?></td>
                         <td>
                             <script>
-                                document.write(nf.format(<?php echo ($sessionItem[2] * $sessionItem[3]) ?>));
+                                document.write(nf.format(<?php echo $total ?>));
                             </script>
                         </td>
                     </tr>

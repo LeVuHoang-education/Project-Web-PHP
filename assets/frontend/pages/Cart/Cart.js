@@ -45,9 +45,19 @@ function giam(button)
 }
 function updateTotal(input)
 {
+  if (!input)
+  {
+    console.error("Input element không hợp lệ");
+    return;
+  }
   var nf = new Intl.NumberFormat();
   var quantity = parseInt(input.value, 10);
   var priceText = input.closest("tr").querySelector("td.price").textContent;
+  if (!priceText)
+  {
+    console.error("Giá trị price không hợp lệ");
+    return;
+  }
   var price = parseInt(priceText.replace(/[,.]/g, ""), 10);
   var total = quantity * price;
 

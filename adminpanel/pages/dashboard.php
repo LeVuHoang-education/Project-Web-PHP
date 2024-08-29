@@ -46,7 +46,8 @@ if ($resultOrder->num_rows > 0) {
 $sqlDT = "SELECT SUM(totalmount) AS total_revenue 
         FROM orders 
         WHERE MONTH(orderdate) = MONTH(CURRENT_DATE())
-        AND YEAR(orderdate) = YEAR(CURRENT_DATE())";
+        AND YEAR(orderdate) = YEAR(CURRENT_DATE())
+        AND status = 'Đã giao'";
 $result = $conn->query($sqlDT);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
