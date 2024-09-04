@@ -18,7 +18,7 @@ if (isset($_POST['Buy'])) {
     foreach ($dsitem as $item) {
         foreach ($_SESSION['cart'] as $cartItem) {
             if ($cartItem[0] == $item) {
-                $total += $cartItem[2] * $cartItem[3];
+                $total += floatval($cartItem[2]) * floatval($cartItem[3]);
             }
         }
 
@@ -60,6 +60,24 @@ if (isset($_SESSION['user_id'])) {
                     if (!$deleteStmt->execute()) {
                         die("Lỗi khi xóa dữ liệu vào bảng cart-item: " . $deleteStmt->error);
                     }
+
+                    $Updatequantity = $conn->prepare("UPDATE product SET prostock = prostock - ? WHERE proid = ?");
+                    $Updatequantity->bind_param("ii", $cartItem[2], $cartItem[0]);
+                    $Updatequantity->execute();
+                    $Updatequantity->close();
+
+                    $checkprostock = $conn->prepare("SELECT prostock FROM product WHERE proid = ?");
+                    $checkprostock->bind_param("i", $cartItem[0]);
+                    $checkprostock->execute();
+                    $result = $checkprostock->get_result();
+                    $stockrow = $result->fetch_assoc();
+                    if ($stockrow['prostock'] == 0) {
+                        $disableProduct = $conn->prepare("UPDATE product SET is_active = '0' WHERE proid = ?");
+                        $disableProduct->bind_param("i", $sessionItem[0]);
+                        $disableProduct->execute();
+                        $disableProduct->close();
+                    }
+                    $checkprostock->close();
                     unset($_SESSION['cart'][$key]);
                 }
             }

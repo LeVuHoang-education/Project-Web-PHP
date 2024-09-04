@@ -17,7 +17,7 @@ if (isset($_POST['cartid'])) {
     foreach ($dsitem as $item) {
         foreach ($_SESSION['cart'] as $sessionItem) {
             if ($sessionItem[0] == $item) {
-                $total += ($sessionItem[2] * $sessionItem[3]);
+                $total += (floatval($sessionItem[2]) * floatval($sessionItem[3]));
             }
         }
     }
@@ -28,7 +28,7 @@ if (isset($_POST['cartid'])) {
     if ($stmt == false) {
         die("Lỗi khi chuẩn bị truy vấn SQL: " . $conn->error);
     }
-    
+
     // Kiểm tra giá trị truyền vào
     if (!isset($_SESSION['guest_id'])) {
         die("Lỗi: guest_id không tồn tại trong session.");
@@ -60,6 +60,30 @@ if (isset($_POST['cartid'])) {
                         // Xóa sản phẩm khỏi session sau khi thêm vào order-detail thành công
                         foreach ($_SESSION['cart'] as $key => $cartItem) {
                             if ($cartItem[0] == $sessionItem[0]) {
+
+                                $Updatequantity = $conn->prepare("UPDATE product SET prostock = prostock - ? WHERE proid = ?");
+                                $Updatequantity->bind_param("ii", $sessionItem[2], $sessionItem[0]);
+                                $Updatequantity->execute();
+                                $Updatequantity->close();
+
+                                $checkStock = $conn->prepare("SELECT prostock FROM product WHERE proid = ?");
+                                $checkStock->bind_param("i", $sessionItem[0]);
+                                $checkStock->execute();
+                                $checkStock->bind_result($currentStock);
+                                $checkStock->fetch();
+                                $checkStock->close();
+
+                                if ($currentStock == 0) {
+                                    $disableProduct = $conn->prepare("UPDATE product SET is_active = '0' WHERE proid = ?");
+                                    if ($disableProduct === false) {
+                                        die("Lỗi khi chuẩn bị truy vấn SQL: " . $conn->error);
+                                    }
+                                    $disableProduct->bind_param("i", $sessionItem[0]);
+                                    $disableProduct->execute();
+                                    $disableProduct->close();
+                                }
+                                $checkStock->close();
+
                                 unset($_SESSION['cart'][$key]);
                                 break;
                             }
@@ -68,7 +92,7 @@ if (isset($_POST['cartid'])) {
                 }
             }
         }
-
+        // Đóng kết nối
         $itemStmt->close();
         $stmt->close();
         $conn->close();

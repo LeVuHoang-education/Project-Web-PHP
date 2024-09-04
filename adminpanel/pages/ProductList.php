@@ -1,3 +1,48 @@
+<?php
+require("../../db/connect.php");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['is_active'])) {
+        $proid = $_POST['proid'];
+        $isactive = $_POST['is_active'];
+        if ($isactive == "Kích hoạt") {
+            $sql = "UPDATE product SET is_active = 1 WHERE proid = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $proid);
+            if ($stmt->execute()) {
+                $stock = "SELECT prostock FROM product WHERE proid = $proid";
+                $result = mysqli_query($conn, $stock);
+                $row = mysqli_fetch_assoc($result);
+                $stock = $row['prostock'];
+                if ($stock == 0) {
+                    $sql = "UPDATE product SET prostock = 1 WHERE proid = $proid";
+                    if (mysqli_query($conn, $sql)) {
+                        header("Location: index.php?act=SanPham&catid=0&page=1");
+                    } else {
+                        echo "Error: " . mysqli_error($conn);
+                    }
+                } else {
+                    header("Location: index.php?act=SanPham&catid=0&page=1");
+                }
+                header("Location: index.php?act=SanPham&catid=0&page=1");
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
+        } else {
+            $sql = "UPDATE product SET is_active = 0 WHERE proid = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $proid);
+            if ($stmt->execute()) {
+                header("Location: index.php?act=SanPham&catid=0&page=1");
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
+        }
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +51,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/ProductList.css">
     <script>
-             var nf = new Intl.NumberFormat();  
+        var nf = new Intl.NumberFormat();
     </script>
     <title>Product manager</title>
 </head>
@@ -24,7 +69,7 @@
                 <input type="hidden" name="act" value="<?php echo htmlspecialchars($act); ?>">
                 <input type="hidden" name="page" value="<?php echo htmlspecialchars($page); ?>">
                 <select name="catid" id="catname">
-                    <option value="0">All</option>
+                    <option value="0">Tất cả</option>
                     <?php
                     require("../../db/connect.php");
                     $sql = "SELECT * FROM category";
@@ -36,16 +81,16 @@
                     }
                     ?>
                 </select>
-                <button type="submit">Search</button>
+                <button type="submit">Tìm kiếm</button>
             </form>
         </h2>
         <ul class="responsive-table">
             <li class="table-header">
-                <div class="col col-1">Name</div>
-                <div class="col col-2">Price</div>
-                <div class="col col-3">Category</div>
-                <div class="col col-4">Stock</div>
-                <div class="col col-5">Image path</div>
+                <div class="col col-1">Tên</div>
+                <div class="col col-2">Giá</div>
+                <div class="col col-3">Danh mục</div>
+                <div class="col col-4">Số lượng</div>
+                <div class="col col-5">Ảnh</div>
                 <div class="col col-6"></div>
             </li>
             <?php
@@ -117,8 +162,19 @@
                     <div class=" col-4"><?php echo $row['prostock'] ?></div>
                     <div class=" col-5"><?php echo $fileName ?></div>
                     <div class=" col-6">
-                        <a href="../../adminpanel/pages/index.php?act=EditProduct&proid=<?php echo $row['proid'] ?>">Edit</a>
-                        <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" href="../../../../frontend/pages/DeleteProduct.php?proid= <?php echo $row['proid'] ?>">Delete</a>
+                        <?php
+                        if ($row['is_active'] == 1) {
+                            $value = "Vô hiệu hóa";
+                        } else {
+                            $value = "Kích hoạt";
+                        }
+                        ?>
+                        <form action="index.php?act=SanPham&catid=0&page=1" method="post">
+                            <input type="hidden" name="proid" value="<?php echo $row['proid'] ?>">
+                            <input type="submit" value="<?php echo $value ?>" class="is_active" name="is_active">
+                        </form>
+                        <a href="../../adminpanel/pages/index.php?act=EditProduct&proid=<?php echo $row['proid'] ?>">chỉnh sửa</a>
+                        <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" aria-disabled="true" href="#">Xóa</a>
                     </div>
                 </li>
             <?php

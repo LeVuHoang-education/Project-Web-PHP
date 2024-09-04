@@ -44,6 +44,9 @@ li {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-row {
@@ -64,11 +67,13 @@ li {
 
 .col-3 {
   flex-basis: 15%;
+  text-align: center;
 }
 
 .col-4 {
   margin-left: 10px;
   flex-basis: 5%;
+  text-align: center;
 }
 
 .col-5 {
@@ -94,6 +99,10 @@ li {
   background-color: blueviolet;
   color: #ffffff;
   text-decoration: none;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .col-6 a:hover {
@@ -128,7 +137,7 @@ li {
   display: flex;
   justify-content: center;
   margin: 20px;
-  padding:10px;
+  padding: 10px;
 }
 
 .pageButton a {
@@ -145,4 +154,27 @@ li {
   background-color: #6C7A89;
   text-decoration: underline;
   color: white;
+}
+
+.is_active {
+  /* background-color: blueviolet;
+  color: white;
+  padding: 10px;
+  border-radius: 20px; */
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  padding: 10px;
+  background-color: blueviolet;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.is_active:hover {
+  background-color: #6C7A89;
+  text-decoration: underline;
+  cursor: pointer;
 }

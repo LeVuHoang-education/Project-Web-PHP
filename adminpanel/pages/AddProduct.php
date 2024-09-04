@@ -13,13 +13,13 @@
         <form action="../../../../frontend/pages/ThemSanPham.php" method="post" enctype="multipart/form-data">
             <h1><img src="../../assets/fontend/img/Icon/add-product.png" alt=""></h1>
             <div class="combobox">
-                <label for="proname">Name: </label>
+                <label for="proname">Tên: </label>
                 <input type="text" name="proname" id="proname" required placeholder="Enter product name">
             </div>
             <div class="combobox1">
-                <label for="proprice">Price: </label>
+                <label for="proprice">Giá: </label>
                 <input type="text" required name="proprice" id="proprice">
-                <label for="category">Category: </label>
+                <label for="category">Danh mục: </label>
                 <select name="catid" id="catname">
                     <?php
                     require('../../db/connect.php');
@@ -48,7 +48,7 @@
             <div class="combobox1">
                 <label for="prostock">Stock: </label>
                 <input type="number" name="prostock" id="prostock" required placeholder="Enter value of product in stock">
-                <label for="sales">Sales</label>
+                <label for="sales">Giảm giá</label>
                 <select name="sales" id="sales">
                     <?php
                     foreach ($enumValues as $value) {
@@ -63,15 +63,15 @@
             </div>
 
             <div class="combobox">
-                <label for="imagepath" id="imagepath">Image path: </label>
+                <label for="imagepath" id="imagepath">Ảnh: </label>
                 <input type="file" name="image_path" id="imagepath">
             </div>
 
             <div class="combobox">
-                <label for="prodes" id="prodes" >Description: </label>
+                <label for="prodes" id="prodes" >Mô tả: </label>
                 <textarea name="prodescription" id="prodes" cols="30" rows="5" placeholder="Enter product description"></textarea>
             </div>
-            <button type="submit" name="btn-reg" value="addProduct" >Add</button>
+            <button type="submit" name="btn-reg" value="addProduct" >Thêm</button>
         </form>
       
     </div>
