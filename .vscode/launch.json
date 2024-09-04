@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 
+
     
         {
             "name": "Launch built-in server and debug",
@@ -34,7 +35,7 @@
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
-            "port": 9000
+            "port": 9003
         }
     ]
 }
