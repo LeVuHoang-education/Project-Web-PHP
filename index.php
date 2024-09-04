@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/frontend/component/productCard/productCard.css">
-    <link rel="stylesheet" href="assets/frontend/pages/home/home.css">
-    <link rel="stylesheet" href="assets/frontend/component/footer/footer.css">
-    <link rel="stylesheet" href="assets/frontend/pages/productInfo/productInfo.css">
-    <link rel="stylesheet" href="assets/frontend/pages/productList/productList.css">
-    <link rel="stylesheet" href="assets/frontend/pages/About/about.css">
-    <link rel="stylesheet" href="assets/frontend/pages/Dichvu/DichVu.css">
-    <link rel="stylesheet" href="assets/frontend/component/Item/item.css">
+    <link rel="stylesheet" href="./assets/frontend/component/productCard/productCard.css">
+    <link rel="stylesheet" href="./assets/frontend/pages/home/home.css">
+    <link rel="stylesheet" href="./assets/frontend/component/footer/footer.css">
+    <link rel="stylesheet" href="./assets/frontend/pages/productInfo/productInfo.css">
+    <link rel="stylesheet" href="./assets/frontend/pages/productList/productList.css">
+    <link rel="stylesheet" href="./assets/frontend/pages/About/about.css">
+    <link rel="stylesheet" href="./assets/frontend/pages/Dichvu/DichVu.css">
+    <link rel="stylesheet" href="./assets/frontend/component/Item/item.css">
     <link rel="stylesheet" href="./assets/frontend/component/header/header.css" />
-
+    <link rel="stylesheet" href="./assets/frontend/global/variable.css" />
 </head>
 
-<body style="background-color: #EEEEEE; margin:0;overflow-x:hidden;overflow-y:scroll;">
+<body style="background-color: var(--bg-color); margin:0;overflow-x:hidden;overflow-y:scroll;">
     <?php
     include_once "./assets/frontend/component/header/header.php";
     include_once "./frontend/global/variable.php";

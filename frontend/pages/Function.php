@@ -158,7 +158,7 @@ function delAllItemCart($userID)
 function getAllItemCart($userID)
 {
     global $conn;
-    $sql = "SELECT `cart-item`.*, product.image_path, product.proname FROM `cart-item` INNER JOIN product ON `cart-item`.proID = product.proid WHERE `cart-item`.userID = ? ";
+    $sql = "SELECT `cart-item`.*, product.image_path, product.proname,product.sales FROM `cart-item` INNER JOIN product ON `cart-item`.proID = product.proid WHERE `cart-item`.userID = ? ";
 
     $stmt = $conn->prepare($sql);
     if (!$stmt) {

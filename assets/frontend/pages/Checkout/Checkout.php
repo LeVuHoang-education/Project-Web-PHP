@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
         $data_tt = getTTKH($_SESSION['user_id']);
         $data_user = getUserbyID($_SESSION['user_id']);
 
-      if ($data_tt->num_rows > 0) {
+        if ($data_tt->num_rows > 0) {
             $ten = $data_tt->fetch_assoc()['fullname'];
         } else $ten = $data_user->fetch_assoc()['username'];
 
@@ -84,8 +84,8 @@ if (isset($_SESSION['user_id'])) {
         <?php foreach ($selectedItems as $item) {
             foreach ($_SESSION['cart'] as $cartItem) {
                 if ($cartItem[0] == $item) {
-                    
-                    ?>
+
+        ?>
                     <tr class="content-main">
                         <td> <img src="../../../UploadImage/<?php echo $cartItem[4] ?>" alt=""></td>
                         <td><?php echo $cartItem[1] ?></td>
@@ -155,9 +155,11 @@ if (isset($_SESSION['user_id'])) {
             $row = $data_dc->fetch_assoc();
             if ($row != null) {
             ?>
-            <input type="submit" value="Đặt hàng" name="Buy">
+                <input type="submit" value="Đặt hàng" name="Buy" style="  background-color: #109dd4;padding:10px 15px;border-radius:5px;">
             <?php } else { ?>
-            <input type="submit" value="Đặt hàng" name="Buy" disabled>
+                <div onclick="alertNotify()" id="btn-submit">
+                    <input type="submit" value="Đặt hàng" name="Buy" disabled>
+                </div>
             <?php } ?>
         </form>
     </div>
@@ -167,6 +169,10 @@ if (isset($_SESSION['user_id'])) {
             var selectElement = document.getElementById('paymentSelect');
             var hiddenInput = document.getElementById('paymentHiddenInput');
             hiddenInput.value = selectElement.value;
+        }
+
+        function alertNotify() {
+            alert("Bạn chưa thiết lập địa chỉ giao hàng. Vui lòng đến trang tài khoản để thiết lập");
         }
     </script>
 </body>

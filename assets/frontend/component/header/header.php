@@ -9,7 +9,7 @@
 <body>
     <div class="header-container">
         <div class="banner-brand">
-            <div class="title">NỘI THẤT NHẬT HOÀNG - CHẤT LƯỢNG ĐỒNG HÀNH, PHONG CÁCH THĂNG HOA</div>
+            <div class="title">NỘI THẤT NHẬT HOÀNG - CHẤT LƯỢNG ĐỒNG HÀNH, THĂNG HOA CUỘC SỐNG</div>
             <div class="individual">
                 <div class="love-list">
                     <a href="../../../../index.php?act=shopping&feature=loveList">

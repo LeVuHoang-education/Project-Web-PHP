@@ -21,7 +21,7 @@
         <div class="aside-menu">
             <div class="aside-profile-menu" data-target="submenuProfile">
                 <img src="assets/frontend/img/Icon//user (1).png" width="40px" height="40px" alt="">
-                <span>Tài khoản của tôi</span>
+                <span >Tài khoản của tôi</span>
             </div>
             <div class="submenu" id="submenuProfile">
                 <a href="../../../../index.php?act=account&feature=brief">Hồ sơ</a>

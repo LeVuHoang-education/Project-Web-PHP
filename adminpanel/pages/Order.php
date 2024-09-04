@@ -33,11 +33,11 @@
                     if($row['userid'] == 0){
                         echo 'Khách: ' . $row['guestid'];
                     }else {
-                        echo  'Người dùng:' . $row['userid'];
+                        echo  'Người dùng:' . $row['ugtserid'];
                     }
                 ?></td>
                 <td><?php echo $row['orderdate'] ?></td>
-                <td><?php echo $row['totalmount'] ?> $</td>
+                <td><?php echo $row['totalmount'] ?> đ</td>
                 <td><?php echo $row['status'] ?></td>
                 <td class="Chucnang_od"><a href="index.php?act=ODetail&ID=<?php echo $row['orderid'] ?>">Chi tiết</a>
                     <a href="index.php?act=UpdateOD&ID=<?php echo $row['orderid'] ?>">Cập nhật trạng thái</a>

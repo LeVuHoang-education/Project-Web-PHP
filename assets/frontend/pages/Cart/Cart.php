@@ -15,7 +15,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['dataiGH'] == false) {
     while ($row = $cartData->fetch_assoc()) {
         $idsp = $row['proID'];
         $name = $row['proname'];
-        $price = $row['itemprice'];
+
+        if ($row['sales'] == null) {
+            $price = $row['itemprice'];
+        } else {
+            $price = $row['itemprice'] * (1 - $row['sales'] / 100);
+        }
         $img = $row['image_path'];
         $quantity = $row['quantity'];
 
