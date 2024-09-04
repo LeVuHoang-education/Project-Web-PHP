@@ -121,3 +121,9 @@ input[type="submit"]{
     background-color: transparent;
     border:none;
 }
+input[type="submit"]:hover {
+    background-color: #7aae00;
+}
+.DatHang button {
+    opacity: 1  ;
+}
