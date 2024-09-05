@@ -26,6 +26,49 @@ h2 a img {
   height: auto;
 }
 
+h2 select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+}
+h2 button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+  cursor: pointer;
+}
+h2 button:hover {
+  background-color: #6C7A89;
+  color: rgb(204, 255, 0);
+}
+
+h2 input[type = "text"] {
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+}
+h2 input[type = "text"]:focus {
+  outline: none;
+}
+
+h2 input[type = "submit"] {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #0067d5;
+  background-color: rgb(0, 154, 100);
+  color: white;
+  cursor: pointer;
+}
+
+h2 input[type = "submit"]:hover {
+  background-color: #6C7A89;
+  color: rgb(204, 255, 0);
+}
+
+
 .responsive-table {
   padding: 0;
 
@@ -157,10 +200,6 @@ li {
 }
 
 .is_active {
-  /* background-color: blueviolet;
-  color: white;
-  padding: 10px;
-  border-radius: 20px; */
   margin: 10px;
   border-radius: 10px;
   border: 1px solid #6C7A89;

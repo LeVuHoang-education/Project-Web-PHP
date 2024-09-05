@@ -12,12 +12,12 @@
     <div class=".containner">
         <table id="userList">
             <tr>
-                <th>id</th>
-                <th>User name</th>
-                <th>Phone number</th>
+                <th>Mã</th>
+                <th>Tên người dùng</th>
+                <th>Số điện thoại</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>Role</th>
+                <th>Giới tính</th>
+                <th>Vai trò</th>
                 <th></th>
             </tr>
             <?php
@@ -37,8 +37,8 @@
                     <td><?php echo $row['gender'];  ?></td>
                     <td><?php echo $row['userrole'];  ?></td>
                     <td>
-                        <a href="index.php?act=EditUser&userid=<?php echo $row['userid']?>"> <button type="submit">Edit</button> </a>
-                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../frontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Delete</button> </a>
+                        <a href="index.php?act=EditUser&userid=<?php echo $row['userid']?>"> <button type="submit">Chỉnh sửa</button> </a>
+                        <a onclick="return confirm('Ban co muon xoa account nay');" href="../../frontend/pages/DeleteUser.php?userid=<?php echo $row['userid'] ?>"> <button type="submit">Xóa</button> </a>
                     </td>
                 </tr>
             <?php

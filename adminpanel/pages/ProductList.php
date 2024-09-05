@@ -40,8 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>
             <a href="index.php?act=ThemSanPham"> <img src="../../assets/frontend/img/Icon/add-product.png" alt="" /></a>
+
+            <form action="index.php?act=SanPham&catid=0&page=1" method="post">
+                <input type="text" name="namesearch" id="search" placeholder="Tìm kiếm sản phẩm">
+                <input type="submit" value="Tìm kiếm" name="searchbyname">
+            </form>
+
+
             <form action="index.php" method="get">
                 <input type="hidden" name="act" value="<?php echo htmlspecialchars($act); ?>">
                 <input type="hidden" name="page" value="<?php echo htmlspecialchars($page); ?>">
@@ -103,8 +108,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $limit = 10;
             $from = ($page - 1) * $limit;
+            if (isset($_POST['namesearch']) && !empty($_POST['namesearch'])) {
 
-            if (isset($_GET['catid'])) {
+                $namesearch = $_POST['namesearch'];
+                $sql = "SELECT * FROM product WHERE proname LIKE ? LIMIT $from, $limit";
+                $stmt = $conn->prepare($sql);
+                $searchTerm = "%$namesearch%";
+                $stmt->bind_param("s", $searchTerm);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+
+                $sqlCount = "SELECT COUNT(*) as total FROM product WHERE proname LIKE ?";
+                $stmtCount = $conn->prepare($sqlCount);
+                $stmtCount->bind_param("s", $searchTerm);
+                $stmtCount->execute();
+                $resultCount = $stmtCount->get_result();
+                if ($resultCount) {
+                    $rowCount = mysqli_fetch_assoc($resultCount);
+                    $count = $rowCount['total'];
+                } else {
+                    echo "Error: " . mysqli_error($conn);
+                    $count = 0;
+                }
+            } else if (isset($_GET['catid'])) {
+
                 $catid = intval($_GET['catid']);
                 if ($catid == 0) {
                     $sql = "SELECT * FROM product LIMIT $from, $limit";
@@ -121,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $count = 0;
                     }
                 } else {
+
                     $sql = "SELECT * FROM product WHERE catid = ? LIMIT $from, $limit";
                     $stmt  = $conn->prepare($sql);
                     $stmt->bind_param("i", $catid);
@@ -141,6 +170,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             while ($row = mysqli_fetch_assoc($result)) {
+                $check = "SELECT COUNT(*) as pending_orders FROM `order-detail` oi JOIN orders o ON oi.orderid = o.orderid WHERE oi.proid = ? AND o.status != 'Đã Giao'";
+                $stmt = $conn->prepare($check);
+                $stmt->bind_param("i", $row['proid']);
+                $stmt->execute();
+                $resultCheck = $stmt->get_result();
+                $pending_orders = $resultCheck->fetch_assoc()['pending_orders'];
+
+                $deleteDisabled = $pending_orders > 0 ? 'disabled' : '';
+                $deleteMessage = $pending_orders > 0 ? 'Sản phẩm này không thể xóa vì có đơn hàng chưa giao.' : 'Xóa sản phẩm này';
             ?>
                 <li class="table-row">
                     <div class=" col-1" "> <?php echo $row['proname'] ?></div>
@@ -174,7 +212,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="submit" value="<?php echo $value ?>" class="is_active" name="is_active">
                         </form>
                         <a href="../../adminpanel/pages/index.php?act=EditProduct&proid=<?php echo $row['proid'] ?>">chỉnh sửa</a>
-                        <a onclick=" confirm ('Ban co chac muon xoa san pham nay');" aria-disabled="true" href="#">Xóa</a>
+                        <a href="javascript:void(0);"
+                            onclick="confirmDelete('<?php echo $deleteMessage; ?>', '<?php echo $deleteDisabled; ?>', <?php echo $row['proid']; ?>);"
+                            aria-disabled="<?php echo htmlspecialchars($deleteDisabled); ?>"
+                            <?php echo $deleteDisabled ? 'style="pointer-events: none; background-color:gray ;color: white;"' : ''; ?>>
+                            Xóa
+                        </a>
                     </div>
                 </li>
             <?php
@@ -201,6 +244,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById('catname').addEventListener('change', function() {
             var catid = this.value;
         });
+
+        function confirmDelete(message, isDisabled, proid) {
+            if (isDisabled !== 'disabled') {
+                if (confirm(message)) {
+                    window.location.href = `../../frontend/pages/DeleteProduct.php?proid=${proid}`;
+                }
+            }
+        }
     </script>
 
 </body>
