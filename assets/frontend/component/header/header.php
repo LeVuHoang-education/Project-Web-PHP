@@ -193,8 +193,10 @@
                 <button type="submit">Đăng nhập</button>
             </form>
             <br>
-            <a href="#" data-modal="popupSignUp">Đăng kí </a>
-            <a href="index.php?act=DatLaiMatKhau">Quên mật khẩu?</a>
+            <div class="sub-form-account">
+                <a href="#" data-modal="popupSignUp">Đăng kí </a>
+                <a href="index.php?act=DatLaiMatKhau">Quên mật khẩu?</a>
+            </div>
         </div>
     </div>
 
