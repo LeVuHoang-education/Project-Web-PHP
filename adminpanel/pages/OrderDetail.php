@@ -15,7 +15,7 @@
     <div class="oD-con">
         <div class="formOD">
             <div class="card-Header">
-                <h1> ID:
+                <h1> Mã:
                     <?php if (isset($_GET['ID'])) {
                         $id = $_GET['ID'];
                     }

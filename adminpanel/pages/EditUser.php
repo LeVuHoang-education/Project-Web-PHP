@@ -53,29 +53,29 @@
             <h1>User: <?php echo $row['username']?>   </h1>
             <hr>
             <form action="../../frontend/pages/UpdateUser.php?userid=<?php echo $row['userid'] ?>" method="post">
-                <label for="username">User name</label><br>
+                <label for="username">Tên người dùng</label><br>
                 <input type="text" name="username" id="username" required width="100%" value="<?php echo $row['username']?>">
                 <br>
                 <label for="email">Email</label><br>
                 <input type="email" name="email" id="email" required width="100%" value="<?php echo $row['email']?>">
                 <br>
-                <label for="phonenumber">Phone Number</label><br>
+                <label for="phonenumber">Số điện thoại</label><br>
                 <input type="text" name="phonenumber" id="phonenumber" required width="100%" value="<?php echo $row['phonenumber']?>">
                 <br>
                 <div class="genderI">
-                    <label for="male">Gender: </label>
+                    <label for="male">Giới tính: </label>
                     <input type="radio" name="gender" id="male" value="nam">
-                    <label for="male">male</label>
+                    <label for="male">Nam</label>
                     <input type="radio" name="gender" id="female" value="nữ">
-                    <label for="female">female</label>
+                    <label for="female">Nữ</label>
                 </div>
-                <label for="role">Set role</label>
+                <label for="role">Đặt vai trò</label>
                 <select name="  userrole" id="role" >
-                    <option value="user">User</option>
-                    <option value="admin" >Admin</option>
+                    <option value="user">Người dùng</option>
+                    <option value="admin" >Quản trị viên</option>
                 </select>
                 <br>
-                <button type="submit" name="btn-reg" value="Sign Up">Save</button>
+                <button type="submit" name="btn-reg" value="Sign Up">Lưu</button>
             </form>
         </div>
     </div>

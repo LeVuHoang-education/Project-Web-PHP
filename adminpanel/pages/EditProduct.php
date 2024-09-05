@@ -57,13 +57,13 @@ if (isset($_GET['proid'])) {
         <form action="../../frontend/pages/UpdateProduct.php?proid=<?php echo $row['proid']; ?>" method="post" enctype="multipart/form-data">
             <h1><img src="../../assets/fontend/img/Icon/add-product.png" alt=""></h1>
             <div class="combobox">
-                <label for="proname">Name: </label>
+                <label for="proname">Tên: </label>
                 <input type="text" name="proname" id="proname" required placeholder="Enter product name" value="<?php echo $row['proname']; ?> ">
             </div>
             <div class="combobox1">
-                <label for="proprice">Price: </label>
+                <label for="proprice">Giá: </label>
                 <input type="text" required name="proprice" id="proprice" value="<?php echo $row['proprice']; ?> ">
-                <label for="category">Category: </label>
+                <label for="category">Danh mục: </label>
                 <select name="catid" id="catname">
                     <?php
                     require('../../db/connect.php');
@@ -79,9 +79,9 @@ if (isset($_GET['proid'])) {
             </div>
 
             <div class="combobox1">
-                <label for="prostock">Stock: </label>
+                <label for="prostock">Số lượng : </label>
                 <input type="number" name="prostock" id="prostock" required placeholder="Enter value of product in stock" value="<?php echo $row['prostock']; ?>">
-                <label for="sales">Sales: </label>
+                <label for="sales">Giảm giá: </label>
                 <select name="sales" id="sales">
                     <?php
                     foreach ($enumValues as $value) {
@@ -111,7 +111,7 @@ if (isset($_GET['proid'])) {
             </div>
 
             <div class="combobox">
-                <label for="prodes">Description: </label>
+                <label for="prodes">Mô tả: </label>
                 <textarea name="prodescription" id="prodes" cols="30" rows="5" placeholder="Enter product description"></textarea>
             </div>
             <button type="submit" name="btn-reg" value="addProduct">save</button>
