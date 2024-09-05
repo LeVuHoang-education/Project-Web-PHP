@@ -116,7 +116,15 @@ if (isset($_POST['addcart'])) {
         $i = 0;
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $itemOrder) {
+                $sql = "SELECT prostock, is_active FROM product WHERE proid = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $itemOrder[0]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
 
+                // Kiểm tra nếu sản phẩm không còn hoạt động hoặc hết hàng
+                $isDisabled = $row['is_active'] == 0 || $row['prostock'] == 0;
         ?>
                 <tr class="CartContent">
                     <td>
@@ -124,7 +132,8 @@ if (isset($_POST['addcart'])) {
                             name="choose-order"
                             onchange="updateTotalmount()"
                             id="choose-order"
-                            <?php if ($itemOrder[5] == 1) echo 'checked'; ?>>
+                            <?php if ($itemOrder[5] == 1) echo 'checked'; ?>
+                            <?php if ($isDisabled) echo 'disabled'; ?>>
                     </td>
                     <td>
                         <img max-width="100%"
@@ -138,7 +147,7 @@ if (isset($_POST['addcart'])) {
                     <td class="price" data-price="<?php echo $itemOrder[3] ?>"></td>
                     <td>
                         <div class="soluong">
-                            <button class="btn" onclick="giam(this)">-</button>
+                            <button class="btn" onclick="giam(this)" <?php if ($isDisabled) echo 'disabled'; ?>>-</button>
                             <?php
                             $sql = "SELECT prostock FROM product where proid=$itemOrder[0]";
                             $result = $conn->query($sql);
@@ -153,10 +162,17 @@ if (isset($_POST['addcart'])) {
                                 max="<?php echo $row['prostock']; ?>"
                                 onchange="updateTotal(this)">
 
-                            <button class="btn" onclick="tang(this)">+</button>
+                            <button class="btn" onclick="tang(this)" <?php if ($isDisabled) echo 'disabled'; ?>>+</button>
+                        </div>
+                        <div class="tb">
+                            <?php
+                            if ($isDisabled) {
+                                echo '<span class="error-message">Sản phẩm này đã hết hàng.</span>';
+                            }
+                            ?>
                         </div>
                     </td>
-                    <td class="ThanhTien" data-total="<?php echo ( (float)$itemOrder[2] *  (float)$itemOrder[3]) ?>"></td>
+                    <td class="ThanhTien" data-total="<?php echo ((float)$itemOrder[2] *  (float)$itemOrder[3]) ?>"></td>
                     <td>
                         <form action="index.php?act=GioHang" method="post">
                             <input type="hidden" name="Cart-item-id" value="<?php echo htmlspecialchars($itemOrder[0]); ?>">

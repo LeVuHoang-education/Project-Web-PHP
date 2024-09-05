@@ -372,7 +372,16 @@ svg {
 }
 
 .popup-content a:hover {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 136, 255);
   text-decoration: underline;
   background-color: rgb(127, 1, 181);
 }
+
+.popup-content button {
+  border: none;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
