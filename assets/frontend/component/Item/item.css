@@ -59,7 +59,8 @@
 }
 
 #pro_price {
-  color: #134b70;
+  color: var(--text-color );
+  font-size:20px;
 }
 
 .love-product {
@@ -73,4 +74,5 @@ button.add-product {
   cursor: pointer;
   opacity: 1;
   background-color: transparent;
+  border:none;
 }

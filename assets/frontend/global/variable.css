@@ -1,8 +1,10 @@
 :root {
   --button-bg-color: #525fe1;
-  --button-bg-color-hover: #404ab8;
+  --button-bg-color-hover: #30378f;
   --icon-bg: #f86f03;
   --bg-color: #fff6f4;
-  --text-shadow: #525FE1;
+  --text-shadow: #525fe1;
   --box-shadow-color: #525fe1;
+  --text-color: #f86f03;
+  --border-color: #f86f03;
 }

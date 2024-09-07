@@ -28,22 +28,19 @@
                         <div class="product-name">
                             <?php echo $row['proname']; ?>
                         </div>
-                        <div class="product-origin">
-                            <h4>Xuất xứ:<?php echo $row['productOrigin'] ?></h4>
-                        </div>
                         <div class="product-price"><?php if ($row['sales'] == null) { ?>
                                 Giá: <script>
                                     var price = <?php echo $row['proprice'] ?>;
                                     document.write(nf.format(price));
                                 </script>đ
                             <?php } else { ?>
-                                <div class="old-price" style="color:gray; text-decoration:line-through">
+                                <div class="old-price" style="color:gray; text-decoration:line-through;font-size:14px;">
                                     Giá cũ: <script>
                                         var price = <?php echo $row['proprice'] ?>;
                                         document.write(nf.format(price));
                                     </script>đ
                                 </div>
-                                <div class="new-price" style="color:red;">
+                                <div class="new-price" style="color:red;font-size:20px;">
                                     Giá mới: <script>
                                         var price = <?php echo $row['proprice'] * (1 - $row['sales'] / 100) ?>;
                                         document.write(nf.format(price));
@@ -61,23 +58,23 @@
                     </div>
                     <div class="act">
                         <div class="btn">
-                                <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
-                                    <input type="hidden" name="idSP" value="<?php echo $id ?> ">
-                                    <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
-                                    <input type="hidden" name="priceSP" value="<?php
-                                                                                if ($row['sales'] == null) {
-                                                                                    echo $row['proprice'];
-                                                                                } else {
-                                                                                    echo $row['proprice'] - ($row['proprice'] * ($row['sales'] / 100));
-                                                                                } ?>;">
-                                    <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
-                                    <input type="hidden" name="mua" id="" value="1">
-                                    <input type="submit" class="pre-order-btn" name="addcart" value="Mua ngay" <?php
-                                                                                                                if ($row['prostock'] == 0) {
-                                                                                                                    echo "disabled";
-                                                                                                                }
-                                                                                                                ?>>
-                                </form>
+                            <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
+                                <input type="hidden" name="idSP" value="<?php echo $id ?> ">
+                                <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
+                                <input type="hidden" name="priceSP" value="<?php
+                                                                            if ($row['sales'] == null) {
+                                                                                echo $row['proprice'];
+                                                                            } else {
+                                                                                echo $row['proprice'] - ($row['proprice'] * ($row['sales'] / 100));
+                                                                            } ?>;">
+                                <input type="hidden" name="imgSP" value="<?php echo htmlspecialchars($row['image_path']); ?>">
+                                <input type="hidden" name="mua" id="" value="1">
+                                <input type="submit" class="pre-order-btn" name="addcart" value="Mua ngay" <?php
+                                                                                                            if ($row['prostock'] == 0) {
+                                                                                                                echo "disabled";
+                                                                                                            }
+                                                                                                            ?>>
+                            </form>
                             <form id="form-add-cart" action="../../../../index.php?act=GioHang" method="post">
                                 <input type="hidden" name="idSP" value="<?php echo $id ?> ">
                                 <input type="hidden" name="nameSP" value=" <?php echo $row['proname']; ?>">
@@ -96,6 +93,16 @@
                                                                                                                 ?>>
 
                             </form>
+                        </div>
+                        <div class="services-info">
+                            Miễn phí giao hàng & lắp đặt tại tất cả quận huyện thuộc TP.HCM, Hà Nội, Khu đô thị Ecopark, Biên Hòa và một số quận thuộc Bình Dương (*)
+                            <br />
+                            Miễn phí 1 đổi 1 - Bảo hành 2 năm - Bảo trì trọn đời (**)
+                            <br />
+                            <br />
+                            (*) Không áp dụng cho danh mục Đồ Trang Trí
+                            <br />
+                            (**) Không áp dụng cho các sản phẩm Clearance. Chỉ bảo hành 01 năm cho khung ghế, mâm và cần đối với Ghế Văn Phòng
                         </div>
                         <div class="hotline">Gọi ngay để được tư vấn:<br /> 01234567890</div>
                     </div>

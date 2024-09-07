@@ -105,7 +105,7 @@
   height: 30px;
 }
 /* Position the "next button" to the right */
-button{
+button.btn{
   border:none;
   opacity:0.2;
   display:flex;

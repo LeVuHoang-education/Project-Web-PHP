@@ -12,7 +12,9 @@
             <?php
             include "db/connect.php";
             foreach ($GLOBALS['itemID'] as $item) {
-                $ID = $item;
+                // $ID = $item;
+                // echo $ID;
+                $_SESSION['proid'] = $item;
                 include 'assets/frontend/component/Item/item.php';
             } ?>
         </div>

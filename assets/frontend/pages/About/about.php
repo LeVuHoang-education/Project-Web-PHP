@@ -45,10 +45,10 @@
                                 <div class="slides fade">
                                     <img src="./assets/frontend/src/about/Ảnh-nền-hoạt-hình-cực-ngầu-scaled.jpg" alt="Image">
                                 </div>
-                                <button class="prev" onclick="plusSlides(-1)">
+                                <button class=" btn prev" onclick="plusSlides(-1)">
                                     <img src="assets/frontend/img/Icon/caret-left.svg" />
                                 </button>
-                                <button class="next" onclick="plusSlides(1)">
+                                <button class="btn next" onclick="plusSlides(1)">
                                     <img src="assets/frontend/img/Icon/caret-right.svg" />
                                 </button>
                             </div>
