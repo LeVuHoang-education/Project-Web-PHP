@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/frontend/component/Item/item.css">
     <link rel="stylesheet" href="./assets/frontend/component/header/header.css" />
     <link rel="stylesheet" href="./assets/frontend/global/variable.css" />
+    <link rel="stylesheet" href="./assets/frontend/pages/LoveList/lovelist.css" />
 </head>
 
 <body style="background-color: var(--bg-color); margin:0;overflow-x:hidden;overflow-y:scroll;">
@@ -50,6 +51,9 @@
                     break;
                 case 'search':
                     include "./assets/frontend/pages/searchPage/searchPage.php";
+                    break;
+                case 'lovelist':
+                    include "./assets/frontend/pages/LoveList/lovelist.php";
                     break;
                 case 'chinh-sach-ban-hang':
                     include "assets/frontend/pages/Dichvu/CSBH.php";

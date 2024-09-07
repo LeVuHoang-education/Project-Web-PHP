@@ -4,18 +4,16 @@
     </script>
     <script src="assets/frontend/component/productCard/productCard.js"></script>
     <?php
-    include "frontend/global/variable.php";
-
     $category_number = isset($_GET['cat']) ? (int)$_GET['cat'] : $category;
-    require('./db/connect.php');
+    require_once('./db/connect.php');
     if ($category_number != 0) {
         if ($maxPrice != 0) {
-            $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice ORDER BY catid = $category_number";
-        } else $sql = "SELECT * FROM product WHERE catid = $category_number";
+            $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice AND prostock>'0' ORDER BY catid = $category_number";
+        } else $sql = "SELECT * FROM product WHERE catid = $category_number AND prostock>'0'";
     } else {
         if ($maxPrice != 0) {
-            $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice";
-        } else $sql = "SELECT * FROM product";
+            $sql = "SELECT * FROM `product` WHERE  (proprice BETWEEN $minPrice AND $maxPrice) AND (prostock>'0') ";
+        } else $sql = "SELECT * FROM product WHERE prostock>'0' ";
     }
 
     $listProducts = $conn->query($sql);
@@ -33,7 +31,7 @@
     <div id="show-products">
         <?php
         while ($row = $listProducts->fetch_assoc()) {
-            $ID = $row['proid'];
+            $_SESSION['proid'] = $row['proid'];
             include "./assets/frontend/component/Item/item.php";
         }
         ?>

@@ -247,3 +247,17 @@ function getItembyCartID($cartid)
 
     return $result;
 }
+
+function getProductBySugestion($catid)
+{
+  global $conn;
+  $type = [];
+  $sql = "SELECT * FROM `product` WHERE catid = $catid AND prostock>'0' AND is_outstanding='1'";
+  $result = $conn->query($sql);
+  while ($row = $result->fetch_assoc()) {
+    $type[] = $row['proid'];
+  }
+  $GLOBALS['itemID'] = $type;
+
+  include "./assets/frontend/component/suggestion/suggestion.php";
+}

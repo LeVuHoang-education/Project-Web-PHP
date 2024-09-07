@@ -9,8 +9,11 @@
 </head>
 
 <body>
+
+    <hr class="hr-header">
     <div class="footer">
         <div class="footer-content">
+
             <div class="footer-gt">
                 <h2>Nội Thất NHẬT HOÀNG</h2>
                 <ul class="footer-list">
@@ -26,7 +29,7 @@
                 <ul class="footer-list">
                     <li><a href="">
                             Giới thiệu
-                    </a>
+                        </a>
                     </li>
                     <li>
                         <a href="../../../../index.php?act=DieuKhoan">

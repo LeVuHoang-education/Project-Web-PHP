@@ -13,7 +13,8 @@
     <!--main content-->
     <div class="main-container">
       <?php
-      require('./db/connect.php');
+        require './db/connect.php';
+      require_once './frontend/pages/Function.php';
       function getProductByRange($min, $max, $conn)
       {
         $minPrice = $min;
@@ -21,11 +22,7 @@
         $category = 0;
         include "./assets/frontend/pages/productList/productList.php";
       }
-      function getProductBySugestion(array $type)
-      {
-        $GLOBALS['itemID'] = $type;
-        include "./assets/frontend/component/suggestion/suggestion.php";
-      }
+
       ?>
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/phong-cach-cao-cap.png">
@@ -38,7 +35,7 @@
         <img id="ads" src="assets/frontend/src/Home/ads/ads_1.png">
         <?php
         $arr = [30, 27, 28, 44, 12];
-        getProductBySugestion($arr);
+        getProductBySugestion(4);
         ?>
       </div>
       <hr />
@@ -46,8 +43,8 @@
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/mau-sac-tuoi-sang-nhe-nhang.png">
         <?php
-        $arr = [12, 14, 15, 16, 10];
-        getProductBySugestion($arr);
+        // $arr = [12, 14, 15, 16, 10];
+        getProductBySugestion(2);
         ?>
       </div>
       <hr />
@@ -55,8 +52,8 @@
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/nang-tam-trai-nghiem.png">
         <?php
-        $arr = [3, 27, 28, 29, 30];
-        getProductBySugestion($arr);
+        // $arr = [3, 27, 28, 29, 30];
+        getProductBySugestion(3);
         ?>
       </div>
       <hr />
@@ -66,7 +63,7 @@
         <?php
         // getProductByRange(0, 4999999, $conn);
         $arr = [31, 32, 33, 43];
-        getProductBySugestion($arr);
+        getProductBySugestion(4);
         ?>
       </div>
     </div>

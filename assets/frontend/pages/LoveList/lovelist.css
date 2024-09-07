@@ -1,0 +1,106 @@
+table,
+th,
+td {
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+}
+
+.lovelist-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  margin-bottom:40px;
+}
+
+.lovelist-container .lovelist-content {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lovelist-content table {
+  width: 100%;
+}
+
+table tr th#prodID {
+  width: 10%;
+}
+table tr th#prodprice {
+  width: 20%;
+}
+table tr th#action {
+  width: 10%;
+}
+
+table tr th#prodInfo {
+  width: 60%;
+}
+
+table tr td#prodID {
+  width: inherit;
+  padding: 0 5px;
+  text-align: center;
+}
+table tr td#prodprice {
+  width: inherit;
+  padding: 0 5px;
+  text-align: center;
+}
+table tr td#prodInfo {
+  width: inherit;
+}
+
+td#prodInfo .prodInfo {
+  padding: 0 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+td#prodInfo .prodName {
+  width: 80%;
+  text-align: center;
+}
+
+a#btn-watch{
+    color:black;
+    text-decoration: none;
+}
+
+td#prodInfo .prodImage {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+img#thumbnail-product {
+    width: 90%;
+    padding:10px;
+}
+table tr td#action {
+  width: inherit;
+  padding: 0 5px;
+}
+.btns-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-act-buy{
+    margin-bottom:10px;
+}
+.btn-act-buy button.btn-buy,
+.btn-delete{
+    background-color: var(--button-bg-color);
+    width:100px;
+    padding:10px;
+    border: none;
+    cursor: pointer;
+}
