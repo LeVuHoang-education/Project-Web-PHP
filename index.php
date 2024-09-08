@@ -28,6 +28,7 @@
     <div class="layout-container" style="width: 100vw;margin-top:40px;">
         <?php
         include_once "./db/connect.php";
+
         echo "<div class='content'>";
         if (isset($_GET['act'])) {
             switch ($_GET['act']) {
