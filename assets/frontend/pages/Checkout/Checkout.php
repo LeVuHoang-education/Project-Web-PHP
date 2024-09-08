@@ -69,7 +69,35 @@ if (isset($_SESSION['user_id'])) {
                 <span><?php echo $sdt ?></span>
                 <span><?php echo $dc ?></span>
             <?php } else { ?>
-                <span>Bạn chưa có địa chỉ nhận hàng (mặc định). Vui lòng vào trang tài khoản nhập địa chỉ để có thể mua hàng</span>
+                <form class="field-form" action="../../../../frontend/pages/Themdc.php" method="post">
+                    <label for="city">Thành phố</label>
+                    <div class="box-input">
+                        <select id="city-name" name="city-name">
+                            <option value="none">Chọn tỉnh/thành phố</option>
+                        </select>
+                    </div>
+
+                    <label for="district">Quận / Huyện</label>
+                    <div class="box-input">
+                        <select id="district-name" name="district-name">
+                            <option value="none">Chọn Quận/Huyện</option>
+                        </select>
+
+                    </div>
+                    <label for="ward">Xã / phường / Thị Trấn</label>
+                    <div class="box-input">
+                        <select id="ward-name" name="ward-name">
+                            <option value="none">Chọn Xã/Phường/Thị Trấn</option>
+                        </select>
+                    </div>
+                    <label for="number-house">Số nhà + đường</label>
+                    <div class="box-input">
+                        <input type="text" id="number-house" name="number-house" required value="">
+                    </div>
+                    <div id="submit">
+                        <button id="btn-submit" type="submit" value="ThemDC" name="ThemDC">Thêm địa chỉ</button>
+                    </div>
+                </form>
             <?php } ?>
         </div>
     </div>

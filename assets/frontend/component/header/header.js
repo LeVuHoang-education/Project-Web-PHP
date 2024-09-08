@@ -1,17 +1,23 @@
-window.onload = function () {
+window.onload = function ()
+{
   var navbar = document.getElementsByClassName("taskbar-container")[0];
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 300) {
+  window.addEventListener("scroll", function ()
+  {
+    if (window.scrollY > 300)
+    {
       navbar.classList.add("sticky");
-    } else {
-      if (navbar.classList.contains("sticky")) {
+    } else
+    {
+      if (navbar.classList.contains("sticky"))
+      {
         navbar.classList.remove("sticky");
       }
     }
   });
 };
 
-function openLoveList() {
+function openLoveList()
+{
   const btn = document.getElementById("open-love-list");
   fetch("./assets/frontend/component/header/handlingOpenLoveList.php", {
     method: "POST",
@@ -20,23 +26,45 @@ function openLoveList() {
     }),
   })
     .then((response) => response.text())
-    .then((text) => {
-      try {
+    .then((text) =>
+    {
+      try
+      {
         const data = JSON.parse(text);
         console.log("Success");
-        if (data.message == "notallow") {
+        if (data.message == "notallow")
+        {
           alert("Vui lòng đăng nhập để sử dụng tính năng này!");
-        } else {
+        } else
+        {
           var link = document.createElement("a");
           link.href = "../../../../index.php?act=lovelist";
           document.body.appendChild(link);
           link.click();
         }
-      } catch (error) {
+      } catch (error)
+      {
         console.error(error);
       }
     })
-    .catch((error) => {
+    .catch((error) =>
+    {
       console.error("Error:", error);
     });
+}
+function validateEmail()
+{
+  var emailInput = document.getElementById('email');
+  var emailError = document.getElementById('emailError');
+  var emailValue = emailInput.value;
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(emailValue))
+  {
+    emailError.style.display = 'block';
+  } else
+  {
+    emailError.style.display = 'none';
+  }
 }

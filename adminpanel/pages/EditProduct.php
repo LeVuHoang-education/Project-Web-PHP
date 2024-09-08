@@ -3,7 +3,6 @@ require('../../db/connect.php');
 
 $sql = "SHOW COLUMNS FROM product LIKE 'sales'";
 $result = $conn->query($sql);
-
 if ($result) {
     $row = $result->fetch_assoc();
     $enumValues = $row['Type'];
@@ -79,7 +78,7 @@ if (isset($_GET['proid'])) {
             </div>
 
             <div class="combobox1">
-                <label for="prostock">Số lượng : </label>
+                <label for="prostock">Số lượng: </label>
                 <input type="number" name="prostock" id="prostock" required placeholder="Enter value of product in stock" value="<?php echo $row['prostock']; ?>">
                 <label for="sales">Giảm giá: </label>
                 <select name="sales" id="sales">
@@ -109,7 +108,21 @@ if (isset($_GET['proid'])) {
                     <?php endif; ?>
                 </div>
             </div>
-
+            
+            <div class="combobox">
+                <label for="is_outstanding">Nổi bật:</label>
+                <select name="is_outstanding">
+                    <?php 
+                        if($row['is_outstanding'] == 1){
+                            echo '<option value="1" selected>Có</option>';
+                            echo '<option value="0">Không</option>';
+                        } else {
+                            echo '<option value="1">Có</option>';
+                            echo '<option value="0" selected>Không</option>';
+                        }
+                    ?>
+                </select>
+            </div>
             <div class="combobox">
                 <label for="prodes">Mô tả: </label>
                 <textarea name="prodescription" id="prodes" cols="30" rows="5" placeholder="Enter product description"></textarea>
