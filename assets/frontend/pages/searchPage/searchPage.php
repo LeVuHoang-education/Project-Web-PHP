@@ -45,9 +45,9 @@
         <div class="search-results">
             <?php
             if (isset($_SESSION["itemList"])) {
-                include "frontend/global/variable.php";
-                foreach ($_SESSION['itemList'] as $itemID) {
-                    $ID = $itemID;
+                $list = $_SESSION['itemList'];
+                foreach ($list as $itemID => $value) {
+                    $_SESSION['proid'] = $value;
                     include 'assets/frontend/component/Item/item.php';
                 }
             }
