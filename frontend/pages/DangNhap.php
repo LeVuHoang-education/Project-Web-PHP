@@ -26,6 +26,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             } else {
                 $_SESSION['user_id'] = $userid;
                 echo json_encode(['success' => true, 'message' => 'Đăng nhập thành công']);
+                if (!isset($_SESSION['lovelist'])) {
+                    $_SESSION['lovelist'] = [];
+                    $sql = "SELECT proid FROM `love-list` WHERE userid=$userid";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                        array_push($_SESSION['lovelist'], $row['proid']);
+                    }
+                }
             }
         } else {
             // Mật khẩu sai
