@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selectedItems = explode(',', $_POST['selected_cart_ids']);
     }
 }
-
+$addressExists = false;
 //lay data khach hang
 if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM `dckh` WHERE userid = $id";
+    $sql = "SELECT * FROM `dckh` WHERE userid = $id and defaultDC = 1";
     $data_dc = $conn->query($sql);
     $row = $data_dc->fetch_assoc();
     if ($row != null) {
@@ -27,15 +27,10 @@ if (isset($_SESSION['user_id'])) {
 
         $data_user = getUserbyID($_SESSION['user_id']);
         $sdt = $data_user->fetch_assoc()['phonenumber'];
-
-        while ($row = $data_dc->fetch_assoc()) {
-            if ($row['defaultDC'] == 1) {
-                $dc = $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
-            }
-        }
+        $dc = $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
+        $addressExists = true;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,14 +54,7 @@ if (isset($_SESSION['user_id'])) {
 
         <div class="DCNH-content">
             <?php
-            $addressExists = false;
-            $id = $_SESSION['user_id'];
-            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
-            $data_dc = $conn->query($sql);
-            $row = $data_dc->fetch_assoc();
-            if ($row != null) {
-                $addressExists = true;
-
+            if ($addressExists) {
             ?>
                 <span><?php echo $ten ?></span>
                 <span><?php echo $sdt ?></span>
@@ -173,10 +161,10 @@ if (isset($_SESSION['user_id'])) {
                 </script>
             </span>
         </div>
-        <form action="../../../../frontend/pages/MuaHang.php" method="post" id="order-form">
-            <input type="hidden" name="cartid" id="" value="<?php echo $_POST['selected_cart_ids'] ?>">
+        <form onsubmit="submitForms()" action="../../../../frontend/pages/MuaHang.php" id="order-form" method="post">
+            <input type="hidden" name="cartid" value="<?php echo $_POST['selected_cart_ids']?>">
             <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
-            <input type="submit" value="Đặt hàng" name="Buy" onclick="handleCheckoutFormSubmit(event)" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;">
+            <input type="submit" value="Đặt hàng" name="Buy" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;">
         </form>
     </div>
 
@@ -187,36 +175,39 @@ if (isset($_SESSION['user_id'])) {
             hiddenInput.value = selectElement.value;
         }
 
-        function handleCheckoutFormSubmit(event) {
-            event.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
-
-            const addressForm = document.getElementById('addressForm');
-            const orderForm = document.getElementById('orderForm');
+        function submitForms() {
+            var addressForm = document.querySelector('form.field-form');
+            var muaHangForm = document.querySelector('form[action="../../../../frontend/pages/MuaHang.php"]');
 
             if (addressForm) {
-                const addressFormData = new FormData(addressForm);
+                // Nếu có form thêm địa chỉ, gửi form đó trước
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData(addressForm);
 
-                fetch(addressForm.action, {
-                        method: 'POST',
-                        body: addressFormData
-                    })
-                    .then(response => response.text())
-                    .then(result => {
-                        if (result.trim() === 'OK') {
-                            // Địa chỉ đã được thêm thành công, giờ gửi form đặt hàng
-                            orderForm.submit();
+                xhr.open('POST', '../../../../frontend/pages/ThemdcCus.php', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        if (xhr.responseText.trim() === 'OK') {
+                            if (muaHangForm) {
+                                // Gửi form mua hàng sau khi thêm địa chỉ thành công
+                                muaHangForm.submit();
+                            } else {
+                                alert('Không tìm thấy form mua hàng.');
+                            }
                         } else {
-                            // Thêm địa chỉ thất bại, hiển thị thông báo lỗi
-                            alert('Lỗi khi thêm địa chỉ');
+                            alert('Không thể thêm địa chỉ: ' + xhr.responseText);
                         }
-                    })
-                    .catch(error => {
-                        console.error('Lỗi:', error);
-                        alert('Lỗi khi gửi dữ liệu.');
-                    });
+                    } else {
+                        alert('Có lỗi xảy ra khi gửi yêu cầu.');
+                    }
+                };
+                xhr.send(formData);
             } else {
-                
-                orderForm.submit();
+                if (muaHangForm) {
+                    muaHangForm.submit();
+                } else {
+                    alert('Không tìm thấy form mua hàng.');
+                }
             }
         }
     </script>

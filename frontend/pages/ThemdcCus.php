@@ -2,7 +2,7 @@
 session_start();
 require_once "../../db/connect.php";
 include __DIR__ .  "/Function.php";
-if (isset($_POST['ThemDC'])) {
+if (isset($_POST['city-name'])) {
     $city = htmlspecialchars($_POST['city-name']);
     $district = $_POST['district-name'];
     $ward = $_POST['ward-name'];
@@ -15,13 +15,15 @@ if (isset($_POST['ThemDC'])) {
 
 
     if ($stmt->execute()) {
-        header("Location: ../../index.php?act=account&feature=address");
-        echo "<script>alert('Thêm địa chỉ thành công')</script>";
-        exit();
+        $lastId = $conn->insert_id;
+        $updateSql = "UPDATE dckh SET defaultDC = 1 WHERE userid = ? AND idDC = ?";
+        $updateStmt = $conn->prepare($updateSql);
+        $updateStmt->bind_param("ii", $id, $lastId);
+        $updateStmt->execute();
+        $updateStmt->close();
+        echo "OK";
     } else {
-        header("Location:../../index.php?act=account&feature=address");
-        echo "<script>alert('Add failed')</script>";
-        exit();
+        echo "Lỗi: Không thể thêm địa chỉ.";
     }
     $stmt->close();
     $conn->close();
