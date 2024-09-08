@@ -295,7 +295,11 @@ function createPagination($base_url, $total_rows, $serial_page, $page_size = 10,
             $links .= $page;
         }
     } else {
-        for ($i = $total_pages - $offset + 1; $i <= $total_pages; $i++) {
+        if ($total_pages - $offset + 1 <= 0) {
+            $start = 1;
+        } else $start = $total_pages - $offset + 1;
+        
+        for ($i = $start; $i <= $total_pages; $i++) {
             if ($i == $serial_page)
                 $page = "<li style='background-color: var(--icon-bg);'><a href='{$base_url}&serial_page={$i}'> {$i}</a></li>";
             else
