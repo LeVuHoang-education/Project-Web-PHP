@@ -7,16 +7,21 @@
 </head>
 
 <body>
+    <?php session_start(); ?>
     <div class="header-container">
         <div class="banner-brand">
             <div class="title">NỘI THẤT NHẬT HOÀNG - CHẤT LƯỢNG ĐỒNG HÀNH, THĂNG HOA CUỘC SỐNG</div>
             <div class="individual">
                 <div class="love-list">
-                    <a href="../../../../index.php?act=lovelist">
+                    <?php
+                    ?>
+                    <button id="open-love-list" onclick="openLoveList()">
+                        <a href="../../../../index.php?act=lovelist">
+                        </a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                         </svg>
-                    </a>
+                    </button>
                 </div>
                 <div class="backet">
                     <a href="../../../../index.php?act=GioHang">
@@ -27,7 +32,6 @@
                 </div>
                 <div id="account">
                     <?php
-                    session_start();
                     if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != null) {
                         $userid = $_SESSION["user_id"];
                         include "db/connect.php";
@@ -56,7 +60,8 @@
                     <?php
                         $stmt->close();
                         $conn->close();
-                    } else { ?>
+                    } else {
+                    ?>
                         <a class="signIn" data-modal="popupLogin" href="#">Đăng nhập</a>
                         <!-- <a class="signIn" href="assets/frontend/pages/Form/SignIn.php">Đăng nhập</a> -->
                         <a class="signUp" data-modal="popupSignUp" href="#">/Đăng ký</a>

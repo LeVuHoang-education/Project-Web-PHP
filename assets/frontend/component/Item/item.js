@@ -14,10 +14,10 @@ function addNew(id) {
         try {
           const data = JSON.parse(text); // Attempt to parse as JSON
           console.log("Success");
-          if (data == "success") {
+          if (data.message == "success") {
             alert("Sản phẩm đã được thêm vào danh sách yêu thích của bạn");
             svg.style.fill = "red";
-          } else if (data ==  "delete")
+          } else if (data.message == "delete")
             alert("Sản phẩm sẽ được xóa khỏi danh sách yêu thích");
           else alert("Vui lòng đăng nhập để sử dụng tính năng này");
         } catch (error) {

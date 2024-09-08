@@ -1,10 +1,13 @@
 function revLoveProduct(id) {
-  fetch("./assets/frontend/pages/LoveList/handlingRevLoveProdFunc.php", {
-    method: "POST",
-    body: JSON.stringify({
-      prodID: id,
-    }),
-  })
+  fetch(
+    "./assets/frontend/pages/LoveList/handleFuncs/handlingDelLoveProdFunc.php",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        prodID: id,
+      }),
+    }
+  )
     .then((response) => response.text())
     .then((text) => {
       try {

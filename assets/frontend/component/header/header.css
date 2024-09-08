@@ -41,9 +41,13 @@
   margin: 10px;
 }
 
-.love-list a,
+.love-list button,
+.love-list button a,
 .backet a {
   color: black;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 svg {
@@ -248,34 +252,6 @@ svg {
   cursor: pointer;
 }
 
-@media (max-width: 1060px) {
-  .navbar ul {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 960px) {
-  .taskbar {
-    height: max-content;
-  }
-
-  .navbar {
-    height: auto;
-  }
-
-  .signIn {
-    display: block;
-    text-align: center;
-  }
-
-  .signUp {
-    display: none;
-  }
-
-  #form-field-search #input-search {
-    width: 50%;
-  }
-}
 
 /*dada*/
 .popup {
@@ -305,6 +281,7 @@ svg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "MuseonModeno";
 }
 
 .popup-content .sub-form-account {
@@ -377,9 +354,8 @@ svg {
 }
 
 .popup-content a:hover {
-  color: rgb(0, 136, 255);
   text-decoration: underline;
-  background-color: rgb(127, 1, 181);
+  font-weight: bold;
 }
 
 .popup-content button {
@@ -390,3 +366,36 @@ svg {
   align-items: center;
 }
 
+
+@media (max-width: 1060px) {
+  .navbar ul {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 960px) {
+  .taskbar {
+    height: max-content;
+  }
+
+  .navbar {
+    height: auto;
+  }
+
+  .signIn {
+    display: block;
+    text-align: center;
+  }
+
+  .signUp {
+    display: none;
+  }
+
+  #form-field-search #input-search {
+    width: 50%;
+  }
+
+  .popup-content {
+    width: 30%;
+  }
+}
