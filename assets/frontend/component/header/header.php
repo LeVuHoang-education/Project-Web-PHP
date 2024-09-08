@@ -215,12 +215,16 @@
             <form action="../../../../frontend/pages/DangKi.php" method="post" class="popup-formsignup">
                 <label for="username">Tên đăng nhập</label>
                 <input type="text" name="username" id="username" placeholder="Enter user name" required width="100%">
+                <!-- <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required width="100%"> -->
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" required width="100%">
+                <input type="email" name="email" id="email" placeholder="Enter your email" required width="100%" oninput="validateEmail()">
+                <div id="emailError" style="color: red;font-size:0.8rem; font-family:Arial, Helvetica, sans-serif ; display: none;">Sai định dạng email.</div>
                 <label for="phonenumber">Số điện thoại</label>
                 <input type="text" name="phonenumber" id="phonenumber" required width="100%" placeholder="Enter your phone number">
                 <label for="password">Mật khẩu</label>
                 <input type="password" name="password" id="password" placeholder="Enter your password" required width="100%">
+                <div id="passwordError" style="color: red;font-size:0.8rem; font-family:Arial, Helvetica, sans-serif; display: none;">Mật khẩu phải bao gồm ít nhất 1 chữ hoa , chữ thường, số và phải có ít nhất 8 kí tự</div>
                 <div class="genderI">
                     <label for="male">Giới tính</label>
                     <input type="radio" name="gender" id="male" value="nam">
@@ -230,8 +234,6 @@
                 </div>
                 <br>
                 <button type="submit">Đăng kí </button>
-                <div id="passwordError" style="color: red; display: none;">Mật khẩu phải bao gồm ít nhất 1 chữ hoa , chữ thường, số và phải có ít nhất 8 kí tự</div>
-                <div id="emailError" style="color: red; display: none;">Sai định dạng email.</div>
             </form>
             <br>
             <a href="#" data-modal="popupLogin">Đã có tài khoản? Đăng nhập</a>

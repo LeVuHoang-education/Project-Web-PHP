@@ -7,6 +7,7 @@ if (isset($_GET['proid']) && isset($_POST['proname']) && isset($_POST['proprice'
     $proprice = $_POST['proprice'];
     $catid = $_POST['catid'];
     $prostock = $_POST['prostock'];
+    $is_standing = $_POST['is_outstanding'];
     $sales = $_POST['sales'];
     $targetDir = "../../UploadImage/";
 
@@ -27,11 +28,11 @@ if (isset($_GET['proid']) && isset($_POST['proname']) && isset($_POST['proprice'
         $prodescription = $_POST['prodescription'];
     
 
-        $UpdateProduct_sql = "UPDATE product SET proname = ?, proprice = ?, catid = ?, prostock = ?, image_path = ?, prodescription = ?, sales = ? WHERE proid = ?";
+        $UpdateProduct_sql = "UPDATE product SET proname = ?, proprice = ?, catid = ?, prostock = ?, image_path = ?, prodescription = ?, sales = ?, is_outstanding = ? WHERE proid = ?";
         $stmt = $conn->prepare($UpdateProduct_sql);
 
         if ($stmt) {
-            $stmt->bind_param("sdiisssi", $proname, $proprice, $catid, $prostock, $image_path, $prodescription,$sales, $proid);
+            $stmt->bind_param("sdiisssii", $proname, $proprice, $catid, $prostock, $image_path, $prodescription,$sales,$is_standing, $proid);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -84,12 +85,7 @@ if (isset($_POST['addcart'])) {
             themItemCart($_SESSION['user_id'], $idsp, $quantity, $price);
         }
     }
-    header("Location: index.php?act=GioHang");
-    exit();
 }
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '</pre>';  
 ?>
 <!DOCTYPE html>
 <html lang="en">

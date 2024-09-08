@@ -81,7 +81,7 @@ document.querySelector('.popup-formlogin').addEventListener('submit', function (
                 }
             } else
             {
-                
+
                 alert(data.message);
             }
         })
@@ -132,14 +132,11 @@ document.querySelector('.popup-formsignup').addEventListener('submit', function 
         {
             if (data.success)
             {
-                // Đăng nhập thành công: tắt popup và cập nhật trạng thái
                 document.getElementById('popupSignUp').style.display = 'none';
                 location.reload();
-                // Cập nhật trạng thái người dùng
-                //document.getElementById('account').innerHTML = '<a class="current" href="../../../../index.php?act=account&feature=order">Xin chào, ' + formData.get('username') + '</a>';
             } else
             {
-                // Hiển thị lỗi nếu đăng nhập không thành công
+
                 alert(data.message);
             }
         })

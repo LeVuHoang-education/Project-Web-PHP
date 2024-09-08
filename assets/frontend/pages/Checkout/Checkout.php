@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selectedItems = explode(',', $_POST['selected_cart_ids']);
     }
 }
-
+$addressExists = false;
 //lay data khach hang
 if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM `dckh` WHERE userid = $id";
+    $sql = "SELECT * FROM `dckh` WHERE userid = $id and defaultDC = 1";
     $data_dc = $conn->query($sql);
     $row = $data_dc->fetch_assoc();
     if ($row != null) {
@@ -27,15 +27,10 @@ if (isset($_SESSION['user_id'])) {
 
         $data_user = getUserbyID($_SESSION['user_id']);
         $sdt = $data_user->fetch_assoc()['phonenumber'];
-
-        while ($row = $data_dc->fetch_assoc()) {
-            if ($row['defaultDC'] == 1) {
-                $dc = $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
-            }
-        }
+        $dc = $row['number_house'] . ", " . $row['ward'] . ", " . $row['district'] . ", " . $row['city'];
+        $addressExists = true;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,17 +54,38 @@ if (isset($_SESSION['user_id'])) {
 
         <div class="DCNH-content">
             <?php
-            $id = $_SESSION['user_id'];
-            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
-            $data_dc = $conn->query($sql);
-            $row = $data_dc->fetch_assoc();
-            if ($row != null) {
+            if ($addressExists) {
             ?>
                 <span><?php echo $ten ?></span>
                 <span><?php echo $sdt ?></span>
                 <span><?php echo $dc ?></span>
             <?php } else { ?>
-                <span>Bạn chưa có địa chỉ nhận hàng (mặc định). Vui lòng vào trang tài khoản nhập địa chỉ để có thể mua hàng</span>
+                <form class="field-form" id="address-form" action="../../../../frontend/pages/ThemdcCus.php" method="post">
+                    <label for="city">Thành phố</label>
+                    <div class="box-input">
+                        <select id="city-name" name="city-name">
+                            <option value="none">Chọn tỉnh/thành phố</option>
+                        </select>
+                    </div>
+
+                    <label for="district">Quận / Huyện</label>
+                    <div class="box-input">
+                        <select id="district-name" name="district-name">
+                            <option value="none">Chọn Quận/Huyện</option>
+                        </select>
+
+                    </div>
+                    <label for="ward">Xã / phường / Thị Trấn</label>
+                    <div class="box-input">
+                        <select id="ward-name" name="ward-name">
+                            <option value="none">Chọn Xã/Phường/Thị Trấn</option>
+                        </select>
+                    </div>
+                    <label for="number-house">Số nhà + đường</label>
+                    <div class="box-input">
+                        <input type="text" id="number-house" name="number-house" required value="">
+                    </div>
+                </form>
             <?php } ?>
         </div>
     </div>
@@ -145,22 +161,10 @@ if (isset($_SESSION['user_id'])) {
                 </script>
             </span>
         </div>
-        <form action="../../../../frontend/pages/MuaHang.php" method="post">
-            <input type="hidden" name="cartid" id="" value="<?php echo $_POST['selected_cart_ids'] ?>">
+        <form onsubmit="submitForms()" action="../../../../frontend/pages/MuaHang.php" id="order-form" method="post">
+            <input type="hidden" name="cartid" value="<?php echo $_POST['selected_cart_ids']?>">
             <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
-            <?php
-            $id = $_SESSION['user_id'];
-            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
-            $data_dc = $conn->query($sql);
-            $row = $data_dc->fetch_assoc();
-            if ($row != null) {
-            ?>
-                <input type="submit" value="Đặt hàng" name="Buy" style="  background-color: #109dd4;padding:10px 15px;border-radius:5px;">
-            <?php } else { ?>
-                <div onclick="alertNotify()" id="btn-submit">
-                    <input type="submit" value="Đặt hàng" name="Buy" disabled>
-                </div>
-            <?php } ?>
+            <input type="submit" value="Đặt hàng" name="Buy" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;">
         </form>
     </div>
 
@@ -171,8 +175,40 @@ if (isset($_SESSION['user_id'])) {
             hiddenInput.value = selectElement.value;
         }
 
-        function alertNotify() {
-            alert("Bạn chưa thiết lập địa chỉ giao hàng. Vui lòng đến trang tài khoản để thiết lập");
+        function submitForms() {
+            var addressForm = document.querySelector('form.field-form');
+            var muaHangForm = document.querySelector('form[action="../../../../frontend/pages/MuaHang.php"]');
+
+            if (addressForm) {
+                // Nếu có form thêm địa chỉ, gửi form đó trước
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData(addressForm);
+
+                xhr.open('POST', '../../../../frontend/pages/ThemdcCus.php', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        if (xhr.responseText.trim() === 'OK') {
+                            if (muaHangForm) {
+                                // Gửi form mua hàng sau khi thêm địa chỉ thành công
+                                muaHangForm.submit();
+                            } else {
+                                alert('Không tìm thấy form mua hàng.');
+                            }
+                        } else {
+                            alert('Không thể thêm địa chỉ: ' + xhr.responseText);
+                        }
+                    } else {
+                        alert('Có lỗi xảy ra khi gửi yêu cầu.');
+                    }
+                };
+                xhr.send(formData);
+            } else {
+                if (muaHangForm) {
+                    muaHangForm.submit();
+                } else {
+                    alert('Không tìm thấy form mua hàng.');
+                }
+            }
         }
     </script>
 </body>
