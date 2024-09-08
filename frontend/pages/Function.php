@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '../../../db/connect.php';
 function getOrder()
-{   
+{
     global $conn;
     $getOD_sql = "SELECT * FROM orders order by orderid";
     $result = $conn->query($getOD_sql);
@@ -185,7 +185,7 @@ function getTTKH($id)
     global $conn;
     $getTTKH = "SELECT * FROM ttkh WHERE userid = ?";
     $stmt = $conn->prepare($getTTKH);
-    $stmt->bind_param("i", $id);    
+    $stmt->bind_param("i", $id);
     if (!$stmt->execute()) {
         die("Lỗi execute SQL: (" . $stmt->errno . ") " . $stmt->error);
     }
@@ -212,7 +212,8 @@ function getDC($id)
     return $result;
 }
 
-function getItemCartbyID ($id, $proID) {
+function getItemCartbyID($id, $proID)
+{
     global $conn;
     $getsql = "SELECT * FROM `cart-item` WHERE userID = ? AND proID = ?";
     $stmt = $conn->prepare($getsql);
@@ -250,14 +251,79 @@ function getItembyCartID($cartid)
 
 function getProductBySugestion($catid)
 {
-  global $conn;
-  $type = [];
-  $sql = "SELECT * FROM `product` WHERE catid = $catid AND prostock>'0' AND is_outstanding='1'";
-  $result = $conn->query($sql);
-  while ($row = $result->fetch_assoc()) {
-    $type[] = $row['proid'];
-  }
-  $GLOBALS['itemID'] = $type;
+    global $conn;
+    $type = [];
+    $sql = "SELECT * FROM `product` WHERE catid = $catid AND prostock>'0' AND is_outstanding='1'";
+    $result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $type[] = $row['proid'];
+    }
+    $GLOBALS['itemID'] = $type;
 
-  include "./assets/frontend/component/suggestion/suggestion.php";
+    include "./assets/frontend/component/suggestion/suggestion.php";
+}
+
+//ham tao link phan trang va cac ham lien quan
+function createPagination($base_url, $total_rows, $serial_page, $page_size = 10, $offset = 1)
+{
+    if ($serial_page <= 0) {
+        return "";
+    };
+
+    $total_pages = ceil($total_rows / $page_size);
+    if ($total_pages <= 1) {
+        return "";
+    }
+
+    $links = "<ul class='pagination'>";
+
+    //hien 2 link dan den trang dau va cuoi
+    if ($serial_page > 1) {
+        $page_prev = $serial_page - 1;
+        $first = "<li><a href='{$base_url}&serial_page=1'> << </a></li>";
+        $prev = "<li><a href='{$base_url}&serial_page={$page_prev}'> < </a></li>";
+        $links .= $first . $prev;
+    };
+
+    //hien so trang o giua
+    if ($serial_page + $offset - 1 <= $total_pages) {
+        for ($i = $serial_page; $i <= $serial_page + $offset - 1; $i++) {
+            if ($i == $serial_page)
+                $page = "<li style='background-color: var(--icon-bg);'><a href='{$base_url}&serial_page={$i}'> {$i}</a></li>";
+            else
+                $page = "<li><a href='{$base_url}&serial_page={$i}'> {$i}</a></li>";
+            $links .= $page;
+        }
+    } else {
+        for ($i = $total_pages - $offset + 1; $i <= $total_pages; $i++) {
+            if ($i == $serial_page)
+                $page = "<li style='background-color: var(--icon-bg);'><a href='{$base_url}&serial_page={$i}'> {$i}</a></li>";
+            else
+                $page = "<li><a href='{$base_url}&serial_page={$i}'> {$i}</a></li>";
+            $links .= $page;
+        }
+    }
+
+    //hien 2 link dan den trang cuoi va ke cuoi
+    if ($serial_page < $total_pages) {
+        $page_next = $serial_page + 1;
+        $next = "<li><a href='{$base_url}&serial_page={$page_next}'> > </a></li>";
+        $last = "<li><a href='{$base_url}&serial_page={$total_pages}'> >> </a></li>";
+        $links .= $next . $last;
+    }
+    $links .= "</ul>";
+    return $links;
+}
+
+function countRowsInTable($catid)
+{
+    if ($catid == 0) {
+        $sql = "SELECT count(*) FROM `product` WHERE prostock>0";
+    } else
+        $sql = "SELECT count(*) FROM `product` WHERE catid='{$catid}' AND prostock>0";
+    global $conn;
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $count = $row['count(*)'];
+    return $count;
 }
