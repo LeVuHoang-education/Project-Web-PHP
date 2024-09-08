@@ -1,7 +1,7 @@
 <?php
 // echo "<pre>";
 // print_r($_SESSION);
-// //print_r($_POST);
+//print_r($_POST);
 // echo "</pre>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         foreach ($_SESSION['cart'] as $sessionItem) {
                             if ($sessionItem[0] == $item) {
                     ?>
-                                total += <?php echo ($sessionItem[2] * $sessionItem[3]) ?>;
+                                total += <?php echo (floatval($sessionItem[2]) * floatval($sessionItem[3])) ?>;
                     <?php }
                         }
                     } ?>
@@ -146,36 +146,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         function submitForms() {
-            var email = document.querySelector('input[name="guestmail"]').value;
+            //     var email = document.querySelector('input[name="guestmail"]').value;
 
-            if (!validateEmail(email)) {
-                alert("Email không hợp lệ. Vui lòng nhập địa chỉ email hợp lệ.");
-                return;
+            //     if (!validateEmail(email)) {
+            //         alert("Email không hợp lệ. Vui lòng nhập địa chỉ email hợp lệ.");
+            //         return;
+            //     }
+
+
+            //     var form1Data = new FormData(document.getElementById('form1'));
+
+            //     fetch('../../../../frontend/pages/ThemDataGuest.php', {
+            //             method: 'POST',
+            //             body: form1Data
+            //         })
+            //         .then(response => response.text())
+            //         .then(result => {
+
+            //             if (result.includes('Lỗi')) {
+            //                 alert(result);
+            //                 return;
+            //             }
+            //             var form2 = document.getElementById('form2');
+            //             form2.submit();
+            //         })
+            //         .catch(error => {
+            //             console.error('Có lỗi xảy ra:', error);
+            //             alert('Có lỗi xảy ra khi gửi dữ liệu.');
+            //         });
+
+            var form1 = document.getElementById('form1');
+            var form2 = document.getElementById('form2');
+
+            if (form1) {
+                // Nếu form1 tồn tại, kiểm tra email và gửi form1
+                var email = document.querySelector('input[name="guestmail"]').value;
+
+                if (!validateEmail(email)) {
+                    alert("Email không hợp lệ. Vui lòng nhập địa chỉ email hợp lệ.");
+                    return;
+                }
+
+                var form1Data = new FormData(form1);
+
+                fetch('../../../../frontend/pages/ThemDataGuest.php', {
+                        method: 'POST',
+                        body: form1Data
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+
+                        if (result.includes('Lỗi')) {
+                            alert(result);
+                            return;
+                        }
+
+                        // Sau khi gửi form1 thành công, gửi form2
+                        form2.submit();
+                    })
+                    .catch(error => {
+                        console.error('Có lỗi xảy ra:', error);
+                        alert('Có lỗi xảy ra khi gửi dữ liệu.');
+                    });
+            } else {
+                // Nếu form1 không tồn tại, chỉ gửi form2
+                form2.submit();
             }
 
-
-            var form1Data = new FormData(document.getElementById('form1'));
-
-            fetch('../../../../frontend/pages/ThemDataGuest.php', {
-                    method: 'POST',
-                    body: form1Data
-                })
-                .then(response => response.text())
-                .then(result => {
-
-                    if (result.includes('Lỗi')) {
-                        alert(result);
-                        return;
-                    }
-
-
-                    var form2 = document.getElementById('form2');
-                    form2.submit();
-                })
-                .catch(error => {
-                    console.error('Có lỗi xảy ra:', error);
-                    alert('Có lỗi xảy ra khi gửi dữ liệu.');
-                });
         }
     </script>
 </body>

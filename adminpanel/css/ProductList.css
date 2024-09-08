@@ -26,6 +26,49 @@ h2 a img {
   height: auto;
 }
 
+h2 select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+}
+h2 button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+  cursor: pointer;
+}
+h2 button:hover {
+  background-color: #6C7A89;
+  color: rgb(204, 255, 0);
+}
+
+h2 input[type = "text"] {
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid #6C7A89;
+  background-color: white;
+}
+h2 input[type = "text"]:focus {
+  outline: none;
+}
+
+h2 input[type = "submit"] {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #0067d5;
+  background-color: rgb(0, 154, 100);
+  color: white;
+  cursor: pointer;
+}
+
+h2 input[type = "submit"]:hover {
+  background-color: #6C7A89;
+  color: rgb(204, 255, 0);
+}
+
+
 .responsive-table {
   padding: 0;
 
@@ -44,6 +87,9 @@ li {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-row {
@@ -64,11 +110,13 @@ li {
 
 .col-3 {
   flex-basis: 15%;
+  text-align: center;
 }
 
 .col-4 {
   margin-left: 10px;
   flex-basis: 5%;
+  text-align: center;
 }
 
 .col-5 {
@@ -94,6 +142,10 @@ li {
   background-color: blueviolet;
   color: #ffffff;
   text-decoration: none;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .col-6 a:hover {
@@ -128,7 +180,7 @@ li {
   display: flex;
   justify-content: center;
   margin: 20px;
-  padding:10px;
+  padding: 10px;
 }
 
 .pageButton a {
@@ -145,4 +197,23 @@ li {
   background-color: #6C7A89;
   text-decoration: underline;
   color: white;
+}
+
+.is_active {
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #6C7A89;
+  padding: 10px;
+  background-color: blueviolet;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.is_active:hover {
+  background-color: #6C7A89;
+  text-decoration: underline;
+  cursor: pointer;
 }

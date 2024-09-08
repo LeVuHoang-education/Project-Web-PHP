@@ -14,12 +14,17 @@
     padding: 0;
     background-color: azure;
     text-align: center;
+    height: auto;
 }
 
 .catcol-2 {
     text-align: left;
 }
-
+.catcol-3 {
+    text-align: center;
+    height: max-content;
+    padding: 15px;
+}
 .catcol-3 img {
     width: 32px;
     height: auto;
@@ -34,7 +39,7 @@
 .catcol-3 button {
     padding: 0;
     margin: 10px 20px;
-    background-color: azure;
+    background-color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -42,10 +47,6 @@
 
 .catcol-3 a {
     text-decoration: none;
-}
-
-.catcol-3 button:hover {
-    color: rgb(176, 8, 8);
 }
 
 .modal {
@@ -84,13 +85,14 @@
     cursor: pointer;
 }
 
-.addCat form{
+.addCat form {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
 }
-.combobox-Cat{
+
+.combobox-Cat {
     display: flex;
     text-transform: uppercase;
     padding: 10px;
@@ -98,19 +100,21 @@
     align-items: center;
 }
 
-.combobox-Cat input{
+.combobox-Cat input {
     padding: 10px;
     margin: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 20px;
 }
-.combobox-Cat input:focus{
+
+.combobox-Cat input:focus {
     outline: none;
     background-color: rgb(228, 228, 228);
     color: rgb(100, 0, 147);
 }
-.modal-btn{
+
+.modal-btn {
     background-color: rgb(146, 255, 79);
     border: 1px solid #ccc;
     color: rgb(162, 0, 255);
@@ -118,4 +122,20 @@
     border-radius: 20px;
     padding: 10px;
     width: 10%;
+}
+
+.catcol-3 a {
+    text-decoration: none;
+    color: black;
+    background-color:honeydew;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.catcol-3 a:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: 1s;
+    text-decoration: underline;
 }

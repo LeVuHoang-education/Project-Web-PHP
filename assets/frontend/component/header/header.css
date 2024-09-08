@@ -358,6 +358,14 @@ svg {
   font-weight: bold;
 }
 
+.popup-content button {
+  border: none;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media (max-width: 1060px) {
   .navbar ul {
