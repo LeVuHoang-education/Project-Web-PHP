@@ -59,17 +59,20 @@ if (isset($_SESSION['user_id'])) {
 
         <div class="DCNH-content">
             <?php
+            $addressExists = false;
             $id = $_SESSION['user_id'];
             $sql = "SELECT * FROM `dckh` WHERE userid = $id";
             $data_dc = $conn->query($sql);
             $row = $data_dc->fetch_assoc();
             if ($row != null) {
+                $addressExists = true;
+
             ?>
                 <span><?php echo $ten ?></span>
                 <span><?php echo $sdt ?></span>
                 <span><?php echo $dc ?></span>
             <?php } else { ?>
-                <form class="field-form" action="../../../../frontend/pages/Themdc.php" method="post">
+                <form class="field-form" id="address-form" action="../../../../frontend/pages/ThemdcCus.php" method="post">
                     <label for="city">Thành phố</label>
                     <div class="box-input">
                         <select id="city-name" name="city-name">
@@ -93,9 +96,6 @@ if (isset($_SESSION['user_id'])) {
                     <label for="number-house">Số nhà + đường</label>
                     <div class="box-input">
                         <input type="text" id="number-house" name="number-house" required value="">
-                    </div>
-                    <div id="submit">
-                        <button id="btn-submit" type="submit" value="ThemDC" name="ThemDC">Thêm địa chỉ</button>
                     </div>
                 </form>
             <?php } ?>
@@ -173,22 +173,10 @@ if (isset($_SESSION['user_id'])) {
                 </script>
             </span>
         </div>
-        <form action="../../../../frontend/pages/MuaHang.php" method="post">
+        <form action="../../../../frontend/pages/MuaHang.php" method="post" id="order-form">
             <input type="hidden" name="cartid" id="" value="<?php echo $_POST['selected_cart_ids'] ?>">
             <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
-            <?php
-            $id = $_SESSION['user_id'];
-            $sql = "SELECT * FROM `dckh` WHERE userid = $id";
-            $data_dc = $conn->query($sql);
-            $row = $data_dc->fetch_assoc();
-            if ($row != null) {
-            ?>
-                <input type="submit" value="Đặt hàng" name="Buy" style="  background-color: #109dd4;padding:10px 15px;border-radius:5px;">
-            <?php } else { ?>
-                <div onclick="alertNotify()" id="btn-submit">
-                    <input type="submit" value="Đặt hàng" name="Buy" disabled>
-                </div>
-            <?php } ?>
+            <input type="submit" value="Đặt hàng" name="Buy" onclick="handleCheckoutFormSubmit(event)" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;">
         </form>
     </div>
 
@@ -199,8 +187,37 @@ if (isset($_SESSION['user_id'])) {
             hiddenInput.value = selectElement.value;
         }
 
-        function alertNotify() {
-            alert("Bạn chưa thiết lập địa chỉ giao hàng. Vui lòng đến trang tài khoản để thiết lập");
+        function handleCheckoutFormSubmit(event) {
+            event.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
+
+            const addressForm = document.getElementById('addressForm');
+            const orderForm = document.getElementById('orderForm');
+
+            if (addressForm) {
+                const addressFormData = new FormData(addressForm);
+
+                fetch(addressForm.action, {
+                        method: 'POST',
+                        body: addressFormData
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        if (result.trim() === 'OK') {
+                            // Địa chỉ đã được thêm thành công, giờ gửi form đặt hàng
+                            orderForm.submit();
+                        } else {
+                            // Thêm địa chỉ thất bại, hiển thị thông báo lỗi
+                            alert('Lỗi khi thêm địa chỉ');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Lỗi:', error);
+                        alert('Lỗi khi gửi dữ liệu.');
+                    });
+            } else {
+                
+                orderForm.submit();
+            }
         }
     </script>
 </body>
