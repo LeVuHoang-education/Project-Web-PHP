@@ -13,7 +13,7 @@
     <!--main content-->
     <div class="main-container">
       <?php
-        require './db/connect.php';
+          require './db/connect.php';
       require_once './frontend/pages/Function.php';
       function getProductByRange($min, $max, $conn)
       {
@@ -44,16 +44,16 @@
         <img id="ads" src="assets/frontend/src/Home/ads/mau-sac-tuoi-sang-nhe-nhang.png">
         <?php
         // $arr = [12, 14, 15, 16, 10];
-        getProductBySugestion(2);
+        getProductBySugestion(3);
         ?>
       </div>
       <hr />
-
+      
       <div class="content">
         <img id="ads" src="assets/frontend/src/Home/ads/nang-tam-trai-nghiem.png">
         <?php
         // $arr = [3, 27, 28, 29, 30];
-        getProductBySugestion(3);
+        getProductBySugestion(2);
         ?>
       </div>
       <hr />

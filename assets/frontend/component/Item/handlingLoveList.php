@@ -5,9 +5,23 @@ function saveLoveProduct($proid, $userid)
     global $conn;
     $sql = "INSERT INTO `love-list` (userid, proid) VALUES (?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $proid, $userid);
+    $stmt->bind_param("ii",  $userid, $proid);
     $stmt->execute();
     if ($stmt->affected_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function delLoveProduct($id)
+{
+    global $conn;
+    $sql = "DELETE FROM `love-list` where proid=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    if ($stmt->execute()) {
         return true;
     } else {
         return false;
@@ -45,9 +59,17 @@ if (isset($_SESSION['user_id'])  && $_SESSION["user_id"] != null) {
     } else  if (!in_array($productId, $_SESSION['lovelist'])) {
         array_push($_SESSION['lovelist'], $productId);
         // Prepare response as JSON
-        $response = [
-            'message' => 'success', // Adjust message as needed
-        ];
+        if (saveLoveProduct($productId, $userid)) {
+            // Prepare response as JSON
+            $response = [
+                'message' => 'success', // Adjust message as needed
+            ];
+        } else {
+            // Prepare response as JSON
+            $response = [
+                'message' => 'error', // Adjust message as needed
+            ];
+        }
     } else {
         foreach ($_SESSION['lovelist'] as $key => $value) {
             if ($value == $productId) {
@@ -55,6 +77,7 @@ if (isset($_SESSION['user_id'])  && $_SESSION["user_id"] != null) {
                 break;
             }
         }
+        delLoveProduct($productId);
         // Prepare response as JSON
         $response = [
             'message' => 'delete', // Adjust message as needed
@@ -67,7 +90,7 @@ if (isset($_SESSION['user_id'])  && $_SESSION["user_id"] != null) {
 } else {
     // Prepare response as JSON
     $response = [
-        'message' => 'notallow.',
+        'message' => 'notallow',
     ]; // Adjust message as needed
     header('Content-Type: application/json');
 
