@@ -84,6 +84,8 @@ if (isset($_POST['addcart'])) {
             themItemCart($_SESSION['user_id'], $idsp, $quantity, $price);
         }
     }
+    header("Location: index.php?act=GioHang");
+    exit();
 }
 // echo '<pre>';
 // print_r($_SESSION);
