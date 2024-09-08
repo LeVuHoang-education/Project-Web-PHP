@@ -15,7 +15,7 @@
         // if (isset($_GET['feature']) && $_GET['feature'] == 'searching') {
         //   include "./assets/frontend/component/suggestion/suggestion.php";
         // }
-        if (isset($_GET['cat']) && $_GET['cat'] == 0) {
+        if (isset($_GET['cat'])) {
           include  "./assets/frontend/component/productCard/productCard.php";
         }
       }

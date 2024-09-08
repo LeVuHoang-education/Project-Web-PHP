@@ -105,7 +105,6 @@
                         </li>
                         <li class="navbar-item">
                             <a href="../../../../index.php?act=productList&cat=0&serial_page=1">Danh sách <span class="arrow">&#8744;</span></a>
-
                             <ul class="navbar-submenu">
                                 <?php
                                 include "./frontend/global/variable.php";
