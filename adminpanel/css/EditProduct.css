@@ -1,25 +1,29 @@
-body{
+body {
     font-family: 'Poppins', sans-serif;
-    background-color:azure;
+    background-color: azure;
 
 }
-.containner{
+
+.containner {
     width: 100%;
     justify-content: center;
     align-items: center;
     height: auto;
     display: flex;
 }
-h1{
+
+h1 {
     text-align: center;
     font-size: 30px;
     color: #333;
     margin-top: 20px;
 }
-h1 img{
+
+h1 img {
     width: 50px;
     height: auto;
 }
+
 form {
     width: 80%;
     display: flex;
@@ -40,7 +44,8 @@ form {
     background-color: rgb(255, 255, 255);
     border: 1px solid #333;
 }
-.combobox1{
+
+.combobox1 {
     display: flex;
     width: 80%;
     border-radius: 20px;
@@ -49,20 +54,29 @@ form {
     background-color: rgb(255, 255, 255);
     text-align: center;
     align-items: center;
-    border:1px  solid #333;
+    border: 1px solid #333;
 }
 
-.combobox1 select{
+.combobox1 select {
     border: none;
     outline: none;
     font-size: 16px;
-    width: 50%;
+    width: 60%;
     align-items: center;
-    
+
 }
 
-input[type= text],input[type= number] {
-    width: 80%;
+label {
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 16px;
+    padding: auto;
+}
+
+input[type=text],
+input[type=number] {
+    width: 60%;
     padding: 10px;
     margin: 10px;
     border: none;
@@ -81,8 +95,8 @@ textarea {
 }
 
 button {
-    width:70%;
-    background-color: #fbd5ff; 
+    width: 70%;
+    background-color: #fbd5ff;
     border-radius: 20px;
     border: 1px solid #333;
     padding: 10px;
@@ -102,7 +116,17 @@ button {
     align-items: center;
     justify-content: center;
 }
+
 .box_phai p {
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.is_outstanding {
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 1.0rem;
+    width: 15%;
+    align-items: center;
 }

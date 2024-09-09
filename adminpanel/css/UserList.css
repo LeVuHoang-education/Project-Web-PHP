@@ -41,4 +41,20 @@ button {
 button:hover {
     background-color: #00fff2;
 }
-
+.form-search {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.form-search input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    outline: none;
+}
+.form-search input[type="submit"]:hover {
+    background-color: #5d6d04;
+    color: white;
+    cursor: pointer;
+}
