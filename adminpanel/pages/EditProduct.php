@@ -111,7 +111,7 @@ if (isset($_GET['proid'])) {
             
             <div class="combobox">
                 <label for="is_outstanding">Nổi bật:</label>
-                <select name="is_outstanding">
+                <select name="is_outstanding" class="is_outstanding">
                     <?php 
                         if($row['is_outstanding'] == 1){
                             echo '<option value="1" selected>Có</option>';
