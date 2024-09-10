@@ -176,8 +176,8 @@ if (isset($_SESSION['user_id'])) {
         }
 
         function submitForms() {
-            var addressForm = document.querySelector('form.field-form');
-            var muaHangForm = document.querySelector('form#order-form');
+            var addressForm = document.f=getElementById('address-form');
+            var muaHangForm = document.getElementById('order-form');
 
             if (addressForm) {
                 // Nếu có form thêm địa chỉ, gửi form đó trước

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/frontend/css/orderDetail.css">
+    <script>
+        var nf = new Intl.NumberFormat();
+    </script>
 </head>
 
 <body>
@@ -38,7 +41,12 @@
                                     <p><?= $row['proname'] ?></p>
                                 </td>
                                 <td><?= $row['quanitity'] ?></td>
-                                <td><?= $row['price'] ?></td>
+                                <td>
+                                    <script>
+                                        var price = <?= $row['price'] ?>;
+                                        document.write(nf.format(price));
+                                    </script>
+                                </td>
                             </tr>
                         <?php
                         }
