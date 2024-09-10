@@ -56,33 +56,33 @@ if (isset($_SESSION['user_id'])) {
             <?php
             if ($addressExists) {
             ?>
-                <span><?php echo $ten ?></span>
-                <span><?php echo $sdt ?></span>
-                <span><?php echo $dc ?></span>
+                <span>Tên khách hàng: <?php echo $ten ?>, </span>
+                <span>SDT: <?php echo $sdt ?></span>
+                <span>DC: <?php echo $dc ?></span>
             <?php } else { ?>
                 <form class="field-form" id="address-form" action="../../../../frontend/pages/ThemdcCus.php" method="post">
-                    <label for="city">Thành phố</label>
                     <div class="box-input">
+                        <label for="city">Thành phố</label>
                         <select id="city-name" name="city-name">
                             <option value="none">Chọn tỉnh/thành phố</option>
                         </select>
                     </div>
 
-                    <label for="district">Quận / Huyện</label>
                     <div class="box-input">
+                        <label for="district">Quận / Huyện</label>
                         <select id="district-name" name="district-name">
                             <option value="none">Chọn Quận/Huyện</option>
                         </select>
 
                     </div>
-                    <label for="ward">Xã / phường / Thị Trấn</label>
                     <div class="box-input">
+                        <label for="ward">Xã / phường / Thị Trấn</label>
                         <select id="ward-name" name="ward-name">
                             <option value="none">Chọn Xã/Phường/Thị Trấn</option>
                         </select>
                     </div>
-                    <label for="number-house">Số nhà + đường</label>
                     <div class="box-input">
+                        <label for="number-house">Số nhà + đường</label>
                         <input type="text" id="number-house" name="number-house" required value="">
                     </div>
                 </form>
@@ -162,9 +162,9 @@ if (isset($_SESSION['user_id'])) {
             </span>
         </div>
         <form onsubmit="submitForms()" action="../../../../frontend/pages/MuaHang.php" id="order-form" method="post">
-            <input type="hidden" name="cartid" value="<?php echo $_POST['selected_cart_ids']?>">
+            <input type="hidden" name="cartid" value="<?php echo $_POST['selected_cart_ids'] ?>">
             <input type="hidden" name="pttt" id="paymentHiddenInput" value="Thanh toán khi nhận hàng">
-            <input type="submit" value="Đặt hàng" name="Buy" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;">
+            <input type="submit" value="Đặt hàng" name="Buy" style="background-color: #109dd4;padding:10px 15px;border-radius:5px;cursor:pointer;">
         </form>
     </div>
 
@@ -177,7 +177,7 @@ if (isset($_SESSION['user_id'])) {
 
         function submitForms() {
             var addressForm = document.querySelector('form.field-form');
-            var muaHangForm = document.querySelector('form[action="../../../../frontend/pages/MuaHang.php"]');
+            var muaHangForm = document.querySelector('form#order-form');
 
             if (addressForm) {
                 // Nếu có form thêm địa chỉ, gửi form đó trước

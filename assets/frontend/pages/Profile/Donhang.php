@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/frontend/css/order.css">
+    <script>
+        var nf = new Intl.NumberFormat();
+    </script>
 </head>
 
 <body>
@@ -27,13 +30,20 @@
                 while ($row = $result->fetch_assoc()) {
                 ?>
                     <tr>
-                        
-                            <td><?php echo $row['orderid'] ?></td>
-                            <td><?php echo $row['orderdate'] ?></td>
-                            <td><?php echo $row['totalmount'] ?></td>
-                            <td><?php echo $row['payment_status'] ?></td>
-                            <td><?php echo $row['status'] ?></td>
-                            <td><a href="../../../../index.php?act=account&feature=orderDetail&id=<?= $row['orderid'] ?>">Chi tiết</a></td>
+
+                        <td><?php echo $row['orderid'] ?></td>
+                        <td><?php echo $row['orderdate'] ?></td>
+                        <td>
+                            <script>
+                                var cost = <?= $row['totalmount'] ?>;
+                                document.write(nf.format(cost));
+                            </script>
+                        </td>
+                        <td>
+                            <?php echo $row['payment_status'] ?>`
+                        </td>
+                        <td><?php echo $row['status'] ?></td>
+                        <td><a href="../../../../index.php?act=account&feature=orderDetail&id=<?= $row['orderid'] ?>">Chi tiết</a></td>
                     </tr>
                 <?php
                 }

@@ -220,8 +220,7 @@ if (isset($_POST['addcart'])) {
                                                 echo "ThanhToan";
                                             } else {
                                                 echo "ThanhToanGuest";
-                                            } ?>"
-                    method="post" id="checkout-form">
+                                            } ?>" method="post" id="checkout-form">
                     <input class="btn-mua" type="submit" value="Mua hàng" name="checkout">
                 </form>
             </th>
