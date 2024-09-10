@@ -74,7 +74,7 @@
                     if ($row['userid'] == 0) {
                         echo 'Khách: ' . $row['guestid'];
                     } else {
-                        echo  'Người dùng:' . $row['ugtserid'];
+                        echo  'Người dùng:' . $row['userid'];
                     }
                     ?></td>
                 <td><?php echo $row['orderdate'] ?></td>
