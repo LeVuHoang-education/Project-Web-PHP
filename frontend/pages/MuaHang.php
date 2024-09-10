@@ -5,26 +5,29 @@ include_once __DIR__ . '../../../frontend/pages/Function.php';
 if (isset($_POST['cartid'])) {
     $pttt = $_POST['pttt'];
     $dsitem = explode(',', $_POST['cartid']);
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $now = date('Y-m-d H:i:s');
-    $total = 0;
+    $total_cost = 0;
+
     foreach ($dsitem as $item) {
         foreach ($_SESSION['cart'] as $cartItem) {
             if ($cartItem[0] == $item) {
-                $total += (floatval($cartItem[2]) * floatval($cartItem[3]));
+                $total_cost += floatval($cartItem[2]) * floatval($cartItem[3]);
+                echo $total_cost;
             }
         }
     }
     if (isset($_SESSION['user_id'])) {
-        if ($total <= 0) {
-            die("Lỗi: Tổng số tiền phải lớn hơn 0.");
-        }
+        // if ($total_cost <= 0) {
+        //     die("Lỗi: Tổng số tiền phải lớn hơn 0.");
+        // }
         $sql = "INSERT INTO orders (userid, orderdate, totalmount, payment_status) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         if ($stmt == false) {
             die("Lỗi khi chuẩn bị truy vấn SQL: " . $conn->error);
         }
-        $stmt->bind_param("isds", $_SESSION['user_id'], $now, $total, $pttt);
+        $stmt->bind_param("isds", $_SESSION['user_id'], $now, $total_cost, $pttt);
 
         if ($stmt->execute()) {
             $orderID = $stmt->insert_id;
@@ -77,4 +80,5 @@ if (isset($_POST['cartid'])) {
             exit();
         }
     }
+    exit();
 }

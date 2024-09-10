@@ -33,13 +33,13 @@
 
         if ($category_number != 0) {
             if ($maxPrice != 0) {
-                $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice AND prostock>'0'  LIMIT $startRow,$page_size ORDER BY catid = $category_number";
-            } else $sql = "SELECT * FROM product WHERE catid = $category_number AND prostock>'0' LIMIT $startRow,$page_size";
+                $sql = "SELECT * FROM product WHERE proprice BETWEEN $minPrice AND $maxPrice AND prostock>'0' AND is_active='1'  LIMIT $startRow,$page_size ORDER BY catid = $category_number";
+            } else $sql = "SELECT * FROM product WHERE catid = $category_number AND prostock>'0' AND is_active='1' LIMIT $startRow,$page_size";
         } else {
             if ($maxPrice != 0) {
-                $sql = "SELECT * FROM `product` WHERE  (proprice BETWEEN $minPrice AND $maxPrice) AND (prostock>'0') LIMIT $startRow,$page_size";
+                $sql = "SELECT * FROM `product` WHERE  (proprice BETWEEN $minPrice AND $maxPrice) AND (prostock>'0') AND is_active='1' LIMIT $startRow,$page_size";
             } else {
-                $sql = "SELECT * FROM product WHERE prostock>'0' LIMIT $startRow,$page_size";
+                $sql = "SELECT * FROM product WHERE prostock>'0' AND is_active='1' LIMIT $startRow,$page_size";
             }
         }
 
